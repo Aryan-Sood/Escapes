@@ -20,8 +20,5 @@ TextView txtAnim;
         // Animation move = AnimationUtils.LoadAnimation( this,R.anim.move);
 
 
-
-
-
     }
 }
