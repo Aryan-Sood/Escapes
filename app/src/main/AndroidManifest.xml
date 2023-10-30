@@ -17,9 +17,10 @@
             android:exported="false" />
         <activity
             android:name=".travelling_splash"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
