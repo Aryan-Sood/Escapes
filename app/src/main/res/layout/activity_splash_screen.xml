@@ -120,7 +120,7 @@
         android:text="Login"
         android:visibility="invisible"
         android:backgroundTint="@android:color/transparent"
-        android:layout_marginBottom="10sp"
+        android:layout_marginBottom="30sp"
         app:layout_constraintBottom_toTopOf="@+id/earthImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
