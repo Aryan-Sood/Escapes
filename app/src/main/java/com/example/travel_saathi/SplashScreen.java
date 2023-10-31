@@ -68,6 +68,7 @@ public class SplashScreen extends AppCompatActivity {
         float newRotationAngle = currentRotationAngle - 180;
         currentRotationAngle = currentRotationAngle -180;
         earthImage.animate().setDuration(1000).rotation(newRotationAngle).setInterpolator(interpolator);
+        //wow !
     }
 
 
