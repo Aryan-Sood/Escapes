@@ -14,14 +14,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 public class SplashScreen extends AppCompatActivity {
 
-    ImageView earthImage, travelImage;
+    ImageView earthImage, travelImage, foodImage, planeImage;
     ConstraintLayout constraintLayout;
 
     Button button;
-    TextView appName, bridgeDescription;
-    Animation forAppNameStart,forAppNameEnd, bridgeDescStart, travelImageStart, travelImageEnd;
+
+    MaterialButton loginButton;
+    TextView appName, bridgeDescription, foodDescription;
+    Animation forAppNameStart,forAppNameEnd, bridgeDescStart, travelImageStart, travelImageEnd, foodImageStart, foodDescStart, planeImageStart, loginButtonStart;
     private float currentRotationAngle = 0;
 
     Interpolator interpolator;
@@ -33,11 +37,15 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         earthImage = findViewById(R.id.earthImage);
-        button = findViewById(R.id.button);
+//        button = findViewById(R.id.button);
         appName = findViewById(R.id.appName);
         constraintLayout = findViewById(R.id.constraintLayoutMain);
         bridgeDescription = findViewById(R.id.bridgeDescription);
         travelImage = findViewById(R.id.travelImage);
+        foodImage = findViewById(R.id.foodImage);
+        foodDescription = findViewById(R.id.foodDescription);
+        planeImage = findViewById(R.id.planeImage);
+        loginButton = findViewById(R.id.loginButton);
 
         appName.setVisibility(View.INVISIBLE);
         bridgeDescription.setVisibility(View.INVISIBLE);
@@ -50,40 +58,61 @@ public class SplashScreen extends AppCompatActivity {
             @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void run() {
-                rotateEarth();
-                initializeAppNameStartAnimation();
-                changeBackground1();
-
+                    flyPlane();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        changeBackground2();
                         rotateEarth();
-                        initializeAppNameEndAnimation();
-                        initializeBridgeTextStartAnimation();
-                        initializeTravelImageStart();
+                        initializeAppNameStartAnimation();
+                        changeBackground1();
 
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                changeBackground2();
                                 rotateEarth();
-                                initializeTravelImageEnd();
-                                initializeBridgeTextEnd();
-                            }
-                        },3000);
+                                initializeAppNameEndAnimation();
+                                initializeBridgeTextStartAnimation();
+                                initializeTravelImageStart();
 
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        changeBackground3();
+                                        rotateEarth();
+                                        initializeTravelImageEnd();
+                                        initializeBridgeTextEnd();
+                                        initializeFoodImageStart();
+                                        initializeFoodTextStartAnimation();
+                                        loginButtonStart();
+                                    }
+                                },4000);
+
+                            }
+                        },4000);
                     }
-                },4000);
+                },3000);
+
+
+
             }
         },1000);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rotateEarth();
+                // login starts here
             }
         });
+
+
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                rotateEarth();
+//            }
+//        });
 
 
     }
@@ -133,11 +162,42 @@ public class SplashScreen extends AppCompatActivity {
         bridgeDescription.setVisibility(View.INVISIBLE);
     }
 
+    public void initializeFoodTextStartAnimation(){
+        foodDescription.setVisibility(View.VISIBLE);
+        foodDescStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bridge_desc_entry_animation);
+        foodDescription.startAnimation(foodDescStart);
+    }
+
+    public void initializeFoodImageStart(){
+        foodImage.setVisibility(View.VISIBLE);
+        foodImageStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.travel_image_start_animation);
+        foodImage.startAnimation(foodImageStart);
+    }
+
+    public void flyPlane(){
+        planeImage.setVisibility(View.VISIBLE);
+        planeImageStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.plane_image_start_animation);
+        planeImage.startAnimation(planeImageStart);
+    }
+
+    public void loginButtonStart(){
+        loginButton.setVisibility(View.VISIBLE);
+        loginButtonStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bridge_desc_entry_animation);
+        loginButton.startAnimation(loginButtonStart);
+
+    }
+
+
+
     public void changeBackground1(){
         constraintLayout.setBackgroundResource(R.drawable.splash_screen_background_2);
     }
 
     public void changeBackground2(){
         constraintLayout.setBackgroundResource(R.drawable.splash_screen_background_3);
+    }
+
+    public void changeBackground3(){
+        constraintLayout.setBackgroundResource(R.drawable.splash_screen_background_4);
     }
 }
