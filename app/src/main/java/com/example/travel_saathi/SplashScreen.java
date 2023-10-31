@@ -3,29 +3,25 @@ package com.example.travel_saathi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SplashScreen extends AppCompatActivity {
 
-    ImageView earthImage;
+    ImageView earthImage, travelImage;
     ConstraintLayout constraintLayout;
 
     Button button;
-    TextView appName;
-    Animation forAppName;
+    TextView appName, bridgeDescription;
+    Animation forAppNameStart,forAppNameEnd, bridgeDescStart, travelImageStart, travelImageEnd;
     private float currentRotationAngle = 0;
 
     Interpolator interpolator;
@@ -40,17 +36,46 @@ public class SplashScreen extends AppCompatActivity {
         button = findViewById(R.id.button);
         appName = findViewById(R.id.appName);
         constraintLayout = findViewById(R.id.constraintLayoutMain);
+        bridgeDescription = findViewById(R.id.bridgeDescription);
+        travelImage = findViewById(R.id.travelImage);
 
-        interpolator = new DecelerateInterpolator();
+        appName.setVisibility(View.INVISIBLE);
+        bridgeDescription.setVisibility(View.INVISIBLE);
 
-        new Handler().postDelayed(new Runnable() {
+        Handler handler= new Handler();
+
+//        interpolator = new DecelerateInterpolator();
+
+        handler.postDelayed(new Runnable() {
+            @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void run() {
                 rotateEarth();
-                initializeAnimations();
-                changeBackground(constraintLayout,getResources().getDrawable(R.drawable.splash_screen_background),getResources().getDrawable(R.drawable.splash_screen_background_2));
+                initializeAppNameStartAnimation();
+                changeBackground1();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changeBackground2();
+                        rotateEarth();
+                        initializeAppNameEndAnimation();
+                        initializeBridgeTextStartAnimation();
+                        initializeTravelImageStart();
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                rotateEarth();
+                                initializeTravelImageEnd();
+                                initializeBridgeTextEnd();
+                            }
+                        },3000);
+
+                    }
+                },4000);
             }
-        },500);
+        },1000);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -67,21 +92,52 @@ public class SplashScreen extends AppCompatActivity {
     public void rotateEarth(){
         float newRotationAngle = currentRotationAngle - 180;
         currentRotationAngle = currentRotationAngle -180;
-        earthImage.animate().setDuration(1000).rotation(newRotationAngle).setInterpolator(interpolator);
+        earthImage.animate().setDuration(1000).rotation(newRotationAngle);
+    }
+
+
+    public void initializeAppNameStartAnimation(){
+        forAppNameStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.app_name_start_animation);
+        appName.startAnimation(forAppNameStart);
+        appName.setVisibility(View.VISIBLE);
+    }
+
+    public void initializeAppNameEndAnimation(){
+        forAppNameEnd = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.app_name_end_animation);
+        appName.startAnimation(forAppNameEnd);
+        appName.setVisibility(View.INVISIBLE);
+    }
+
+    public void initializeBridgeTextStartAnimation(){
+        bridgeDescription.setVisibility(View.VISIBLE);
+        bridgeDescStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bridge_desc_entry_animation);
+        bridgeDescription.startAnimation(bridgeDescStart);
+    }
+
+    public void initializeTravelImageStart(){
+        travelImage.setVisibility(View.VISIBLE);
+        travelImageStart = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.travel_image_start_animation);
+        travelImage.startAnimation(travelImageStart);
         //wow !
     }
 
-
-    public void initializeAnimations(){
-        forAppName = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.app_name_animation);
-        appName.startAnimation(forAppName);
+    public void initializeTravelImageEnd(){
+        travelImageEnd = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.travel_image_end_animation);
+        travelImage.startAnimation(travelImageEnd);
+        travelImage.setVisibility(View.INVISIBLE);
     }
 
-    public void changeBackground(ConstraintLayout layout, Drawable initial, Drawable last){
-        TransitionDrawable crossFade = new TransitionDrawable(new Drawable[]{initial,last});
-        layout.setBackground(last);
-        crossFade.startTransition(3000);
-//        CrossFadeAnimation crossFadeAnimation = new CrossFadeAnimation(layout, initial,last,4000);
-//        crossFadeAnimation.start();
+    public void initializeBridgeTextEnd(){
+        travelImageEnd = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.travel_image_end_animation);
+        bridgeDescription.startAnimation(travelImageEnd);
+        bridgeDescription.setVisibility(View.INVISIBLE);
+    }
+
+    public void changeBackground1(){
+        constraintLayout.setBackgroundResource(R.drawable.splash_screen_background_2);
+    }
+
+    public void changeBackground2(){
+        constraintLayout.setBackgroundResource(R.drawable.splash_screen_background_3);
     }
 }
