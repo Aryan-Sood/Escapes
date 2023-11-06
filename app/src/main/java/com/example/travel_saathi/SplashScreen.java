@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -22,6 +23,8 @@ public class SplashScreen extends AppCompatActivity {
     ConstraintLayout constraintLayout;
 
     Button button;
+
+    MaterialButton login;
 
     MaterialButton loginButton;
     TextView appName, bridgeDescription, foodDescription;
@@ -102,7 +105,8 @@ public class SplashScreen extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // login starts here
+                Intent intent = new Intent(SplashScreen.this, LoginSignup.class);
+                startActivity(intent);
             }
         });
 
