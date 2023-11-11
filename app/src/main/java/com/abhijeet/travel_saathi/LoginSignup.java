@@ -1,4 +1,4 @@
-package com.example.travel_saathi;
+package com.abhijeet.travel_saathi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
 
 public class LoginSignup extends AppCompatActivity {
     Integer height;

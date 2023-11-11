@@ -1,4 +1,4 @@
-package com.example.travel_saathi;
+package com.abhijeet.travel_saathi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,6 +14,7 @@ import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.google.android.material.button.MaterialButton;
 

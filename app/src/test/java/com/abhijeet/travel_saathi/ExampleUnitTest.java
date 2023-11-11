@@ -1,4 +1,4 @@
-package com.example.travel_saathi;
+package com.abhijeet.travel_saathi;
 
 import org.junit.Test;
 

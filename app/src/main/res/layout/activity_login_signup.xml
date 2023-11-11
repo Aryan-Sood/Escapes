@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_signup_background"
-    tools:context=".LoginSignup">
+    tools:context="com.abhijeet.travel_saathi.LoginSignup">
 
     <ImageView
         android:id="@+id/login_background_image"

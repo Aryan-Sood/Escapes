@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.travel_saathi'
+    namespace 'com.abhijeet.travel_saathi'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.travel_saathi"
+        applicationId "com.abhijeet.travel_saathi"
         minSdk 24
         targetSdk 33
         versionCode 1

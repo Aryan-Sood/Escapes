@@ -1,4 +1,4 @@
-package com.example.travel_saathi;
+package com.abhijeet.travel_saathi;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".travelling_splash"
+    tools:context="com.abhijeet.travel_saathi.travelling_splash"
     android:background="@drawable/food_splash_screen_background">
 
     <ImageView
