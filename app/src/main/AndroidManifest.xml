@@ -15,6 +15,11 @@
         <activity
             android:name="com.abhijeet.travel_saathi.LoginSignup"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -23,11 +28,7 @@
         <activity
             android:name="com.abhijeet.travel_saathi.SplashScreen"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.abhijeet.travel_saathi.food_splash"

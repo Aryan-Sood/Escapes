@@ -25,22 +25,22 @@ public class LoginSignup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_signup);
 
-        loginBackImage = findViewById(R.id.login_background_image);
-        upButton = findViewById(R.id.up_arrow);
+//        loginBackImage = findViewById(R.id.login_background_image);
+//        upButton = findViewById(R.id.up_arrow);
 
 
-        getScreenHeight();
+//        getScreenHeight();
+//
+//        loginBackImage.getLayoutParams().height=height/2;
+//        loginBackImage.requestLayout();
 
-        loginBackImage.getLayoutParams().height=height/2;
-        loginBackImage.requestLayout();
-
-        upButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginHideAnimation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.login_hide_animation);
-                loginBackImage.startAnimation(loginHideAnimation);
-            }
-        });
+//        upButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                loginHideAnimation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.login_hide_animation);
+//                loginBackImage.startAnimation(loginHideAnimation);
+//            }
+//        });
 
     }
 
