@@ -93,9 +93,22 @@
         android:layout_height="90sp"
         android:layout_marginTop="90dp"
         app:cardCornerRadius="500sp"
+        app:cardBackgroundColor="#333333"
         app:layout_constraintEnd_toStartOf="@+id/cardVie"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView" >
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="90sp"
+        android:layout_height="107sp"
+        android:elevation="10sp"
+        android:layout_marginBottom="1sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:srcCompat="@drawable/avatar_lady1" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
@@ -120,9 +133,11 @@
         app:layout_constraintTop_toBottomOf="@+id/cardVie" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="90sp"
         android:layout_height="90sp"
         android:layout_marginTop="30dp"
+        app:cardBackgroundColor="#333333"
         app:cardCornerRadius="500sp"
         app:layout_constraintEnd_toStartOf="@+id/cardView5"
         app:layout_constraintHorizontal_bias="0.553"
@@ -130,14 +145,36 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
         android:layout_width="90sp"
         android:layout_height="90sp"
         android:layout_marginTop="30dp"
+        app:cardBackgroundColor="#333333"
         app:cardCornerRadius="500sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toEndOf="@+id/cardView5"
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="90sp"
+        android:layout_height="95sp"
+        android:elevation="10sp"
+        android:layout_marginBottom="1sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:srcCompat="@drawable/avatar_uncle1" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="90sp"
+        android:layout_height="100sp"
+        android:layout_marginBottom="-1sp"
+        android:elevation="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView4"
+        app:layout_constraintEnd_toEndOf="@+id/cardView4"
+        app:srcCompat="@drawable/men" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
