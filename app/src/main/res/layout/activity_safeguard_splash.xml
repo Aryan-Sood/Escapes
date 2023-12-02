@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_screen_background_6"
+    tools:context=".safeguarding_splash">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:elevation="4sp"
+        android:src="@drawable/safeguarding_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/safeguardingCard"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="-40dp"
+        android:elevation="5dp"
+        android:background="@drawable/safeguarding_cardview"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/safeguarding_cardview"
+            android:elevation="0sp"
+            android:orientation="vertical"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/safeguardingDescription1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:elevation="10sp"
+        android:fontFamily="@font/jost_medium"
+        android:minLines="2"
+        android:paddingRight="50dp"
+        android:text="Safeguarding Your Data \nAnd Privacy"
+        android:textColor="#1E1E1E"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/safeguardingCard"
+        app:layout_constraintTop_toTopOf="@+id/safeguardingCard" />
+
+    <TextView
+        android:id="@+id/safeguardingDescription2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:elevation="10sp"
+        android:fontFamily="@font/jost_medium"
+        android:text="Your Trust, Our Top Priority"
+        android:textColor="#1E1E1E"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/safeguardingCard"
+        app:layout_constraintTop_toBottomOf="@+id/safeguardingDescription1" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVie"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:cardCornerRadius="500sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="1sp"
+        android:contentDescription=""
+        android:background="@drawable/next_arrow_btn"
+        android:src="@drawable/baseline_arrow_forward_ios_24"
+        app:layout_constraintBottom_toBottomOf="@+id/cardVie"
+        app:layout_constraintEnd_toEndOf="@+id/cardVie"
+        app:layout_constraintStart_toStartOf="@+id/cardVie"
+        app:layout_constraintTop_toTopOf="@+id/cardVie" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
