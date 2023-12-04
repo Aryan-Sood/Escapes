@@ -37,46 +37,52 @@
         app:layout_constraintHeight_percent="0.5">
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/safeguarding_cardview"
             android:elevation="0sp"
-            android:orientation="vertical"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/safeguardingDescription1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:elevation="10sp"
+                android:fontFamily="@font/jost_medium"
+                android:minLines="2"
+                android:text="Safeguarding Your Data \nAnd Privacy"
+                android:textColor="#1E1E1E"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/safeguardingDescription2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:elevation="10sp"
+                android:fontFamily="@font/jost_medium"
+                android:text="Your Trust, Our Top Priority"
+                android:textColor="#1E1E1E"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/safeguardingDescription1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/safeguardingDescription1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:elevation="10sp"
-        android:fontFamily="@font/jost_medium"
-        android:minLines="2"
-        android:paddingRight="50dp"
-        android:text="Safeguarding Your Data \nAnd Privacy"
-        android:textColor="#1E1E1E"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/safeguardingCard"
-        app:layout_constraintTop_toTopOf="@+id/safeguardingCard" />
-
-    <TextView
-        android:id="@+id/safeguardingDescription2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:elevation="10sp"
-        android:fontFamily="@font/jost_medium"
-        android:text="Your Trust, Our Top Priority"
-        android:textColor="#1E1E1E"
-        android:textSize="26dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/safeguardingCard"
-        app:layout_constraintTop_toBottomOf="@+id/safeguardingDescription1" />
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardVie"
@@ -87,7 +93,6 @@
         app:cardElevation="5dp"
         app:cardMaxElevation="5dp"
         app:cardCornerRadius="500sp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
@@ -96,7 +101,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="1sp"
-        android:contentDescription=""
         android:background="@drawable/safeguarding_arrow_btn"
         android:src="@drawable/baseline_arrow_forward_ios_24"
         app:layout_constraintBottom_toBottomOf="@+id/cardVie"
