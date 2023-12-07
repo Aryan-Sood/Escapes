@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.abhijeet.travel_saathi.R;
+
 
 public class travelling_splash extends AppCompatActivity {
 

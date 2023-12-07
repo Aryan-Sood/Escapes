@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_blue"
-    tools:context="com.abhijeet.travel_saathi.travelling_splash">
+    android:background="#909AFD"
+    tools:context=".Signup_successfully">
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,49 +13,22 @@
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:src="@drawable/travel_splash_image"
+        android:elevation="4sp"
+        android:src="@drawable/signup_successfully_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHeight_percent="0.5"/>
 
-    <TextView
-        android:id="@+id/travelDescription1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:elevation="10sp"
-        android:fontFamily="@font/jost_medium"
-        android:minLines="2"
-        android:paddingRight="10dp"
-        android:text="No matter where you're  \ngoing from,"
-        android:textColor="#1E1E1E"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/travelCard"
-        app:layout_constraintTop_toTopOf="@+id/travelCard" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="500sp"
-        android:layout_marginBottom="-300dp"
-        android:elevation="10sp"
-        android:src="@drawable/earth"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.cardview.widget.CardView
-        android:id="@+id/travelCard"
+        android:id="@+id/signupSuccessfullyCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="-40dp"
         android:elevation="4dp"
-        android:background="@drawable/travel_cardview"
+        android:background="@drawable/signup_successfully_cardview"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,24 +40,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/travel_cardview"
+            android:background="@drawable/signup_successfully_cardview"
             android:elevation="0sp"
             android:orientation="vertical"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/travelDescription2"
+        android:id="@+id/signupSuccessfullyDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:elevation="10sp"
         android:fontFamily="@font/jost_medium"
-        android:text="we take you there."
+        android:minLines="2"
+        android:paddingRight="50dp"
+        android:text="Adding few, \nmore details."
         android:textColor="#1E1E1E"
-        android:textSize="26dp"
+        android:textSize="28dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/travelCard"
-        app:layout_constraintTop_toBottomOf="@+id/travelDescription1" />
+        app:layout_constraintStart_toStartOf="@+id/signupSuccessfullyCard"
+        app:layout_constraintTop_toTopOf="@+id/signupSuccessfullyCard" />
 
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVie"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:cardCornerRadius="500sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="1sp"
+            android:contentDescription=""
+            android:background="@drawable/signup_success_arrow_btn"
+            android:src="@drawable/baseline_arrow_forward_ios_24"
+            app:layout_constraintBottom_toBottomOf="@+id/cardVie"
+            app:layout_constraintEnd_toEndOf="@+id/cardVie"
+            app:layout_constraintStart_toStartOf="@+id/cardVie"
+            app:layout_constraintTop_toTopOf="@+id/cardVie" />
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
