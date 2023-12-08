@@ -1,56 +1,54 @@
 package com.abhijeet.travel_saathi.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.abhijeet.travel_saathi.R;
 
-
 public class LoginSignup extends AppCompatActivity {
-    Integer height;
-
-    ImageView loginBackImage;
-
-    Animation loginHideAnimation;
-
-    ImageView upButton, downButton;
-
+    private boolean isLoginTransitioned = false;
+    private boolean isSignupTransitioned1 = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_signup);
 
-//        loginBackImage = findViewById(R.id.login_background_image);
-//        upButton = findViewById(R.id.up_arrow);
+        MotionLayout motionLayout1 = findViewById(R.id.loginSignupCardScene);
+        MotionLayout motionLayout2 = findViewById(R.id.loginCardComponentsScene);
 
-
-//        getScreenHeight();
-//
-//        loginBackImage.getLayoutParams().height=height/2;
-//        loginBackImage.requestLayout();
-
-//        upButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loginHideAnimation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.login_hide_animation);
-//                loginBackImage.startAnimation(loginHideAnimation);
-//            }
-//        });
-
-    }
-
-
-    public void getScreenHeight(){
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
-        height = metrics.heightPixels;
+        CardView loginCard = findViewById(R.id.loginCard);
+        CardView SignupCard = findViewById(R.id.singupCard);
+        loginCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isLoginTransitioned = !isLoginTransitioned;
+                if (!isLoginTransitioned){
+                    motionLayout1.transitionToState(R.id.login);
+                    motionLayout2.transitionToState(R.id.login_components);
+                }
+                else{
+                    motionLayout1.transitionToStart();
+                    motionLayout2.transitionToStart();
+                }
+            }
+        });
+        SignupCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isSignupTransitioned1 = !isSignupTransitioned1;
+                isLoginTransitioned = !isLoginTransitioned;
+                if (!isSignupTransitioned1){
+                    motionLayout1.transitionToState(R.id.signup);
+                }
+                else{
+                    motionLayout1.transitionToStart();
+                    motionLayout2.transitionToStart();
+                }
+            }
+        });
     }
 }
