@@ -1,14 +1,16 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Signup_successfully extends AppCompatActivity {
+import com.abhijeet.travel_saathi.R;
+
+public class food_splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_successfully);
+        setContentView(R.layout.activity_food_splash);
     }
 }

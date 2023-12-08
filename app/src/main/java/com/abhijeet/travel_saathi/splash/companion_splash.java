@@ -1,8 +1,10 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.abhijeet.travel_saathi.R;
 
 public class companion_splash extends AppCompatActivity {
 

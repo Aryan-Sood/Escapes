@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_blue"
-    tools:context="com.abhijeet.travel_saathi.travelling_splash">
+    tools:context="com.abhijeet.travel_saathi.splash.travelling_splash">
 
     <ImageView
         android:id="@+id/imageView"

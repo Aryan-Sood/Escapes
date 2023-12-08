@@ -1,8 +1,10 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.abhijeet.travel_saathi.R;
 
 public class Home_page extends AppCompatActivity {
 

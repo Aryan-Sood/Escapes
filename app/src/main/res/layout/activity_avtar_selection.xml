@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.abhijeet.travel_saathi.Avtar_selection"
+    tools:context="com.abhijeet.travel_saathi.activities.Avtar_selection"
     android:background="@drawable/splash_screen_background_3">
 
     <TextView

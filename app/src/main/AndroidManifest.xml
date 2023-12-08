@@ -13,7 +13,7 @@
         android:theme="@style/Theme.TravelSaathi"
         tools:targetApi="31">
         <activity
-            android:name=".SplashScreenV2"
+            android:name=".splash.SplashScreenV2"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -22,36 +22,36 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".Signup_successfully"
+            android:name=".activities.Signup_successfully"
             android:exported="true" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".splash.SplashScreen"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".LoginSignup"
+            android:name=".auth.LoginSignup"
             android:exported="true" />
         <activity
-            android:name=".Avtar_selection"
+            android:name=".activities.Avtar_selection"
             android:exported="false" />
         <activity
-            android:name=".Home_page"
+            android:name=".activities.Home_page"
             android:exported="true"></activity>
         <activity
-            android:name=".food_splash"
+            android:name=".splash.food_splash"
             android:exported="false" />
         <activity
-            android:name=".travelling_splash"
+            android:name=".splash.travelling_splash"
             android:exported="true" />
         <activity
-            android:name=".companion_splash"
+            android:name=".splash.companion_splash"
             android:exported="true" />
         <activity
-            android:name=".safeguarding_splash"
+            android:name=".splash.safeguarding_splash"
             android:exported="true" />
         <activity
-            android:name=".setting_splash_screen"
+            android:name=".splash.setting_splash_screen"
             android:exported="true" />
 
         <meta-data

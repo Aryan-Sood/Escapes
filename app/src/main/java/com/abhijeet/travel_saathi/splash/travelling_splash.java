@@ -1,4 +1,4 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +7,11 @@ import android.os.Bundle;
 import com.abhijeet.travel_saathi.R;
 
 
-public class Avtar_selection extends AppCompatActivity {
+public class travelling_splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_avtar_selection);
+        setContentView(R.layout.activity_travelling_splash);
     }
 }

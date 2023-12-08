@@ -1,4 +1,4 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,6 +15,8 @@ import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.abhijeet.travel_saathi.R;
 
 public class setting_splash_screen extends AppCompatActivity {
 

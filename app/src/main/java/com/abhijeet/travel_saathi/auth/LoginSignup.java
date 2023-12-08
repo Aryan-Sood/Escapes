@@ -1,4 +1,4 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.abhijeet.travel_saathi.R;
 
 
 public class LoginSignup extends AppCompatActivity {

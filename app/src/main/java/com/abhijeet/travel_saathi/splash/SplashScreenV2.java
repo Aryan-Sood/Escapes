@@ -1,10 +1,11 @@
-package com.abhijeet.travel_saathi;
+package com.abhijeet.travel_saathi.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.fragments.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
