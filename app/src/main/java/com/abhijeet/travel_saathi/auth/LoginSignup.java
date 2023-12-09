@@ -25,29 +25,29 @@ public class LoginSignup extends AppCompatActivity {
         loginCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isLoginTransitioned = !isLoginTransitioned;
                 if (!isLoginTransitioned){
                     motionLayout1.transitionToState(R.id.login);
                     motionLayout2.transitionToState(R.id.login_components);
                 }
                 else{
-                    motionLayout1.transitionToStart();
+                    motionLayout1.transitionToState(R.id.start);
                     motionLayout2.transitionToStart();
                 }
+                isLoginTransitioned = !isLoginTransitioned;
             }
         });
         SignupCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isSignupTransitioned1 = !isSignupTransitioned1;
-                isLoginTransitioned = !isLoginTransitioned;
+//                isLoginTransitioned = !isLoginTransitioned;
                 if (!isSignupTransitioned1){
                     motionLayout1.transitionToState(R.id.signup);
                 }
                 else{
-                    motionLayout1.transitionToStart();
+                    motionLayout1.transitionToState(R.id.start);
                     motionLayout2.transitionToStart();
                 }
+                isSignupTransitioned1 = !isSignupTransitioned1;
             }
         });
     }
