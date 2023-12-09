@@ -55,7 +55,7 @@
                 android:ems="10"
                 android:hint="User Name"
                 android:inputType="text"
-                android:minHeight="48dp"
+                android:minHeight="40dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
                 android:layout_marginTop="3dp"
                 android:text="Phone no/ Email id/ User Name"
                 android:textColor="#2C2C2C"
-                android:textSize="12dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/editTextText"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText" />
@@ -86,7 +86,7 @@
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:minHeight="48dp"
+                android:minHeight="40dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
                 android:layout_marginTop="3dp"
                 android:text="Minimum 8 characters"
                 android:textColor="#2C2C2C"
-                android:textSize="12dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/editTextText2"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
@@ -135,19 +135,22 @@
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/signupCardComponentsScene"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:alpha="1"
             android:background="@drawable/signup_cardview"
             android:elevation="5dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layoutDescription="@xml/activity_login_signup_xml_signupcardcomponentsscene_scene">
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/jost_medium"
                 android:text="SignUp"
                 android:textColor="#2C2C2C"
@@ -160,14 +163,14 @@
                 android:id="@+id/editTextText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/signup_edittext_background"
-                android:elevation="5dp"
                 android:drawableStart="@drawable/username_icon"
                 android:drawablePadding="12dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:minHeight="48dp"
+                android:minHeight="40dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:text="User Name"
@@ -181,12 +184,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/signup_edittext_background"
-                android:elevation="5dp"
                 android:drawableStart="@drawable/email_icon"
                 android:drawablePadding="12dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:minHeight="48dp"
+                android:minHeight="40dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:text="Email Id"
@@ -200,12 +203,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/signup_edittext_background"
-                android:elevation="5dp"
                 android:drawableStart="@drawable/password_icon"
                 android:drawablePadding="12dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:inputType="text"
-                android:minHeight="48dp"
+                android:minHeight="40dp"
                 android:text="Password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -222,12 +225,80 @@
                 android:shadowRadius="10"
                 android:text="Signup"
                 android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/editTextText5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
+                app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:id="@+id/root_otp_layout"
+                android:layout_width="240dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="30dp"
+                android:alpha="0"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/editTextText5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <EditText
+                    android:id="@+id/otp_edit_box1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/otp_box_background1"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/otp_edit_box2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/otp_box_background1"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toEndOf="@id/otp_edit_box1"
+                    app:layout_constraintTop_toBottomOf="@id/editTextText5" />
+
+                <EditText
+                    android:id="@+id/otp_edit_box3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/otp_box_background1"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toEndOf="@id/otp_edit_box2"
+                    app:layout_constraintTop_toBottomOf="@id/editTextText5" />
+
+                <EditText
+                    android:id="@+id/otp_edit_box4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/otp_box_background1"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toEndOf="@id/otp_edit_box3"
+                    app:layout_constraintTop_toBottomOf="@id/editTextText5" />
+            </LinearLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
     </androidx.cardview.widget.CardView>
 

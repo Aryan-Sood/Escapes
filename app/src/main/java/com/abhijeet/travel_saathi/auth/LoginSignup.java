@@ -19,6 +19,7 @@ public class LoginSignup extends AppCompatActivity {
 
         MotionLayout motionLayout1 = findViewById(R.id.loginSignupCardScene);
         MotionLayout motionLayout2 = findViewById(R.id.loginCardComponentsScene);
+        MotionLayout motionLayout3 = findViewById(R.id.signupCardComponentsScene);
 
         CardView loginCard = findViewById(R.id.loginCard);
         CardView SignupCard = findViewById(R.id.singupCard);
@@ -32,6 +33,7 @@ public class LoginSignup extends AppCompatActivity {
                 else{
                     motionLayout1.transitionToState(R.id.start);
                     motionLayout2.transitionToStart();
+                    motionLayout3.transitionToState(R.id.start);
                 }
                 isLoginTransitioned = !isLoginTransitioned;
             }
@@ -42,10 +44,12 @@ public class LoginSignup extends AppCompatActivity {
 //                isLoginTransitioned = !isLoginTransitioned;
                 if (!isSignupTransitioned1){
                     motionLayout1.transitionToState(R.id.signup);
+                    motionLayout3.transitionToState(R.id.signup_components);
                 }
                 else{
                     motionLayout1.transitionToState(R.id.start);
                     motionLayout2.transitionToStart();
+                    motionLayout3.transitionToState(R.id.start);
                 }
                 isSignupTransitioned1 = !isSignupTransitioned1;
             }
