@@ -5,6 +5,7 @@
     android:id="@+id/loginSignupCardScene"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_cardview"
     app:layoutDescription="@xml/activity_login_signup_scene"
     tools:context="com.abhijeet.travel_saathi.auth.LoginSignup">
 
@@ -125,15 +126,18 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/singupCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginRight="5sp"
         android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/black"
+        app:strokeWidth="4px">
 
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/signupCardComponentsScene"
@@ -230,6 +234,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
+
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
@@ -251,11 +256,11 @@
                 android:shadowDy="15"
                 android:shadowRadius="10"
                 android:text="Get OTP"
+                android:textColor="@color/black"
                 android:textSize="14dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/textView7"
-                app:layout_constraintEnd_toEndOf="@id/textView7" />
+                app:layout_constraintEnd_toEndOf="@id/textView7"
+                app:layout_constraintTop_toBottomOf="@id/textView7" />
 
             <Button
                 android:id="@+id/button1"
@@ -268,10 +273,10 @@
                 android:shadowRadius="10"
                 android:text="Signup"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/editTextText5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextText5" />
 
             <LinearLayout
                 android:id="@+id/root_otp_layout"
@@ -281,9 +286,9 @@
                 android:elevation="5dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/button2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button2">
 
                 <EditText
                     android:id="@+id/otp_edit_box1"
@@ -340,6 +345,7 @@
                     app:layout_constraintStart_toEndOf="@id/otp_edit_box3"
                     app:layout_constraintTop_toBottomOf="@id/editTextText5" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
@@ -348,11 +354,11 @@
                 android:textColor="#2C2C2C"
                 android:textSize="14dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/root_otp_layout" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
