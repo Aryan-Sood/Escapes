@@ -26,5 +26,32 @@ public class SplashScreenV2 extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
 
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (position==1){
+                    // travelling splash screen appears now
+                }
+
+                else if (position==2){
+                    //companion splash screen appears now
+                }
+
+                else if (position==3){
+                    //privacy splash screen appears
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 }
