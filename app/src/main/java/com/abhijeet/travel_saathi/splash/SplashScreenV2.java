@@ -1,6 +1,7 @@
 package com.abhijeet.travel_saathi.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
