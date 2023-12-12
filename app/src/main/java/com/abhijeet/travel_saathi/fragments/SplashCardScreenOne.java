@@ -47,4 +47,8 @@ public class SplashCardScreenOne extends Fragment {
         super.onPause();
         Log.d("TAG", "onPause: ");
     }
+
+    void startAnimation(){
+        motionLayout1.transitionToState(R.id.end);
+    }
 }
