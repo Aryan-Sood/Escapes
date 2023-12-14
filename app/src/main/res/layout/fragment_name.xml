@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-100dp"
             android:fontFamily="@font/jua"
-            android:text="Travel"
+            android:text="Escapes"
             android:textColor="@color/black"
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"

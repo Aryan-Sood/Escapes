@@ -94,7 +94,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardVie"
+                android:id="@+id/login_page"
                 android:layout_width="60sp"
                 android:layout_height="60sp"
                 android:layout_marginEnd="30dp"
