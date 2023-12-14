@@ -35,6 +35,7 @@
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-100dp"
             android:fontFamily="@font/jua"
             android:text="Travel"
             android:textColor="@color/black"
