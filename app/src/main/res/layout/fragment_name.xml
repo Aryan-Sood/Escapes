@@ -35,9 +35,10 @@
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
             android:text="Travel"
             android:textColor="@color/black"
-            android:textSize="26sp"
+            android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -48,16 +49,16 @@
             android:id="@+id/bridgeDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/jost_medium"
-            android:text="A bridge for travellers and local planning experts"
-            android:textColor="@color/black"
-            android:textSize="16sp"
             android:layout_marginHorizontal="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="@font/jua"
+            android:text="A bridge for travellers and local planning experts"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/earthImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintTop_toBottomOf="@+id/appName" />
 
 <!--        <TextView-->
 <!--            android:id="@+id/foodDescription"-->
