@@ -56,7 +56,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#ECECEC">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -178,8 +179,8 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="70sp"
-        android:layout_height="70sp"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
         app:cardCornerRadius="500sp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
@@ -191,7 +192,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:elevation="1sp"
-            android:contentDescription=""
             android:background="@drawable/signup_success_arrow_btn"
             android:src="@drawable/baseline_arrow_forward_ios_24"
             app:layout_constraintBottom_toBottomOf="@+id/cardVie"
