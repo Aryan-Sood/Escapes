@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="35dp"
-        android:fontFamily="@font/jost_medium"
+        android:fontFamily="@font/jua"
         android:text="Add your avatar"
-        android:textColor="#2C2C2C"
-        android:textSize="28sp"
+        android:textColor="#131313"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -56,7 +56,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#ECECEC">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -176,5 +177,28 @@
         app:layout_constraintEnd_toEndOf="@+id/cardView4"
         app:srcCompat="@drawable/men" />
 
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        app:cardCornerRadius="500sp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/home_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="1sp"
+            android:background="@drawable/signup_success_arrow_btn"
+            android:src="@drawable/baseline_arrow_forward_ios_24"
+            app:layout_constraintBottom_toBottomOf="@+id/cardVie"
+            app:layout_constraintEnd_toEndOf="@+id/cardVie"
+            app:layout_constraintStart_toStartOf="@+id/cardVie"
+            app:layout_constraintTop_toTopOf="@+id/cardVie"/>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

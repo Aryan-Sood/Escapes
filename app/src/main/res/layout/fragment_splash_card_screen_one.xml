@@ -7,9 +7,11 @@
     android:background="@drawable/background_blue"
     tools:context=".fragments.SplashCardScreenOne">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/travel_animation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_splash_card_screen_one_xml_constraintlayout_scene">
 
 
         <ImageView
@@ -20,9 +22,10 @@
             android:layout_marginEnd="30dp"
             android:src="@drawable/travel_splash_image"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHeight_percent="0.5"/>
+            app:layout_constraintBottom_toTopOf="@id/travelCard"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/travelDescription1"
@@ -31,15 +34,27 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:elevation="10sp"
-            android:fontFamily="@font/jost_medium"
+            android:fontFamily="@font/jua"
             android:minLines="2"
+            android:textSize="28sp"
             android:paddingRight="10dp"
-            android:text="No matter where you're going from, we take you there"
+            android:text="No matter where you're going from,"
             android:textColor="#1E1E1E"
-            android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/travelCard"
             app:layout_constraintTop_toTopOf="@+id/travelCard" />
+        <TextView
+            android:id="@+id/travelDescription2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:elevation="10sp"
+            android:fontFamily="@font/jua"
+            android:text="we take you there."
+            android:textColor="#1E1E1E"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/travelCard"
+            app:layout_constraintTop_toBottomOf="@+id/travelDescription1" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -59,14 +74,14 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="-40dp"
-            android:elevation="4dp"
             android:background="@drawable/travel_cardview"
+            android:elevation="4dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintHeight_percent="0.5">
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
 
 
             <LinearLayout
@@ -74,27 +89,13 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/travel_cardview"
                 android:elevation="0sp"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
         </androidx.cardview.widget.CardView>
 
-<!--        <TextView-->
-<!--            android:id="@+id/travelDescription2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:elevation="10sp"-->
-<!--            android:fontFamily="@font/jost_medium"-->
-<!--            android:text="we take you there."-->
-<!--            android:textColor="#1E1E1E"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/travelCard"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/travelDescription1" />-->
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
 
 
