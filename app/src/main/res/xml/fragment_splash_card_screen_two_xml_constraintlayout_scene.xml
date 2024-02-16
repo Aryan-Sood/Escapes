@@ -7,13 +7,13 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="400">
-       <KeyFrameSet>
-       </KeyFrameSet>
+        <KeyFrameSet>
+        </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/travelCard"
+            android:id="@+id/companionCard"
             android:elevation="4dp"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
@@ -32,20 +32,20 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            motion:layout_constraintBottom_toTopOf="@id/travelCard"
+            motion:layout_constraintBottom_toTopOf="@id/companionCard"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             motion:layout_constraintTop_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="0" />
         <Constraint
-            android:id="@+id/travelDescription1"
+            android:id="@+id/companionDescription1"
             android:elevation="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            motion:layout_constraintTop_toTopOf="@+id/travelCard"
-            motion:layout_constraintStart_toStartOf="@+id/travelCard"
+            motion:layout_constraintTop_toTopOf="@+id/companionCard"
+            motion:layout_constraintStart_toStartOf="@+id/companionCard"
             android:layout_marginTop="40dp"
             android:visibility="invisible" />
 
@@ -57,7 +57,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            motion:layout_constraintBottom_toTopOf="@id/travelCard"
+            motion:layout_constraintBottom_toTopOf="@id/companionCard"
             android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
             motion:layout_constraintHeight_percent="0.5"
@@ -67,7 +67,7 @@
             android:scaleX="1.3"
             android:scaleY="1.3" />
         <Constraint
-            android:id="@+id/travelCard"
+            android:id="@+id/companionCard"
             android:elevation="4dp"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
@@ -81,13 +81,13 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="1" />
         <Constraint
-            android:id="@+id/travelDescription1"
+            android:id="@+id/companionDescription1"
             android:elevation="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            motion:layout_constraintTop_toTopOf="@+id/travelCard"
-            motion:layout_constraintStart_toStartOf="@+id/travelCard"
+            motion:layout_constraintTop_toTopOf="@+id/companionCard"
+            motion:layout_constraintStart_toStartOf="@+id/companionCard"
             android:layout_marginTop="40dp"
             android:visibility="visible" />
     </ConstraintSet>
