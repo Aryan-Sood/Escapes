@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/imageView8"
+            android:layout_marginBottom="-700dp" />
+        <Constraint
+            android:id="@+id/findYourCompanyText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-400dp"
+            android:rotation="15"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="70dp" />
+        <Constraint
+            android:id="@+id/chooseADateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="-20"
+            android:layout_marginStart="-400dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="600dp" />
+        <Constraint
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-400dp"
+            android:rotation="20"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="800dp" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/justScooter" >
+        <Constraint
+            android:id="@+id/findYourCompanyText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-400dp"
+            android:rotation="15"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="400dp" />
+        <Constraint
+            android:id="@+id/chooseADateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="-20"
+            android:layout_marginStart="-400dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="600dp" />
+        <Constraint
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-400dp"
+            android:rotation="20"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="800dp" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/justScooter"
+        motion:duration="500"/>
+    <ConstraintSet android:id="@+id/findYourCompanyEnter" >
+        <Constraint
+            android:id="@+id/findYourCompanyText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:rotation="15"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="70dp" />
+        <Constraint
+            android:id="@+id/chooseADateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="-20"
+            android:layout_marginStart="-400dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="600dp" />
+        <Constraint
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-400dp"
+            android:rotation="20"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="800dp" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/justScooter"
+        motion:constraintSetEnd="@+id/findYourCompanyEnter" />
+    <ConstraintSet android:id="@+id/chooseADateEnter" >
+        <Constraint
+            android:id="@+id/chooseADateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="-20"
+            android:layout_marginStart="30dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="150dp" />
+        <Constraint
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-400dp"
+            android:rotation="20"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="800dp" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/findYourCompanyEnter"
+        motion:constraintSetEnd="@+id/chooseADateEnter" />
+    <ConstraintSet android:id="@+id/travelTheWorldEntry" >
+        <Constraint
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:rotation="20"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="200dp" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/chooseADateEnter"
+        motion:constraintSetEnd="@+id/travelTheWorldEntry" />
+</MotionScene>
