@@ -38,7 +38,7 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
                 // Trigger your transition after the delay
                 motionLayout.transitionToState(R.id.findYourCompanyEnter);
             }
-        }, 1100);
+        }, 1200);
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -46,7 +46,7 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
                 // Trigger your transition after the delay
                 motionLayout.transitionToState(R.id.chooseADateEnter);
             }
-        }, 1800);
+        }, 2000);
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -54,7 +54,74 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
                 // Trigger your transition after the delay
                 motionLayout.transitionToState(R.id.travelTheWorldEntry);
             }
-        }, 2500);
+        }, 2600);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.jitter1);
+            }
+        }, 3200);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.jitter2);
+            }
+        }, 3800);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.jitter3);
+            }
+        }, 4400);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.jitter1);
+            }
+        }, 5000);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.jitter4);
+            }
+        }, 5600);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.travelTheWorldExit);
+            }
+        }, 6200);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.chooseADateExit);
+            }
+        }, 6800);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.findYourCompanyExit);
+            }
+        }, 7400);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                motionLayout.transitionToState(R.id.end);
+            }
+        }, 8000);
+
 
     }
 }
