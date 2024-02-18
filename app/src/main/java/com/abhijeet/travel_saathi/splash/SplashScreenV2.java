@@ -7,6 +7,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.fragments.SplashCardScreenOne;
@@ -17,6 +19,8 @@ public class SplashScreenV2 extends AppCompatActivity {
 
     TabLayout tab;
     ViewPager viewPager;
+    ImageView imageView;
+    MotionLayout motionLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class SplashScreenV2 extends AppCompatActivity {
 
         tab = findViewById(R.id.tab);
         viewPager = findViewById(R.id.viewPager);
+        imageView = findViewById(R.id.imageView2);
+        motionLayout = findViewById(R.id.earthRotationAnimation);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -32,32 +38,42 @@ public class SplashScreenV2 extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(adapter.getCount());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            Boolean backward = false;
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                if (position==1){
-//                    // travelling splash screen appears now
+                if (position == adapter.getCount()-1){
+                    backward = true;
+                }
+                if (position == 0){
+                    backward = false;
+                }
+                else if (position == adapter.getCount() - 2 && positionOffset > 0.5 && !backward) {
+                    motionLayout.transitionToState(R.id.end);
+                }
+                else if (position == adapter.getCount() - 2 && positionOffset > 0.8 && backward) {
+                    motionLayout.transitionToState(R.id.start);
+                }
+//                else if (position == 0 && positionOffset > 0.5) {
+//                    // Check if swiping from first to second screen
+//                    motionLayout.setProgress(1.0f);  // Set the progress to 1 for the desired end state
 //                }
-//
-//                else if (position==2){
-//                    //companion splash screen appears now
+//                else {
+//                    motionLayout.setProgress(0); // Reset motion to the start state
 //                }
-//
-//                else if (position==3){
-//                    //privacy splash screen appears
-//                }
+
+                float rotation = -180 * (position + positionOffset);
+                imageView.setRotation(rotation);
+
             }
 
             @Override
             public void onPageSelected(int position) {
-//                 if (position == 1) {
-//                    SplashCardScreenOne fragment = (SplashCardScreenOne) adapter.getItem(position);
-//                    fragment.startAnimationDelayed();
-//                }
+                // Handle page selected event if needed
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                // Handle page scroll state changed event if needed
             }
         });
 
