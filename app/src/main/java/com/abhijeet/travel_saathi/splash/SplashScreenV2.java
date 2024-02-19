@@ -38,27 +38,22 @@ public class SplashScreenV2 extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(adapter.getCount());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            Boolean backward = false;
+            Boolean earthGayab = false;
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 if (position == adapter.getCount()-1){
-                    backward = true;
-                }
-                if (position == 0){
-                    backward = false;
-                }
-                else if (position == adapter.getCount() - 2 && positionOffset > 0.5 && !backward) {
                     motionLayout.transitionToState(R.id.end);
+                    earthGayab = true;
                 }
-                else if (position == adapter.getCount() - 2 && positionOffset > 0.8 && backward) {
+                else if (position == adapter.getCount() - 2 && earthGayab){
                     motionLayout.transitionToState(R.id.start);
+                    earthGayab = false;
                 }
-//                else if (position == 0 && positionOffset > 0.5) {
-//                    // Check if swiping from first to second screen
-//                    motionLayout.setProgress(1.0f);  // Set the progress to 1 for the desired end state
+//                else if (position == adapter.getCount() - 2 && positionOffset > 0.5 && !backward) {
+//                    motionLayout.transitionToState(R.id.end);
 //                }
-//                else {
-//                    motionLayout.setProgress(0); // Reset motion to the start state
+//                else if (position == adapter.getCount() - 2 && positionOffset > 0.8 && backward) {
+//                    motionLayout.transitionToState(R.id.start);
 //                }
 
                 float rotation = -180 * (position + positionOffset);
