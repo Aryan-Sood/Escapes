@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="400">
+        motion:duration="700">
         <KeyFrameSet>
         </KeyFrameSet>
     </Transition>
@@ -47,6 +47,18 @@
             motion:layout_constraintTop_toTopOf="@+id/safeguardingCard"
             motion:layout_constraintStart_toStartOf="@+id/safeguardingCard"
             android:layout_marginTop="40dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/safeguardingDescription2"
+            android:elevation="10sp"
+            motion:layout_constraintEnd_toEndOf="@id/safeguardingCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            motion:layout_constraintTop_toBottomOf="@+id/safeguardingDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@id/safeguardingCard"
+            android:layout_marginTop="20dp"
             android:visibility="invisible" />
 
     </ConstraintSet>
@@ -90,5 +102,29 @@
             motion:layout_constraintStart_toStartOf="@+id/safeguardingCard"
             android:layout_marginTop="40dp"
             android:visibility="visible" />
+        <Constraint
+            android:id="@+id/safeguardingDescription2"
+            android:elevation="10sp"
+            motion:layout_constraintEnd_toEndOf="@id/safeguardingCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            motion:layout_constraintTop_toBottomOf="@+id/safeguardingDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@id/safeguardingCard"
+            android:layout_marginTop="20dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/safeguardingDescription2"
+            android:elevation="10sp"
+            motion:layout_constraintEnd_toEndOf="@id/safeguardingCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginEnd="10dp"
+            motion:layout_constraintTop_toBottomOf="@+id/safeguardingDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@id/safeguardingCard"
+            android:layout_marginTop="20dp" />
     </ConstraintSet>
 </MotionScene>

@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="400">
+        motion:duration="700">
        <KeyFrameSet>
        </KeyFrameSet>
     </Transition>
@@ -48,6 +48,26 @@
             motion:layout_constraintStart_toStartOf="@+id/travelCard"
             android:layout_marginTop="40dp"
             android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/travelDescription2"
+            android:elevation="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/travelDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@+id/travelCard"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/travelDescription2"
+            android:elevation="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            motion:layout_constraintTop_toBottomOf="@+id/travelDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@+id/travelCard"
+            android:layout_marginTop="10dp" />
 
     </ConstraintSet>
 
@@ -90,5 +110,25 @@
             motion:layout_constraintStart_toStartOf="@+id/travelCard"
             android:layout_marginTop="40dp"
             android:visibility="visible" />
+        <Constraint
+            android:id="@+id/travelDescription2"
+            android:elevation="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/travelDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@+id/travelCard"
+            android:layout_marginTop="10dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/travelDescription2"
+            android:elevation="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            motion:layout_constraintTop_toBottomOf="@+id/travelDescription1"
+            android:layout_marginStart="20dp"
+            motion:layout_constraintStart_toStartOf="@+id/travelCard"
+            android:layout_marginTop="10dp" />
     </ConstraintSet>
 </MotionScene>
