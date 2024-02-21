@@ -15,10 +15,10 @@
         android:theme="@style/Theme.TravelSaathi"
         tools:targetApi="31">
         <activity
-            android:name=".splash.SecondTimeSplashScreen"
+            android:name=".splash.SplashScreenV2"
             android:exported="true" />
         <activity
-            android:name=".splash.SplashScreenV2"
+            android:name=".splash.SecondTimeSplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

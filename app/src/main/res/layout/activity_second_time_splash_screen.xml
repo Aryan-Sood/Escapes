@@ -28,7 +28,7 @@
         android:lineSpacingMultiplier="1.2"
         android:fontFamily="@font/jua"
         android:textSize="32dp"
-        android:text="@string/findYourCompany"
+        android:text="@string/findYourCompanion"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/findYourCompanyText" />
