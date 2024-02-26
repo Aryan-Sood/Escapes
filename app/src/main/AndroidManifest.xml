@@ -20,11 +20,7 @@
         <activity
             android:name=".splash.SecondTimeSplashScreen"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.Signup_successfully"
@@ -44,7 +40,15 @@
             android:exported="false" />
         <activity
             android:name=".activities.Home_page"
-            android:exported="true" />
+            android:exported="true">
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+        </activity>
 <!--        <activity-->
 <!--            android:name=".splash.food_splash"-->
 <!--            android:exported="false" />-->
