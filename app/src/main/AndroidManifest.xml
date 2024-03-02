@@ -15,22 +15,19 @@
         android:theme="@style/Theme.TravelSaathi"
         tools:targetApi="31">
         <activity
-            android:name=".splash.SplashScreenV2"
+            android:name=".activities.Home_page"
             android:exported="true" />
         <activity
             android:name=".splash.SecondTimeSplashScreen"
-            android:exported="true">
+            android:exported="false">
 
         </activity>
         <activity
             android:name=".activities.Signup_successfully"
-            android:exported="true" />
-        <activity
-            android:name=".splash.SplashScreen"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".auth.LoginSignup"
-            android:exported="true" /> <!-- <intent-filter> -->
+            android:exported="false" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
@@ -39,7 +36,7 @@
             android:name=".activities.Avtar_selection"
             android:exported="false" />
         <activity
-            android:name=".activities.Home_page"
+            android:name=".splash.SplashScreenV2"
             android:exported="true">
 
         <intent-filter>
@@ -52,18 +49,7 @@
 <!--        <activity-->
 <!--            android:name=".splash.food_splash"-->
 <!--            android:exported="false" />-->
-        <activity
-            android:name=".splash.travelling_splash"
-            android:exported="true" />
-        <activity
-            android:name=".splash.companion_splash"
-            android:exported="true" />
-        <activity
-            android:name=".splash.safeguarding_splash"
-            android:exported="true" />
-<!--        <activity-->
-<!--            android:name=".splash.setting_splash_screen"-->
-<!--            android:exported="true" />-->
+
 
         <meta-data
             android:name="preloaded_fonts"
