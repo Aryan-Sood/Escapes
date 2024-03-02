@@ -15,8 +15,8 @@
         android:theme="@style/Theme.TravelSaathi"
         tools:targetApi="31">
         <activity
-            android:name=".activities.Home_page"
-            android:exported="true" >
+            android:name=".auth.NewLoginActivity"
+            android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +24,13 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".splash.SecondTimeSplashScreen"
-            android:exported="false">
+            android:name=".activities.Home_page"
+            android:exported="true">
 
         </activity>
+        <activity
+            android:name=".splash.SecondTimeSplashScreen"
+            android:exported="false"></activity>
         <activity
             android:name=".activities.Signup_successfully"
             android:exported="false" />
@@ -43,16 +46,9 @@
             android:exported="false" />
         <activity
             android:name=".splash.SplashScreenV2"
-            android:exported="true">
-
-
-
-        </activity>
-<!--        <activity-->
-<!--            android:name=".splash.food_splash"-->
-<!--            android:exported="false" />-->
-
-
+            android:exported="true"></activity> <!-- <activity -->
+        <!-- android:name=".splash.food_splash" -->
+        <!-- android:exported="false" /> -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

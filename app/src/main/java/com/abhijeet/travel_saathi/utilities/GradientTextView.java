@@ -12,8 +12,10 @@ public class GradientTextView extends AppCompatTextView {
     private int firstColor;
     private int secondColor;
 
-    public GradientTextView(Context context) {
+    public GradientTextView(Context context, int color1, int color2) {
         super(context);
+        this.firstColor = color1;
+        this.secondColor = color2;
         init();
     }
 
