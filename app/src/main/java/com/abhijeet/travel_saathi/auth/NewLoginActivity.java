@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -45,6 +47,15 @@ public class NewLoginActivity extends AppCompatActivity {
 
         BottomSheetDialog loginDialog = new BottomSheetDialog(this);
         loginDialog.setContentView(R.layout.login_bottomsheet);
+
+        FrameLayout bottomsheet = loginDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomsheet);
+
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) bottomsheet.getLayoutParams();
+        layoutParams.leftMargin = 16;
+        layoutParams.rightMargin = 16;
+        bottomsheet.setLayoutParams(layoutParams);
+
         loginDialog.setCancelable(false);
         loginDialog.show();
 
