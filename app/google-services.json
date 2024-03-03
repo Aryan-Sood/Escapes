@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "312986372829",
-    "project_id": "travel-saathi-e013c",
-    "storage_bucket": "travel-saathi-e013c.appspot.com"
+    "project_number": "922945921226",
+    "project_id": "travel-saathi-02",
+    "storage_bucket": "travel-saathi-02.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:312986372829:android:c2f2db32aefa3e6e11a934",
+        "mobilesdk_app_id": "1:922945921226:android:688a3d8b9e1029b4719433",
         "android_client_info": {
           "package_name": "com.abhijeet.travel_saathi"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD5fpFz2uievYQt0a9Na_0buzuLdch6hdQ"
+          "current_key": "AIzaSyBMej_wmI-OGviGF7ToxAXPXQci8mRdqsM"
         }
       ],
       "services": {

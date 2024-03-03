@@ -11,17 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/earthImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="-240sp"
-            android:src="@drawable/earthmain"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="500sp"-->
+<!--            android:layout_marginBottom="-300dp"-->
+<!--            android:elevation="10sp"-->
+<!--            android:src="@drawable/earthmain"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
         <!--    <Button-->
         <!--        android:id="@+id/button"-->
         <!--        android:layout_width="wrap_content"-->
@@ -35,9 +34,11 @@
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Travel"
+            android:layout_marginTop="-100dp"
+            android:fontFamily="@font/jua"
+            android:text="Escapes"
             android:textColor="@color/black"
-            android:textSize="26sp"
+            android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -48,16 +49,16 @@
             android:id="@+id/bridgeDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/jost_medium"
-            android:text="A bridge for travellers and local planning experts"
-            android:textColor="@color/black"
-            android:textSize="16sp"
             android:layout_marginHorizontal="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="@font/jua"
+            android:layout_marginTop="25dp"
+            android:text="A bridge for travellers and local planning experts"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintTop_toBottomOf="@+id/appName" />
 
 <!--        <TextView-->
 <!--            android:id="@+id/foodDescription"-->
@@ -75,59 +76,59 @@
 <!--            app:layout_constraintTop_toTopOf="parent"-->
 <!--            app:layout_constraintVertical_bias="0.6" />-->
 
-        <ImageView
-            android:id="@+id/travelImage"
-            android:layout_width="250sp"
-            android:layout_height="250sp"
-            android:layout_marginBottom="20sp"
-            android:src="@drawable/travelling"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/bridgeDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
+<!--        <ImageView-->
+<!--            android:id="@+id/travelImage"-->
+<!--            android:layout_width="250sp"-->
+<!--            android:layout_height="250sp"-->
+<!--            android:layout_marginBottom="20sp"-->
+<!--            android:src="@drawable/travelling"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/bridgeDescription"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.496"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
 
-            app:layout_constraintVertical_bias="0.702" />
+<!--            app:layout_constraintVertical_bias="0.702" />-->
 
 
-        <ImageView
-            android:id="@+id/foodImage"
-            android:layout_width="250sp"
-            android:layout_height="250sp"
-            android:layout_marginBottom="20sp"
-            android:src="@drawable/food_image"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/bridgeDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.702" />
+<!--        <ImageView-->
+<!--            android:id="@+id/foodImage"-->
+<!--            android:layout_width="250sp"-->
+<!--            android:layout_height="250sp"-->
+<!--            android:layout_marginBottom="20sp"-->
+<!--            android:src="@drawable/food_image"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/bridgeDescription"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.496"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.702" />-->
 
-        <ImageView
-            android:id="@+id/planeImage"
-            android:layout_width="250sp"
-            android:layout_height="250sp"
-            android:layout_marginBottom="-200dp"
-            android:src="@drawable/plane"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <ImageView-->
+<!--            android:id="@+id/planeImage"-->
+<!--            android:layout_width="250sp"-->
+<!--            android:layout_height="250sp"-->
+<!--            android:layout_marginBottom="-200dp"-->
+<!--            android:src="@drawable/plane"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/login_button_background"
-            android:text="Login"
-            android:visibility="invisible"
-            android:backgroundTint="@android:color/transparent"
-            android:layout_marginBottom="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/earthImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/loginButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/login_button_background"-->
+<!--            android:text="Login"-->
+<!--            android:visibility="invisible"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:layout_marginBottom="30sp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/earthImage"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
 
 
