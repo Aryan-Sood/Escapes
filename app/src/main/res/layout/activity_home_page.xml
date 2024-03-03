@@ -4,382 +4,383 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.Home_page"
-    android:background="@drawable/background_homepage">
+    android:background="#A4B0D2"
+    tools:context=".activities.Home_page">
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="43dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/side_nav_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginEnd="20dp"
-        app:cardElevation="8sp"
-        app:strokeColor="@color/black"
-        app:cardCornerRadius="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView7">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_blue">
+            android:paddingBottom="20dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/profile_pic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:justifyContent="space_between"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="200sp"
-                    app:strokeColor="@color/black"
-                    app:strokeWidth="2sp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="105dp"
-                    android:layout_marginEnd="25dp"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_homepage_herocard" />
-
-                </com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/side_nav_button" />
 
                 <ImageView
-                    android:layout_width="200sp"
-                    android:layout_height="300sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="-20dp"
-                    android:layout_marginBottom="-10dp"
-                    android:elevation="50sp"
-                    android:src="@drawable/main_activity_hero"
-                    app:layout_constraintBottom_toBottomOf="@+id/cardView6"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView6"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/bell_icon" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="100dp"
-                    app:strokeColor="@color/black"
-                    app:cardCornerRadius="50sp"
-                    app:cardElevation="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView6">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_homepage_herocard"/>
+            </com.google.android.flexbox.FlexboxLayout>
 
-                </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView8"
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
-                    android:layout_marginEnd="10dp"
-                    app:strokeColor="@color/black"
-                    app:cardCornerRadius="50sp"
-                    app:cardElevation="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/cardView8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardView8"
-                    app:layout_constraintTop_toTopOf="@+id/cardView8">
+            <com.abhijeet.travel_saathi.utilities.GradientTextView
+                android:id="@+id/headerone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/jua"
+                android:text="Explore the best places"
+                android:textSize="32sp"
+                app:firstColor="0xFF000000"
+                app:secondColor="0xFF5754FF"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flexBox"
+                 />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_blue"/>
 
-                </com.google.android.material.card.MaterialCardView>
+            <com.abhijeet.travel_saathi.utilities.GradientTextView
+                android:id="@+id/headertwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/jua"
+                android:text="around you"
+                android:textSize="32sp"
+                app:firstColor="0xFF000000"
+                app:secondColor="0xFF5754FF"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headerone"
+                app:layout_goneMarginStart="20dp" />
 
-                <ImageView
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="-10dp"
-                    android:elevation="50sp"
-                    android:src="@drawable/search_icon"
-                    app:layout_constraintBottom_toBottomOf="@+id/materialCardView8"
-                    app:layout_constraintEnd_toEndOf="@+id/materialCardView8"
-                    app:layout_constraintStart_toStartOf="@+id/materialCardView8"
-                    app:layout_constraintTop_toTopOf="@+id/materialCardView8" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView9"
-                    android:layout_width="50sp"
-                    android:layout_height="50sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="50sp"
-                    app:cardElevation="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView8">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="-35dp"
+                android:layout_marginEnd="-10dp"
+                android:elevation="50dp"
+                android:src="@drawable/homepage_hero"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
+                app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_homepage_herocard">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:src="@drawable/filter_homepage_icon"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                app:cardElevation="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headertwo"
+                app:strokeColor="#93ACFF"
+                app:strokeWidth="2dp">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/cardView9"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView8">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/homepage_hero_card">
 
-                    <ScrollView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fillViewport="true"
-                        android:scrollbars="horizontal"
-                        android:nestedScrollingEnabled="true"
+                        android:fontFamily="@font/jua"
+                        android:text="Explore"
+                        android:textColor="#2D2C2C"
+                        android:textSize="30sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3" />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jua"
+                        android:text="Explore places near you"
+                        android:textColor="#464646"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.25"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.55" />
 
-                            <!-- Add MaterialCardViews or other content horizontally -->
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/materialCardView5"
-                                android:layout_width="100sp"
-                                android:layout_height="40sp"
-                                android:layout_margin="8dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                app:cardCornerRadius="50dp"
-                                app:cardElevation="4dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/background_homepage_herocard"/>
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/materialCardView6"
-                                android:layout_width="100sp"
-                                android:layout_height="40sp"
-                                android:layout_margin="8dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                app:cardCornerRadius="50dp"
-                                app:cardElevation="4dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/materialCardView5"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/background_homepage_herocard"/>
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/materialCardView7"
-                                android:layout_width="100sp"
-                                android:layout_height="40sp"
-                                android:layout_margin="8dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                app:cardCornerRadius="50dp"
-                                app:cardElevation="4dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/materialCardView6"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/background_homepage_herocard"/>
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:layout_width="100sp"
-                                android:layout_height="40sp"
-                                android:layout_margin="8dp"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                app:cardCornerRadius="50dp"
-                                app:cardElevation="4dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/materialCardView7"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/background_homepage_herocard"/>
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </ScrollView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="200sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    app:cardCornerRadius="12sp"
-                    app:cardElevation="8sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView9">
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexboxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:justifyContent="space_between"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mapsCardView"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    app:cardCornerRadius="24dp"
+                    app:strokeColor="#797979"
+                    app:layout_flexBasisPercent="48%"
+                    app:strokeWidth="2dp">
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/background_homepage_herocard"/>
+                        android:background="#34793B">
 
-                </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView11"
-                    android:layout_width="match_parent"
-                    android:layout_height="200sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    app:cardCornerRadius="12sp"
-                    app:cardElevation="8sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView10">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maps here"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_homepage_herocard"/>
 
-                </androidx.cardview.widget.CardView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="200sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="50dp"
-                    app:cardCornerRadius="12sp"
-                    app:cardElevation="8sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView11">
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/locationCardView"
+                    android:layout_width="210dp"
+                    android:layout_height="170dp"
+                    app:cardCornerRadius="24dp"
+                    app:layout_flexBasisPercent="48%"
+                    app:strokeColor="#797979"
+                    app:strokeWidth="2dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/background_homepage_herocard"/>
+                        android:alpha="0.47"
+                        android:background="#0500FF">
 
-                </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Location here"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </ScrollView>
+                </com.google.android.material.card.MaterialCardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexboxLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:justifyContent="space_between"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flexboxLayout">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    app:cardCornerRadius="50dp"
+                    app:layout_flexBasisPercent="80%">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#C8D0E7">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/jua"
+                            android:text="Explore the best places near you"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:cardCornerRadius="50dp"
+                    app:layout_flexBasisPercent="13%">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#8C9CC8">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/search_icon"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.5" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+
+            <com.abhijeet.travel_saathi.utilities.GradientTextView
+                android:id="@+id/gradientTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/jua"
+                android:text="Suggested Places"
+                android:textSize="26sp"
+                app:firstColor="0xFF151515"
+                app:secondColor="0xFF5754FF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flexboxLayout3" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/suggested_one"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:strokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gradientTextView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/scene_one" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="20dp"
+                app:strokeWidth="0dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/suggested_one">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/scene_two" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

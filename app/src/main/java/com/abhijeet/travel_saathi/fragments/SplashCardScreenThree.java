@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.auth.LoginSignup;
+import com.abhijeet.travel_saathi.auth.NewLoginActivity;
 
 public class SplashCardScreenThree extends Fragment {
 
@@ -43,7 +44,7 @@ public class SplashCardScreenThree extends Fragment {
             @Override
             public void onClick(View v) {
                 // Start the LoginActivity here
-                Intent intent = new Intent(getActivity(), LoginSignup.class);
+                Intent intent = new Intent(getActivity(), NewLoginActivity.class);
                 startActivity(intent);
             }
         });

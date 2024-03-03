@@ -2,7 +2,7 @@
     <string name="app_name">Travel-Saathi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="findYourCompany"><font color="#B4B6FB">Find your </font><font color="#002773">\n company</font></string>
+    <string name="findYourCompanion"><font color="#B4B6FB">Find your</font><font color="#002773">\ncompanion</font></string>
     <string name="chooseADate"><font color="#B4B6FB">Choose a </font><font color="#002773">date</font></string>
     <string name="travelTheWorld"><font color="#B4B6FB">Travel the </font><font color="#002773">world</font></string>
 </resources>
