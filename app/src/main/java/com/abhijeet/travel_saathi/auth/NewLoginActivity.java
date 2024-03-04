@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
@@ -16,11 +18,18 @@ import android.widget.Toast;
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import java.util.Random;
 
@@ -46,6 +55,7 @@ public class NewLoginActivity extends AppCompatActivity {
 
     String otp;
     String enteredOTP;
+    MaterialButton googleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +80,18 @@ public class NewLoginActivity extends AppCompatActivity {
         assert otpDetails != null;
         otpDetails.setVisibility(View.GONE);
 
+        googleButton = loginDialog.findViewById(R.id.googleButton);
+
         emailField = loginDialog.findViewById(R.id.textInputEditText);
         sendOtp = loginDialog.findViewById(R.id.sendOTP);
         nextButton = loginDialog.findViewById(R.id.nextButton);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
 
 
         sendOtp.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +121,98 @@ public class NewLoginActivity extends AppCompatActivity {
             }
         });
 
-
+//        googleButton.setOnClickListener(view -> {
+//            // flag = 1 means login via google
+//            SharedPreferences sharedPreferences2 = getSharedPreferences("tokenStorage",MODE_PRIVATE);
+//            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+//            String flag="100";
+//            editor2.putString("loginType", flag);
+//            editor2.putBoolean("hasLoggedIn",true);
+//            editor2.commit();
+//
+//            SharedPreferences sharedPreferences = getSharedPreferences("screenTime",MODE_PRIVATE);
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//
+//            editor.putLong("usage_mon",3600);
+//            editor.putLong("usage_tue",5481);
+//            editor.putLong("usage_wed",4726);
+//            editor.putLong("usage_thu",2495);
+//            editor.putLong("usage_fri",1374);
+//            editor.putLong("usage_sat",5866);
+//            editor.putLong("usage_sun",2764);
+//            editor.putBoolean("reset_data",false);
+//            editor.putInt("current_day",-1);
+//            editor.commit();
+//
+//            Intent signInIntent = googleSignInClient.getSignInIntent();
+//            startActivityForResult(signInIntent, 1000);
+//        });
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == 1000) {
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                GoogleSignInAccount account = task.getResult(ApiException.class);
+//                String name = account.getGivenName();
+//
+//                SharedPreferences sharedPreferencesX = getSharedPreferences("tokenStorage",MODE_PRIVATE);
+//                SharedPreferences.Editor editorX = sharedPreferencesX.edit();
+//                editorX.putString("userName",name).apply();
+//                userIsPresent(account.getEmail());
+//
+//                if(check){
+//                    Log.d("user","Logged in");
+//                    String flag = "100";
+//                    loginFunction(account.getEmail(), "1234abcd");
+//                    SharedPreferences sharedPreferences = getSharedPreferences("tokenStorage", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                    editor.putString("loginType",flag);
+//                    String nameS = account.getGivenName();
+//                    editor.putString("flag","100");
+//                    editor.commit();
+//                    passNext(nameS);
+//
+//
+//                }
+//
+//                else{
+//                    Log.d("user","Logged in");
+//                    String flag = "100";
+//                    SharedPreferences sharedPreferences = getSharedPreferences("tokenStorage", MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                    editor.putString("loginType",flag);
+//                    editor.putBoolean("hasLoggedIn",true);
+//                    editor.commit();
+//
+//                    String nameS = account.getGivenName();
+//                    passNext(nameS);
+//                    UserData userData = new UserData();
+//
+//                    Random random = new Random();
+//                    int min = 100000;
+//                    int max = 999999;
+//                    int randomSixDigitInteger = random.nextInt(max - min + 1) + min;
+//
+//                    assert name != null;
+//                    userData.setName(name.split(" ")[0] + randomSixDigitInteger);
+//                    userData.setGuardianName(name);
+//                    userData.setEmail(account.getEmail());
+//                    userData.setPassword("1234abcd");
+//                    userData.setPhone("1234567890");
+//                    userData.setCode("91");
+//                    signupFunction(userData);
+//                }
+//            } catch (ApiException e) {
+//                Log.v("CHECK", check +"");
+//                Toast.makeText(this, "Error404", Toast.LENGTH_SHORT).show();
+//            } catch (UnsupportedEncodingException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
 
     public void initializeID(){
