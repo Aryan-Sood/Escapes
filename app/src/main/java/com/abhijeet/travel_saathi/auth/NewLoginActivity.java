@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
@@ -19,6 +20,20 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class NewLoginActivity extends AppCompatActivity {
 
     GradientTextView headLogintext;
@@ -28,6 +43,9 @@ public class NewLoginActivity extends AppCompatActivity {
 
     MaterialButton sendOtp;
     ImageView nextButton;
+
+    String otp;
+    String enteredOTP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +75,6 @@ public class NewLoginActivity extends AppCompatActivity {
         nextButton = loginDialog.findViewById(R.id.nextButton);
 
 
-
-
         sendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +82,7 @@ public class NewLoginActivity extends AppCompatActivity {
                     hideKeyboard(view);
                     Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
                     otpDetails.setVisibility(View.VISIBLE);
+                    Email(emailField.getText().toString());
                 }
                 else{
                     Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
@@ -76,8 +93,12 @@ public class NewLoginActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
-                startActivity(intent);
+                if(enteredOTP.equals(otp)){
+                    Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(NewLoginActivity.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -93,6 +114,77 @@ public class NewLoginActivity extends AppCompatActivity {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager!=null){
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
+    }
+
+    public void Email(String email){
+        Random random = new Random();
+        int number = 1000 + random.nextInt(9000);
+        otp = String.valueOf(number);
+        try {
+            String stringSenderEmail = "yourmail@gmail.com";
+            String stringReceiverEmail = email;
+            String stringPasswordSenderEmail = "password";
+
+            String stringHost = "smtp.gmail.com";
+
+            Properties properties = System.getProperties();
+
+            properties.put("mail.smtp.host", stringHost);
+            properties.put("mail.smtp.port", "465");
+            properties.put("mail.smtp.ssl.enable", "true");
+            properties.put("mail.smtp.auth", "true");
+
+            Session session = Session.getInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                }
+            });
+
+
+
+            MimeMessage mimeMessage = new MimeMessage(session);
+            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+            mimeMessage.setSubject("Subject: Android App email");
+            mimeMessage.setText(otp);
+//            mimeMessage.setText(e2.getText().toString());
+//            Toast.makeText(getApplicationContext(), "EMAIL SENT SUCCESSFULLY", Toast.LENGTH_LONG).show();
+
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Transport.send(mimeMessage);
+                    } catch (MessagingException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
+
+        } catch (AddressException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void sendSMS(String phoneNo){
+        Random random = new Random();
+        int number = 1000 + random.nextInt(9000);
+        otp = String.valueOf(number);
+
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNo,null,otp,null,null);
+            Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, "Message Not Sent", Toast.LENGTH_SHORT).show();
         }
     }
 }
