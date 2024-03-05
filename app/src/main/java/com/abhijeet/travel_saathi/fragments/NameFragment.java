@@ -48,12 +48,12 @@ public class NameFragment extends Fragment {
         startAnimationWithDelay();
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        this.isVisibleToUser = isVisibleToUser;
-        startAnimationWithDelay();
-    }
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        this.isVisibleToUser = isVisibleToUser;
+//        startAnimationWithDelay();
+//    }
 
     void startAnimationWithDelay() {
         if (motionLayout != null ) {
