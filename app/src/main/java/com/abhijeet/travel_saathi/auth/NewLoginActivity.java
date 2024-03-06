@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.activities.Home_page;
+import com.abhijeet.travel_saathi.activities.Signup_successfully;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -87,7 +88,7 @@ public class NewLoginActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+                Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
                 startActivity(intent);
             }
         });

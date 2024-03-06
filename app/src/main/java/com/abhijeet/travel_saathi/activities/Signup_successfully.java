@@ -1,6 +1,7 @@
 package com.abhijeet.travel_saathi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import com.abhijeet.travel_saathi.auth.LoginSignup;
 public class Signup_successfully extends AppCompatActivity {
 
     ImageButton avtar_selection;
+    MotionLayout motionLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class Signup_successfully extends AppCompatActivity {
         setContentView(R.layout.activity_signup_successfully);
 
         avtar_selection = findViewById(R.id.avtar_selection);
+        motionLayout = findViewById(R.id.signupSuccessfullyAnimation);
+
+        motionLayout.transitionToState(R.id.end);
 
         avtar_selection.setOnClickListener(new View.OnClickListener() {
             @Override

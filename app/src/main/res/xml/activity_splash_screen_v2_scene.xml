@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="500sp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="-300dp"
+            android:layout_marginBottom="-1000dp"
             motion:layout_constraintStart_toStartOf="parent"
             android:id="@+id/imageView2" />
     </ConstraintSet>
@@ -37,4 +37,22 @@
     <Transition
         motion:constraintSetStart="@+id/end"
         motion:constraintSetEnd="@+id/start" />
+    <ConstraintSet android:id="@+id/start2" >
+        <Constraint
+            android:elevation="10sp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="500sp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="-300dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/imageView2" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/start2"
+        motion:duration="1500"/>
+    <Transition
+        motion:constraintSetStart="@+id/start2"
+        motion:constraintSetEnd="@+id/end" />
 </MotionScene>
