@@ -38,19 +38,48 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
             android:layout_width="match_parent"
-            android:fontFamily="@font/jua"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"/>
+            android:fontFamily="@font/jua"
+            android:inputType="textEmailAddress" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/conditionsFlexBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="0dp"
+        app:alignItems="center"
+        app:justifyContent="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:clickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jua"
+            android:text="I agree to terms and conditions."
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </com.google.android.flexbox.FlexboxLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sendOTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#009AFF"
         android:fontFamily="@font/jua"
         android:text="Send OTP"
@@ -61,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/conditionsFlexBox"
         app:strokeColor="@color/black"
         app:strokeWidth="1dp" />
 
@@ -266,25 +295,49 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     </FrameLayout>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/googleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/white"
-        android:text="Sign in with Google"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:cornerRadius="10dp"
-        app:icon="@drawable/google"
-        app:iconPadding="20dp"
-        app:iconTintMode="multiply"
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otpDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/otpDetails"
+        app:strokeColor="#009AFF"
+        app:strokeWidth="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D9D9D9"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/google_icon" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/jua"
+        android:text="Continue with Google"
+        android:textColor="#434343"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
