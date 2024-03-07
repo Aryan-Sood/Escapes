@@ -136,6 +136,7 @@
                     app:boxStrokeWidth="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/digitOne"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/jua"
@@ -161,6 +162,7 @@
                     app:boxStrokeWidth="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/digitTwo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/jua"
@@ -186,6 +188,7 @@
                     app:boxStrokeWidth="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/digitThree"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/jua"
@@ -211,6 +214,7 @@
                     app:boxStrokeWidth="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/digitFour"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/jua"

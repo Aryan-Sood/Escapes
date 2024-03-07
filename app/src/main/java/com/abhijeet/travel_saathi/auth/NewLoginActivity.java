@@ -3,12 +3,9 @@ package com.abhijeet.travel_saathi.auth;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -18,21 +15,17 @@ import android.widget.Toast;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.activities.Home_page;
-import com.abhijeet.travel_saathi.activities.Signup_successfully;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 
 
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import java.util.Random;
 
@@ -58,7 +51,9 @@ public class NewLoginActivity extends AppCompatActivity {
 
     String otp;
     String enteredOTP;
-    MaterialButton googleButton;
+    MaterialCardView googleButton;
+
+    TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +93,11 @@ public class NewLoginActivity extends AppCompatActivity {
         sendOtp = loginDialog.findViewById(R.id.sendOTP);
         nextButton = loginDialog.findViewById(R.id.nextButton);
 
+        firstDigit = loginDialog.findViewById(R.id.digitOne);
+        secondDigit = loginDialog.findViewById(R.id.digitTwo);
+        thirdDigit = loginDialog.findViewById(R.id.digitThree);
+        fourthDigit = loginDialog.findViewById(R.id.digitFour);
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -113,7 +113,7 @@ public class NewLoginActivity extends AppCompatActivity {
                     hideKeyboard(view);
                     Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
                     otpDetails.setVisibility(View.VISIBLE);
-                    Email(emailField.getText().toString());
+                    sendEmail(emailField.getText().toString());
                 }
                 else{
                     Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
@@ -124,6 +124,7 @@ public class NewLoginActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                enteredOTP = firstDigit.getText().toString() + secondDigit.getText() + thirdDigit.getText() + fourthDigit.getText();
                 if(enteredOTP.equals(otp)){
                     Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
                     startActivity(intent);
@@ -146,7 +147,7 @@ public class NewLoginActivity extends AppCompatActivity {
         }
     }
 
-    public void Email(String email){
+    public void sendEmail(String email){
         Random random = new Random();
         int number = 1000 + random.nextInt(9000);
         otp = String.valueOf(number);
