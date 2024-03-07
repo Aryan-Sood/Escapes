@@ -231,9 +231,9 @@ public class NewLoginActivity extends AppCompatActivity {
         int number = 1000 + random.nextInt(9000);
         otp = String.valueOf(number);
         try {
-            String stringSenderEmail = "yourmail@gmail.com";
+            String stringSenderEmail = "aryansood12@gmail.com";
             String stringReceiverEmail = email;
-            String stringPasswordSenderEmail = "password";
+            String stringPasswordSenderEmail = "dvixfhdetanukjws";
 
             String stringHost = "smtp.gmail.com";
 
