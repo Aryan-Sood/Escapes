@@ -38,22 +38,15 @@ public class SplashScreenV2 extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(adapter.getCount());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            Boolean earthGayab = true;
+            Boolean earthGayab = false;
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (position == 0 && earthGayab){
-
-//                    motionLayout.transitionToState(R.id.end);
-                    motionLayout.transitionToState(R.id.start2);
-                    Log.d("my2log", "haa");
-                    earthGayab=false;
-                }
-                else if (position == adapter.getCount()-1){
+                if (position == adapter.getCount()-1){
                     motionLayout.transitionToState(R.id.end);
                     earthGayab = true;
                 }
                 else if (position == adapter.getCount() - 2 && earthGayab){
-                    motionLayout.transitionToState(R.id.start2);
+                    motionLayout.transitionToState(R.id.start);
                     earthGayab = false;
                 }
 //                else if (position == adapter.getCount() - 2 && positionOffset > 0.5 && !backward) {
@@ -61,7 +54,7 @@ public class SplashScreenV2 extends AppCompatActivity {
 //                }
 //                else if (position == adapter.getCount() - 2 && positionOffset > 0.8 && backward) {
 //                    motionLayout.transitionToState(R.id.start);
-////                }
+//                }
 
                 float rotation = -180 * (position + positionOffset);
                 imageView.setRotation(rotation);
