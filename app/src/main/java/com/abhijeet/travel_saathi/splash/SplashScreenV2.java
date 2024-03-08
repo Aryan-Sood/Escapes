@@ -38,15 +38,23 @@ public class SplashScreenV2 extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(adapter.getCount());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            Boolean earthGayab = false;
+            Boolean earthGayab = true;
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (position == adapter.getCount()-1){
+
+                if (position == 0 && earthGayab){
+
+//                    motionLayout.transitionToState(R.id.end);
+                    motionLayout.transitionToState(R.id.start2);
+                    Log.d("my2log", "haa");
+                    earthGayab=false;
+                }
+                else if (position == adapter.getCount()-1){
                     motionLayout.transitionToState(R.id.end);
                     earthGayab = true;
                 }
                 else if (position == adapter.getCount() - 2 && earthGayab){
-                    motionLayout.transitionToState(R.id.start);
+                    motionLayout.transitionToState(R.id.start2);
                     earthGayab = false;
                 }
 //                else if (position == adapter.getCount() - 2 && positionOffset > 0.5 && !backward) {
