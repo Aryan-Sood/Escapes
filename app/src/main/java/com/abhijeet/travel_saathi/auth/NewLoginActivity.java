@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
+import com.abhijeet.travel_saathi.utilities.MailHelper;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -62,7 +63,7 @@ public class NewLoginActivity extends AppCompatActivity {
     TextView logInPhone;
 
     TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
-    boolean flag = false;
+    boolean flag = false; // false means login type is email
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,9 +124,14 @@ public class NewLoginActivity extends AppCompatActivity {
                 if (!flag) {
                     if (!emailField.getText().toString().isEmpty()) {
                         hideKeyboard(view);
+                        Random random = new Random();
+                        int number = 1000 + random.nextInt(9000);
+                        otp = String.valueOf(number);
+                        Log.d("Otp sent", "onClick: " + otp);
+                        MailHelper.sendEmail(emailField.getText().toString(), otp);
                         Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
                         otpDetails.setVisibility(View.VISIBLE);
-                        sendEmail(emailField.getText().toString());
+
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     }
@@ -146,8 +152,10 @@ public class NewLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 enteredOTP = firstDigit.getText().toString() + secondDigit.getText() + thirdDigit.getText() + fourthDigit.getText();
+                Log.d("Otp entered", "onClick: " + enteredOTP);
                 if (enteredOTP.equals(otp)) {
                     Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } else {
                     Toast.makeText(NewLoginActivity.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
@@ -171,9 +179,12 @@ public class NewLoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!emailField.getText().toString().isEmpty()){
                     hideKeyboard(view);
+                    Random random = new Random();
+                    int number = 1000 + random.nextInt(9000);
+                    otp = String.valueOf(number);
                     Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
                     otpDetails.setVisibility(View.VISIBLE);
-                    sendEmail(emailField.getText().toString());
+                    MailHelper.sendEmail(emailField.getText().toString(), otp);
                 }
                 else{
                     Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
@@ -194,60 +205,6 @@ public class NewLoginActivity extends AppCompatActivity {
         }
     }
 
-    public void sendEmail(String email) {
-        Random random = new Random();
-        int number = 1000 + random.nextInt(9000);
-        otp = String.valueOf(number);
-        try {
-            String stringSenderEmail = "escapes.epics@gmail.com";
-            String stringReceiverEmail = email;
-            String stringPasswordSenderEmail = "cnnwlqyvbfjgeizs";
-
-            String stringHost = "smtp.gmail.com";
-
-            Properties properties = System.getProperties();
-
-            properties.put("mail.smtp.host", stringHost);
-            properties.put("mail.smtp.port", "465");
-            properties.put("mail.smtp.ssl.enable", "true");
-            properties.put("mail.smtp.auth", "true");
-
-            Session session = Session.getInstance(properties, new Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
-                }
-            });
-
-
-            MimeMessage mimeMessage = new MimeMessage(session);
-            mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-
-            mimeMessage.setSubject("Subject: Android App email");
-            mimeMessage.setText(otp);
-//            mimeMessage.setText(e2.getText().toString());
-//            Toast.makeText(getApplicationContext(), "EMAIL SENT SUCCESSFULLY", Toast.LENGTH_LONG).show();
-
-
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Transport.send(mimeMessage);
-                    } catch (MessagingException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            thread.start();
-
-        } catch (AddressException e) {
-            e.printStackTrace();
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     private void sendSMS(String phoneNo) {
         Random random = new Random();
