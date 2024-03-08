@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.telephony.SmsManager;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.abhijeet.travel_saathi.utilities.MailHelper;
+import com.abhijeet.travel_saathi.utilities.OtpFlowManager;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -63,12 +67,17 @@ public class NewLoginActivity extends AppCompatActivity {
     TextView logInPhone;
 
     TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
+    OtpFlowManager flowManager;
+
+
     boolean flag = false; // false means login type is email
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_login);
+
+        flowManager = new OtpFlowManager(this);
 
         initializeID();
         initializeViews();
@@ -131,6 +140,8 @@ public class NewLoginActivity extends AppCompatActivity {
                         MailHelper.sendEmail(emailField.getText().toString(), otp);
                         Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
                         otpDetails.setVisibility(View.VISIBLE);
+                        showKeyboard(firstDigit);
+                        flowManager.initializeOtpBoxFlow(firstDigit,secondDigit,thirdDigit,fourthDigit);
 
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
@@ -220,5 +231,19 @@ public class NewLoginActivity extends AppCompatActivity {
             Log.v("LOG MESSAGE", e.getMessage().toString());
             Toast.makeText(this, "Message Not Sent", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+
+    public void showKeyboard(TextInputEditText editText){
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b){
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }
+        });
     }
 }
