@@ -58,11 +58,11 @@ public class NewLoginActivity extends AppCompatActivity {
     String otp;
     String enteredOTP;
     MaterialCardView googleButton;
-//    TextView resendOtp,
-            TextView logInPhone;
+    //    TextView resendOtp,
+    TextView logInPhone;
 
     TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
-     boolean flag = false;
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +74,8 @@ public class NewLoginActivity extends AppCompatActivity {
     }
 
 
-
-    public void initializeViews(){
-        headLogintext.setGradientColors(0xFF001AFF,0xFFFB78E6);
+    public void initializeViews() {
+        headLogintext.setGradientColors(0xFF001AFF, 0xFFFB78E6);
 
         BottomSheetDialog loginDialog = new BottomSheetDialog(this);
         loginDialog.setContentView(R.layout.login_bottomsheet);
@@ -118,12 +117,10 @@ public class NewLoginActivity extends AppCompatActivity {
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
-
-
         sendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!flag){
+                if (!flag) {
                     if (!emailField.getText().toString().isEmpty()) {
                         hideKeyboard(view);
                         Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
@@ -132,7 +129,7 @@ public class NewLoginActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
                     if (!emailField.getText().toString().isEmpty()) {
                         hideKeyboard(view);
                         Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
@@ -149,10 +146,10 @@ public class NewLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 enteredOTP = firstDigit.getText().toString() + secondDigit.getText() + thirdDigit.getText() + fourthDigit.getText();
-                if(enteredOTP.equals(otp)){
+                if (enteredOTP.equals(otp)) {
                     Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
                     startActivity(intent);
-                }else{
+                } else {
                     Toast.makeText(NewLoginActivity.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -186,18 +183,18 @@ public class NewLoginActivity extends AppCompatActivity {
     }
 
 
-    public void initializeID(){
+    public void initializeID() {
         headLogintext = findViewById(R.id.headLoginText);
     }
 
-    public void hideKeyboard(View view){
+    public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputMethodManager!=null){
-            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
+        if (inputMethodManager != null) {
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
-    public void sendEmail(String email){
+    public void sendEmail(String email) {
         Random random = new Random();
         int number = 1000 + random.nextInt(9000);
         otp = String.valueOf(number);
@@ -221,7 +218,6 @@ public class NewLoginActivity extends AppCompatActivity {
                     return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
                 }
             });
-
 
 
             MimeMessage mimeMessage = new MimeMessage(session);
@@ -252,19 +248,20 @@ public class NewLoginActivity extends AppCompatActivity {
         }
 
     }
-    private void sendSMS(String phoneNo){
+
+    private void sendSMS(String phoneNo) {
         Random random = new Random();
         int number = 1000 + random.nextInt(9000);
         otp = String.valueOf(number);
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("+91" +phoneNo,null,otp,null,null);
+            smsManager.sendTextMessage("+91" + phoneNo, null, otp, null, null);
             Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            Log.v("LOG MESSAGE",e.getMessage().toString());
+            Log.v("LOG MESSAGE", e.getMessage().toString());
             Toast.makeText(this, "Message Not Sent", Toast.LENGTH_SHORT).show();
         }
     }
+}
