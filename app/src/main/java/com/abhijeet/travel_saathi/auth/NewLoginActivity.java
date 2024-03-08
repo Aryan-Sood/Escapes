@@ -58,7 +58,7 @@ public class NewLoginActivity extends AppCompatActivity {
     String otp;
     String enteredOTP;
     MaterialCardView googleButton;
-    //    TextView resendOtp,
+    TextView resendOtp;
     TextView logInPhone;
 
     TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
@@ -108,7 +108,7 @@ public class NewLoginActivity extends AppCompatActivity {
 
         layout = loginDialog.findViewById(R.id.textInputLayout);
 
-//        resendOtp = loginDialog.findViewById(R.id.resendOtp);
+        resendOtp = loginDialog.findViewById(R.id.resendOtp);
         logInPhone = loginDialog.findViewById(R.id.loginPhonebutton);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -166,20 +166,20 @@ public class NewLoginActivity extends AppCompatActivity {
             }
         });
 
-//        resendOtp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!emailField.getText().toString().isEmpty()){
-//                    hideKeyboard(view);
-//                    Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-//                    otpDetails.setVisibility(View.VISIBLE);
-//                    sendEmail(emailField.getText().toString());
-//                }
-//                else{
-//                    Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+        resendOtp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!emailField.getText().toString().isEmpty()){
+                    hideKeyboard(view);
+                    Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                    otpDetails.setVisibility(View.VISIBLE);
+                    sendEmail(emailField.getText().toString());
+                }
+                else{
+                    Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
@@ -199,9 +199,9 @@ public class NewLoginActivity extends AppCompatActivity {
         int number = 1000 + random.nextInt(9000);
         otp = String.valueOf(number);
         try {
-            String stringSenderEmail = "aryansood12@gmail.com";
+            String stringSenderEmail = "escapes.epics@gmail.com";
             String stringReceiverEmail = email;
-            String stringPasswordSenderEmail = "dvixfhdetanukjws";
+            String stringPasswordSenderEmail = "cnnwlqyvbfjgeizs";
 
             String stringHost = "smtp.gmail.com";
 
