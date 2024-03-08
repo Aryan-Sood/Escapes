@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abhijeet.travel_saathi.R;
@@ -24,6 +27,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 import java.util.Properties;
@@ -46,14 +50,19 @@ public class NewLoginActivity extends AppCompatActivity {
 
     TextInputEditText emailField;
 
+    TextInputLayout layout;
+
     MaterialButton sendOtp;
     ImageView nextButton;
 
     String otp;
     String enteredOTP;
     MaterialCardView googleButton;
+//    TextView resendOtp,
+            TextView logInPhone;
 
     TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
+     boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +107,11 @@ public class NewLoginActivity extends AppCompatActivity {
         thirdDigit = loginDialog.findViewById(R.id.digitThree);
         fourthDigit = loginDialog.findViewById(R.id.digitFour);
 
+        layout = loginDialog.findViewById(R.id.textInputLayout);
+
+//        resendOtp = loginDialog.findViewById(R.id.resendOtp);
+        logInPhone = loginDialog.findViewById(R.id.loginPhonebutton);
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -109,14 +123,24 @@ public class NewLoginActivity extends AppCompatActivity {
         sendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!emailField.getText().toString().isEmpty()){
-                    hideKeyboard(view);
-                    Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-                    otpDetails.setVisibility(View.VISIBLE);
-                    sendEmail(emailField.getText().toString());
-                }
-                else{
-                    Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                if(!flag){
+                    if (!emailField.getText().toString().isEmpty()) {
+                        hideKeyboard(view);
+                        Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                        otpDetails.setVisibility(View.VISIBLE);
+                        sendEmail(emailField.getText().toString());
+                    } else {
+                        Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    if (!emailField.getText().toString().isEmpty()) {
+                        hideKeyboard(view);
+                        Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                        otpDetails.setVisibility(View.VISIBLE);
+                        sendSMS(emailField.getText().toString());
+                    } else {
+                        Toast.makeText(NewLoginActivity.this, "Enter Phone", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -133,6 +157,32 @@ public class NewLoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        logInPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                emailField.setInputType(InputType.TYPE_CLASS_NUMBER);
+                emailField.setSingleLine();
+                layout.setHint("Enter Phone");
+                emailField.setHint("Enter Phone Number");
+                flag = true;
+            }
+        });
+
+//        resendOtp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (!emailField.getText().toString().isEmpty()){
+//                    hideKeyboard(view);
+//                    Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+//                    otpDetails.setVisibility(View.VISIBLE);
+//                    sendEmail(emailField.getText().toString());
+//                }
+//                else{
+//                    Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
 
@@ -209,12 +259,12 @@ public class NewLoginActivity extends AppCompatActivity {
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNo,null,otp,null,null);
+            smsManager.sendTextMessage("+91" +phoneNo,null,otp,null,null);
             Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
             e.printStackTrace();
+            Log.v("LOG MESSAGE",e.getMessage().toString());
             Toast.makeText(this, "Message Not Sent", Toast.LENGTH_SHORT).show();
         }
     }
-}
