@@ -63,10 +63,8 @@ public class NameFragment extends Fragment {
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // Trigger your transition after the delay
 
                     motionLayout.transitionToState(R.id.end2);
-//                    motionLayout.transitionToState(R.id.end);
                 }
             }, 3000);
         }
