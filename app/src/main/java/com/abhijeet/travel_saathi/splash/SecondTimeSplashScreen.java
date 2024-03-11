@@ -3,11 +3,13 @@ package com.abhijeet.travel_saathi.splash;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.activities.Home_page;
 
 public class SecondTimeSplashScreen extends AppCompatActivity {
     MotionLayout motionLayout;
@@ -121,6 +123,15 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
                 motionLayout.transitionToState(R.id.end);
             }
         }, 8000);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Trigger your transition after the delay
+                Intent intent = new Intent(SecondTimeSplashScreen.this, Home_page.class);
+                startActivity(intent);
+            }
+        }, 8250);
 
 
     }

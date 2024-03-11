@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -36,6 +39,14 @@ public class SplashScreenV2 extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(adapter.getCount());
+
+
+        SharedPreferences preferences = getSharedPreferences("OnceLoggedIn", Context.MODE_PRIVATE);
+        if (preferences.getBoolean("isLoggedIn", false)){
+            Intent intent = new Intent(this, SecondTimeSplashScreen.class);
+            startActivity(intent);
+            finish();
+        }
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             Boolean earthGayab = true;

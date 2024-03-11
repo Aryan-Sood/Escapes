@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.SmsManager;
@@ -166,6 +167,12 @@ public class NewLoginActivity extends AppCompatActivity {
                 Log.d("Otp entered", "onClick: " + enteredOTP);
                 if (enteredOTP.equals(otp)) {
                     Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
+
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } else {
