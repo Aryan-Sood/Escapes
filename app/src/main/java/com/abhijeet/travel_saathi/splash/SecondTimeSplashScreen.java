@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
@@ -69,7 +70,9 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
             }
 
             else {
-                startActivity(new Intent(SecondTimeSplashScreen.this, Home_page.class));
+                Log.d("MYLOG24", "NOW INTENT CALLED");
+                Intent intent = new Intent(SecondTimeSplashScreen.this, Home_page.class);
+                startActivity(intent);
                 finish();
             }
         }
