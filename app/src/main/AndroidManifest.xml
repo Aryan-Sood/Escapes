@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-feature android:name="android.hardware.telephony"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <uses-feature android:name="android.hardware.telephony" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,38 +18,38 @@
         android:theme="@style/Theme.TravelSaathi"
         tools:targetApi="31">
         <activity
-            android:name=".splash.SplashScreenV2"
+            android:name=".activities.AvatarSelectionScreen"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
-            android:name=".activities.Home_page"
+            android:name=".splash.SplashScreenV2"
             android:exported="true">
 
         </activity>
         <activity
+            android:name=".activities.Home_page"
+            android:exported="true"></activity>
+        <activity
             android:name=".splash.SecondTimeSplashScreen"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.Signup_successfully"
             android:exported="false" />
         <activity
             android:name=".auth.LoginSignup"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".activities.Avtar_selection"
             android:exported="false" />
         <activity
             android:name=".auth.NewLoginActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
