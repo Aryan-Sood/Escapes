@@ -1,17 +1,8 @@
 package com.abhijeet.travel_saathi.activities;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.NumberPicker;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import com.abhijeet.travel_saathi.R;
 
@@ -20,12 +11,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
 //
 //    ImageView selectedProfileImage;
 //    GridLayout profileGridLayout;
-
-    private NumberPicker agePicker;
-    private NumberPicker genderPicker;
-    private EditText username;
-    MotionLayout motionLayout;
-    TextView age,gender;
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,63 +19,6 @@ public class AvatarSelectionScreen extends AppCompatActivity {
 
 //        initializeIDs();
 //        addGridProfileViews();
-        motionLayout = findViewById(R.id.constraintLayout2);
-        username = findViewById(R.id.unm);
-        username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    // The user pressed the "Done" button on the keyboard.
-//                    yourFunction(); // Call your function here
-                    motionLayout.setTransition(R.id.end, R.id.ageselector);
-                    return true;
-                }
-                return false;
-            }
-        });
-
-
-        age=findViewById(R.id.agetext);
-        age.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                motionLayout.setTransition(R.id.ageselector, R.id.agepicker);
-            }
-        });
-        agePicker = (NumberPicker) findViewById(R.id.numberPicker);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            agePicker.setTextColor(Color.BLACK);
-        }
-        agePicker.setMinValue(5);
-        agePicker.setMaxValue(100);
-        agePicker.setValue(20);
-        agePicker.setWrapSelectorWheel(false);
-
-        agePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                age.setText(String.valueOf(agePicker.getValue())+" years");
-                motionLayout.setTransition(R.id.agepicker, R.id.genderselector);
-            }
-        });
-
-        gender = findViewById(R.id.gendertext);
-        gender.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                motionLayout.setTransition(R.id.genderselector, R.id.genderpicker);
-            }
-        });
-        genderPicker = (NumberPicker) findViewById(R.id.genderPicker);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            genderPicker.setTextColor(Color.BLACK);
-        }
-        genderPicker.setMinValue(0);
-        genderPicker.setMaxValue(2);
-        genderPicker.setValue(1);
-        genderPicker.setDisplayedValues(new String[]{"Male", "Female", "Others"}); // Displayed values
-        genderPicker.setWrapSelectorWheel(false);
-
 
 
     }
