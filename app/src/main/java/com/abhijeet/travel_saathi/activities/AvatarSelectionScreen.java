@@ -1,11 +1,14 @@
 package com.abhijeet.travel_saathi.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -23,7 +26,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
 
     private NumberPicker agePicker;
     private NumberPicker genderPicker;
-    private EditText username;
+    private EditText username, occupation, bio;
     MotionLayout motionLayout;
     TextView age,gender;
     @Override
@@ -39,8 +42,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    // The user pressed the "Done" button on the keyboard.
-//                    yourFunction(); // Call your function here
+                    hideKeyboard();
                     motionLayout.setTransition(R.id.end, R.id.ageselector);
                     return true;
                 }
@@ -90,8 +92,50 @@ public class AvatarSelectionScreen extends AppCompatActivity {
         genderPicker.setDisplayedValues(new String[]{"Male", "Female", "Others"}); // Displayed values
         genderPicker.setWrapSelectorWheel(false);
 
+        genderPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] displayedValues = genderPicker.getDisplayedValues();
+                gender.setText(displayedValues[genderPicker.getValue()]);
+                motionLayout.setTransition(R.id.genderpicker, R.id.occupationtyper);
+            }
+        });
 
+        occupation = findViewById(R.id.occupation);
+        occupation.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    hideKeyboard();
+                    motionLayout.setTransition(R.id.occupationtyper, R.id.bio);
+                    return true;
+                }
+                return false;
+            }
+        });
 
+        bio = findViewById(R.id.bio);
+        bio.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    hideKeyboard();
+                    Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+    }
+
+    public void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
 

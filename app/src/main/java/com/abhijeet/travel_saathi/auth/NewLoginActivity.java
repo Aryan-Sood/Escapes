@@ -1,16 +1,11 @@
 package com.abhijeet.travel_saathi.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.telephony.SmsManager;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,34 +15,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.abhijeet.travel_saathi.R;
-import com.abhijeet.travel_saathi.activities.Home_page;
+import com.abhijeet.travel_saathi.activities.Signup_successfully;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.abhijeet.travel_saathi.utilities.MailHelper;
 import com.abhijeet.travel_saathi.utilities.OtpFlowManager;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-
-import java.util.Properties;
 import java.util.Random;
-
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class NewLoginActivity extends AppCompatActivity {
 
@@ -166,7 +151,7 @@ public class NewLoginActivity extends AppCompatActivity {
                 enteredOTP = firstDigit.getText().toString() + secondDigit.getText() + thirdDigit.getText() + fourthDigit.getText();
                 Log.d("Otp entered", "onClick: " + enteredOTP);
                 if (enteredOTP.equals(otp)) {
-                    Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+                    Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
 
                     SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -1,8 +1,5 @@
 package com.abhijeet.travel_saathi.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.motion.widget.MotionLayout;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -10,11 +7,12 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.MotionLayout;
+
 import com.abhijeet.travel_saathi.R;
-import com.abhijeet.travel_saathi.auth.LoginSignup;
 
 public class Signup_successfully extends AppCompatActivity {
 
@@ -34,7 +32,7 @@ public class Signup_successfully extends AppCompatActivity {
         avtar_selection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Signup_successfully.this, Avtar_selection.class);
+                Intent intent = new Intent(Signup_successfully.this, AvatarSelectionScreen.class);
                 startActivity(intent);
                 finish();
                 Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

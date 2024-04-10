@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1100">
+        motion:duration="1000">
        <KeyFrameSet>
        </KeyFrameSet>
         <OnClick motion:targetId="@+id/chooseavtext" />
@@ -29,6 +29,16 @@
     <Transition
         motion:constraintSetEnd="@id/genderpicker"
         motion:constraintSetStart="@id/genderselector"
+        motion:duration="1500">
+    </Transition>
+    <Transition
+        motion:constraintSetStart="@id/genderpicker"
+        motion:constraintSetEnd="@id/occupationtyper"
+        motion:duration="1500">
+    </Transition>
+    <Transition
+        motion:constraintSetEnd="@id/bio"
+        motion:constraintSetStart="@id/occupationtyper"
         motion:duration="1500">
     </Transition>
 
@@ -68,7 +78,7 @@
             motion:layout_constraintTop_toBottomOf="@id/chooseavtext"
             android:layout_marginEnd="-1000dp"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/unm" />
     </ConstraintSet>
 
@@ -80,7 +90,7 @@
             motion:layout_constraintTop_toBottomOf="@id/chooseavtext"
             android:layout_marginStart="0dp"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/unm" />
         <Constraint
             android:elevation="6dp"
@@ -92,8 +102,8 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"
             android:id="@+id/avCard"
-            android:layout_marginStart="-800dp"
-            android:layout_marginEnd="800dp" />
+            android:layout_marginStart="-400dp"
+            android:layout_marginEnd="400dp" />
 
         <Constraint
             android:id="@+id/profpic"
@@ -112,7 +122,7 @@
             android:id="@+id/chooseavtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/jua"
             android:text="Profile photo"
             android:textColor="@color/black"
@@ -146,7 +156,7 @@
             android:visibility="visible"
             motion:layout_constraintTop_toBottomOf="@id/unm"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="15dp" />
 
     </ConstraintSet>
     <ConstraintSet
@@ -184,7 +194,7 @@
             android:visibility="visible"
             motion:layout_constraintTop_toBottomOf="@id/agetext"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="15dp" />
 <!--        <Constraint-->
 <!--            android:id="@+id/genderPicker"-->
 <!--            motion:layout_constraintStart_toEndOf="@id/gendertext"-->
@@ -210,6 +220,47 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"/>
+
+    </ConstraintSet>
+    <ConstraintSet
+        android:id="@+id/occupationtyper"
+        motion:deriveConstraintsFrom="@+id/genderpicker" >
+        <Constraint
+            android:id="@+id/genderPicker"
+            motion:layout_constraintStart_toEndOf="@id/gendertext"
+            android:layout_width="65dp"
+            android:layout_height="112dp"
+            motion:layout_constraintBottom_toBottomOf="@id/gendertext"
+            android:visibility="invisible"
+            motion:layout_constraintTop_toTopOf="@id/gendertext"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/gendertext"
+            android:layout_marginStart="0dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
+            android:id="@+id/occupation" />
+
+    </ConstraintSet>
+    <ConstraintSet
+        android:id="@+id/bio"
+        motion:deriveConstraintsFrom="@+id/occupationtyper" >
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/occupation"
+            android:layout_marginStart="0dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/bio" />
 
     </ConstraintSet>
 
