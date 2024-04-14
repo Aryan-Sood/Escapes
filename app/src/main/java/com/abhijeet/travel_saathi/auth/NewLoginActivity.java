@@ -15,22 +15,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.activities.Signup_successfully;
+import com.abhijeet.travel_saathi.chat_app.model.UserModel;
+import com.abhijeet.travel_saathi.chat_app.utils.FirebaseUtil;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.abhijeet.travel_saathi.utilities.MailHelper;
 import com.abhijeet.travel_saathi.utilities.OtpFlowManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Random;
 
@@ -50,10 +60,12 @@ public class NewLoginActivity extends AppCompatActivity {
     String enteredOTP;
     MaterialCardView googleButton;
     TextView resendOtp;
-    TextView logInPhone;
+
+    private FirebaseAuth mAuth;
 
     TextInputEditText firstDigit, secondDigit, thirdDigit, fourthDigit;
     OtpFlowManager flowManager;
+    UserModel userModel;
 
 
     boolean flag = false; // false means login type is email
@@ -64,6 +76,8 @@ public class NewLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_login);
 
         flowManager = new OtpFlowManager(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
         initializeID();
         initializeViews();
@@ -86,7 +100,6 @@ public class NewLoginActivity extends AppCompatActivity {
 
         loginDialog.setCancelable(false);
         loginDialog.show();
-
         otpDetails = loginDialog.findViewById(R.id.otpDetails);
         assert otpDetails != null;
         otpDetails.setVisibility(View.GONE);
@@ -105,7 +118,6 @@ public class NewLoginActivity extends AppCompatActivity {
         layout = loginDialog.findViewById(R.id.textInputLayout);
 
         resendOtp = loginDialog.findViewById(R.id.resendOtp);
-        logInPhone = loginDialog.findViewById(R.id.loginPhonebutton);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -151,29 +163,10 @@ public class NewLoginActivity extends AppCompatActivity {
                 enteredOTP = firstDigit.getText().toString() + secondDigit.getText() + thirdDigit.getText() + fourthDigit.getText();
                 Log.d("Otp entered", "onClick: " + enteredOTP);
                 if (enteredOTP.equals(otp)) {
-                    Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
-
-                    SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("isLoggedIn", true);
-                    editor.apply();
-
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                    loginUser(emailField.getText().toString(), emailField.getText().toString());
                 } else {
                     Toast.makeText(NewLoginActivity.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        logInPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                emailField.setInputType(InputType.TYPE_CLASS_NUMBER);
-                emailField.setSingleLine();
-                layout.setHint("Enter Phone");
-                emailField.setHint("Enter Phone Number");
-                flag = true;
             }
         });
 
@@ -237,5 +230,28 @@ public class NewLoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void loginUser(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success
+                            Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
+
+                            SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.putString("Email", email);
+                            editor.apply();
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);                            // You can navigate to another activity or perform other actions here
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(NewLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

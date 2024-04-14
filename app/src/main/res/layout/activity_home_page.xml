@@ -40,6 +40,7 @@
                     android:src="@drawable/side_nav_button" />
 
                 <ImageView
+                    android:id="@+id/chat_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/bell_icon" />
