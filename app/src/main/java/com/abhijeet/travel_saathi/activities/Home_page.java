@@ -29,7 +29,6 @@ public class Home_page extends AppCompatActivity {
     FlexboxLayout flexboxLayout;
     MaterialCardView mapsCardView, locationCardView;
     private ImageView chat_button;
-    private String email;
     UserModel userModel;
 
     @Override
@@ -42,14 +41,11 @@ public class Home_page extends AppCompatActivity {
         locationCardView = findViewById(R.id.locationCardView);
         chat_button = findViewById(R.id.chat_button);
 
-        SharedPreferences sh =getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
-        email = sh.getString("Email", null);
-
         getUsername();
         chat_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setUsername();
+                startActivity(new Intent(Home_page.this, ChatMainActivity.class));
             }
         });
     }
@@ -59,30 +55,6 @@ public class Home_page extends AppCompatActivity {
 
     public void initializeSizes(){
         int parentWidth = flexboxLayout.getWidth();
-    }
-
-    void setUsername(){
-        String username = email;
-        if(username.isEmpty() || username.length()<3){
-            Toast.makeText(this, "Username length should be at least 3 chars", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if(userModel!=null){
-            userModel.setUsername(username);
-        }else{
-            userModel = new UserModel(username, Timestamp.now(), FirebaseUtil.currentUserId());
-        }
-
-        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(Home_page.this, "Done!!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Home_page.this, ChatMainActivity.class));
-                }
-            }
-        });
-
     }
 
     void getUsername(){

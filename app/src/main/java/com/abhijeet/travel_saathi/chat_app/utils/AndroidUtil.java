@@ -19,7 +19,12 @@ public class AndroidUtil {
 
     public static void passUserModelAsIntent(Intent intent, UserModel model){
        intent.putExtra("username",model.getUsername());
+       intent.putExtra("email", model.getEmail());
+       intent.putExtra("bio", model.getBio());
+       intent.putExtra("occupation", model.getOccupation());
+       intent.putExtra("age", model.getAge());
        intent.putExtra("userId",model.getUserId());
+       intent.putExtra("gender", model.getGender());
         intent.putExtra("fcmToken",model.getFcmToken());
 
     }
@@ -27,7 +32,12 @@ public class AndroidUtil {
     public static UserModel getUserModelFromIntent(Intent intent){
         UserModel userModel = new UserModel();
         userModel.setUsername(intent.getStringExtra("username"));
+        userModel.setAge(intent.getStringExtra("age"));
+        userModel.setEmail(intent.getStringExtra("email"));
+        userModel.setBio(intent.getStringExtra("bio"));
+        userModel.setOccupation(intent.getStringExtra("occupation"));
         userModel.setUserId(intent.getStringExtra("userId"));
+        userModel.setGender(intent.getStringExtra("gender"));
         userModel.setFcmToken(intent.getStringExtra("fcmToken"));
         return userModel;
     }

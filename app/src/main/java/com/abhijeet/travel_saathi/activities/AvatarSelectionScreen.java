@@ -12,11 +12,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.chat_app.model.UserModel;
+import com.abhijeet.travel_saathi.chat_app.utils.FirebaseUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 
 public class AvatarSelectionScreen extends AppCompatActivity {
 //
@@ -29,6 +36,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
     private EditText username, occupation, bio;
     MotionLayout motionLayout;
     TextView age,gender;
+    UserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,8 +128,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     hideKeyboard();
-                    Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
-                    startActivity(intent);
+                    setUsername();
                     return true;
                 }
                 return false;
@@ -138,6 +145,32 @@ public class AvatarSelectionScreen extends AppCompatActivity {
         }
     }
 
+    void setUsername(){
+        String user_name = username.getText().toString();
+        String email = getSharedPreferences("isLoggedIn", MODE_PRIVATE).getString("Email", null);
+
+        if(user_name.isEmpty() || user_name.length()<3){
+            Toast.makeText(this, "Username length should be at least 3 chars", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(userModel != null){
+            userModel.setUsername(user_name);
+        }else{
+            userModel = new UserModel(email, user_name, Timestamp.now(), FirebaseUtil.currentUserId(),age.getText().toString(), bio.getText().toString(), occupation.getText().toString() , gender.getText().toString());
+        }
+
+        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(AvatarSelectionScreen.this, "Done!!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+    }
 
 
 //    public void initializeIDs(){

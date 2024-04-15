@@ -232,26 +232,50 @@ public class NewLoginActivity extends AppCompatActivity {
         });
     }
     private void loginUser(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success
-                            Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
+        try{
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success
+                                Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
 
-                            SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean("isLoggedIn", true);
-                            editor.putString("Email", email);
-                            editor.apply();
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);                            // You can navigate to another activity or perform other actions here
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(NewLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.putString("Email", email);
+                                editor.commit();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);                            // You can navigate to another activity or perform other actions here
+                            } else {
+                                signupUser(email, password);
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(NewLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            }
                         }
+                    });
+        }catch (Exception e){
+            Log.v("Sign up error", e.getCause().getMessage());
+
+        }
+
+    }
+    private void signupUser(String email, String password) {
+        try{
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        loginUser(email, password);
+                    }else{
+                        Toast.makeText(NewLoginActivity.this, task.toString(), Toast.LENGTH_SHORT).show();
+
                     }
-                });
+                }
+            });
+        }catch (Exception e){
+            Log.v("Sign up error", e.getMessage().toString());
+        }
     }
 }
