@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-
-    <uses-feature android:name="android.hardware.telephony" />
 
     <application
         android:allowBackup="false"
