@@ -40,9 +40,11 @@
                     android:src="@drawable/side_nav_button" />
 
                 <ImageView
+                    android:id="@+id/messages_icon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/bell_icon" />
+                    android:src="@drawable/bell_icon"
+                    tools:layout_editor_absoluteX="341dp" />
 
 
             </com.google.android.flexbox.FlexboxLayout>
@@ -162,7 +164,7 @@
                     android:id="@+id/mapsCardView"
                     android:layout_width="210dp"
                     android:layout_height="170dp"
-                    app:cardCornerRadius="24dp"
+                    android:background="@drawable/custom_card_background"
                     app:strokeColor="#797979"
                     app:strokeWidth="2dp">
 
