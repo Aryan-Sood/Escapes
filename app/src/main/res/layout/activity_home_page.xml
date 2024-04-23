@@ -160,10 +160,9 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mapsCardView"
-                    android:layout_width="170dp"
+                    android:layout_width="210dp"
                     android:layout_height="170dp"
                     app:cardCornerRadius="24dp"
-                    app:layout_flexBasisPercent="48%"
                     app:strokeColor="#797979"
                     app:strokeWidth="2dp">
 
@@ -196,7 +195,6 @@
                     android:layout_width="210dp"
                     android:layout_height="170dp"
                     app:cardCornerRadius="24dp"
-                    app:layout_flexBasisPercent="48%"
                     app:strokeColor="#797979"
                     app:strokeWidth="2dp">
 
