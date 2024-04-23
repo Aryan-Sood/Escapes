@@ -6,9 +6,28 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1000">
+        motion:duration="1200">
        <KeyFrameSet>
-       </KeyFrameSet>
+        <KeyAttribute
+            motion:framePosition="50"
+            motion:motionTarget="@id/avCard"
+            motion:transitionEasing="easeInOut">
+
+            <KeyPosition
+                motion:framePosition="25"
+                motion:percentX="0.25" />
+            <KeyPosition
+                motion:framePosition="50"
+                motion:percentX="0.5" />
+            <KeyPosition
+                motion:framePosition="75"
+                motion:percentX="0.75" />
+
+        </KeyAttribute>
+
+        <!-- Add more keyframes for other properties if needed -->
+
+    </KeyFrameSet>
         <OnClick motion:targetId="@+id/chooseavtext" />
     </Transition>
     <Transition
@@ -102,8 +121,9 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"
             android:id="@+id/avCard"
-            android:layout_marginStart="-400dp"
-            android:layout_marginEnd="400dp" />
+            android:layout_marginStart="-1000dp"
+            android:layout_marginEnd="1000dp"
+            motion:transitionEasing="linear"/>
 
         <Constraint
             android:id="@+id/profpic"
