@@ -15,9 +15,9 @@
         android:textColor="@color/black"
         android:text="Profile"
         android:textSize="26sp"
-        android:layout_marginTop="70dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/c1"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.cardview.widget.CardView
@@ -31,6 +31,7 @@
         android:background="@drawable/profilecardbackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileHeading">
 
         <androidx.constraintlayout.motion.widget.MotionLayout
