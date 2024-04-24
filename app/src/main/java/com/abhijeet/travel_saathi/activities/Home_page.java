@@ -4,15 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.adapters.FromYourLocationAdapter;
 import com.abhijeet.travel_saathi.adapters.SuggestedPlacesAdapter;
+import com.abhijeet.travel_saathi.fragments.MessageFragment;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -29,6 +36,7 @@ public class Home_page extends AppCompatActivity {
     FromYourLocationAdapter locationUsersAdapter;
     SuggestedPlacesAdapter suggestedPlacesAdapter;
     LinearLayoutManager locationUsersLayout, suggestedPlacesLayout;
+    ImageView messageIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +47,25 @@ public class Home_page extends AppCompatActivity {
         locationCardView = findViewById(R.id.locationCardView);
         fromYourLocationRecyclerView = findViewById(R.id.fromYourLocationRecyclerView);
         suggestedPlacesRecyclerView = findViewById(R.id.suggestedPlacesRecyclerView);
+        messageIcon = findViewById(R.id.messages_icon);
 
 
+
+
+        setCardsDimensions();
         fromYourLocationInitData();
         suggestedPlacesInitData();
         fromYourLocationRecyclerView();
         suggestedPlacesRecyclerView();
+
+
+        messageIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MessageFragment messageFragment = new MessageFragment();
+                messageFragment.show(getSupportFragmentManager(), messageFragment.getTag());
+            }
+        });
     }
 
     public void fromYourLocationInitData(){
@@ -78,6 +99,33 @@ public class Home_page extends AppCompatActivity {
         suggestedPlacesAdapter = new SuggestedPlacesAdapter(suggestedPlacesList);
         suggestedPlacesRecyclerView.setAdapter(suggestedPlacesAdapter);
         suggestedPlacesAdapter.notifyDataSetChanged();
+    }
+
+    public int getScreenWidth(Activity activity){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
+
+    public int getCardsSize(int screenWidth){
+        int availableWidth = screenWidth - 40 - 100;
+        return Integer.valueOf(availableWidth/2);
+    }
+
+    public void setCardsDimensions(){
+        int screenWidth = getScreenWidth(this);
+        int cardWidth = getCardsSize(screenWidth);
+
+        FlexboxLayout.LayoutParams mapsLayoutParams = (FlexboxLayout.LayoutParams) mapsCardView.getLayoutParams();
+        FlexboxLayout.LayoutParams locationLayoutParams = (FlexboxLayout.LayoutParams) locationCardView.getLayoutParams();
+
+        mapsLayoutParams.width = cardWidth;
+        mapsLayoutParams.height = (int) (cardWidth*1.2);
+        locationLayoutParams.width = cardWidth;
+        locationLayoutParams.height = (int) (cardWidth*1.2);
+        mapsCardView.setLayoutParams(mapsLayoutParams);
+        locationCardView.setLayoutParams(locationLayoutParams);
     }
 
 }
