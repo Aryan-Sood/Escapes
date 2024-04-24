@@ -172,7 +172,8 @@
             android:rotation="20"
             motion:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="215dp"
-            android:id="@+id/travelTheWorldText" />
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintStart_toEndOf="@+id/chooseADateText" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/travelTheWorldEntry"
@@ -186,7 +187,8 @@
             android:rotation="15"
             motion:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="220dp"
-            android:id="@+id/travelTheWorldText" />
+            android:id="@+id/travelTheWorldText"
+            motion:layout_constraintStart_toEndOf="@+id/chooseADateText" />
         <Constraint
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="150dp"
@@ -236,7 +238,8 @@
             android:layout_marginEnd="25dp"
             android:rotation="23"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="225dp" />
+            android:layout_marginTop="225dp"
+            motion:layout_constraintStart_toEndOf="@+id/chooseADateText" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/jitter2"
@@ -271,7 +274,8 @@
             android:layout_marginEnd="20dp"
             android:rotation="23"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="225dp" />
+            android:layout_marginTop="225dp"
+            motion:layout_constraintStart_toEndOf="@+id/chooseADateText" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/jitter1"
