@@ -24,9 +24,6 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
             R.id.jitter3,
             R.id.jitter1,
             R.id.jitter4,
-            R.id.travelTheWorldExit,
-            R.id.chooseADateExit,
-            R.id.findYourCompanyExit,
             R.id.end
     };
     private int currentTransitionIndex = 0;
