@@ -18,10 +18,10 @@ public class SecondTimeSplashScreen extends AppCompatActivity {
             R.id.justScooter,
             R.id.findYourCompanyEnter,
             R.id.chooseADateEnter,
-            R.id.travelTheWorldEntry,
+//            R.id.travelTheWorldEntry,
             R.id.jitter1,
             R.id.jitter2,
-            R.id.jitter4,
+//            R.id.jitter4,
             R.id.end
     };
     private int currentTransitionIndex = 0;
