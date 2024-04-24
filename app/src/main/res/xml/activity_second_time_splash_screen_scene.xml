@@ -288,7 +288,7 @@
             android:layout_marginEnd="400dp"
             android:rotation="20"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="1500dp"
+            android:layout_marginTop="225dp"
             android:id="@+id/travelTheWorldText" />
     </ConstraintSet>
     <Transition
@@ -354,28 +354,28 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="400dp"
+            android:layout_marginEnd="40dp"
             android:rotation="8"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="1500dp"
+            android:layout_marginTop="70dp"
             android:id="@+id/findYourCompanyText" />
         <Constraint
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:rotation="-20"
-            android:layout_marginStart="400dp"
+            android:layout_marginStart="40dp"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="1600dp"
+            android:layout_marginTop="160dp"
             android:id="@+id/chooseADateText" />
         <Constraint
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="400dp"
+            android:layout_marginEnd="20dp"
             android:rotation="20"
             motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="1500dp"
+            android:layout_marginTop="225dp"
             android:id="@+id/travelTheWorldText" />
         <Constraint
             motion:layout_constraintEnd_toEndOf="parent"
