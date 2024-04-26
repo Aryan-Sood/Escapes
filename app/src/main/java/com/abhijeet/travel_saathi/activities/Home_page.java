@@ -1,14 +1,23 @@
 package com.abhijeet.travel_saathi.activities;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.TransitionInflater;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Layout;
+import android.transition.Transition;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
@@ -21,6 +30,7 @@ import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +46,10 @@ public class Home_page extends AppCompatActivity {
     FromYourLocationAdapter locationUsersAdapter;
     SuggestedPlacesAdapter suggestedPlacesAdapter;
     LinearLayoutManager locationUsersLayout, suggestedPlacesLayout;
-    ImageView messageIcon;
+    ImageView messageIcon, sideNavIcon;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +61,10 @@ public class Home_page extends AppCompatActivity {
         fromYourLocationRecyclerView = findViewById(R.id.fromYourLocationRecyclerView);
         suggestedPlacesRecyclerView = findViewById(R.id.suggestedPlacesRecyclerView);
         messageIcon = findViewById(R.id.messages_icon);
+        sideNavIcon = findViewById(R.id.side_nav);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
 
 
@@ -59,6 +76,20 @@ public class Home_page extends AppCompatActivity {
         suggestedPlacesRecyclerView();
 
 
+
+        Dialog dialog = new Dialog(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.side_drawer,null);
+        dialog.setContentView(dialogView);
+        WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+        layoutParams.dimAmount = 0.5F;
+        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.gravity = Gravity.START;
+        View rootView = dialogView.findViewById(R.id.drawer_root_view);
+        rootView.setTranslationX(-rootView.getWidth());
+
+
+
         messageIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +97,16 @@ public class Home_page extends AppCompatActivity {
                 messageFragment.show(getSupportFragmentManager(), messageFragment.getTag());
             }
         });
+
+
+        sideNavIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.open();
+            }
+        });
+
+
     }
 
     public void fromYourLocationInitData(){
