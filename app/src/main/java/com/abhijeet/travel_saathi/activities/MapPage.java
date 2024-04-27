@@ -26,13 +26,13 @@ public class MapPage extends AppCompatActivity {
         initializeId();
 
 
-        MaterialDatePicker dateSelector = MaterialDatePicker.Builder.dateRangePicker().setTitleText("Select travel dates").setSelection(new Pair<>(MaterialDatePicker.thisMonthInUtcMilliseconds(), MaterialDatePicker.todayInUtcMilliseconds())).build();
-        dateSelector.show(getSupportFragmentManager(),"");
+//        MaterialDatePicker dateSelector = MaterialDatePicker.Builder.dateRangePicker().setTitleText("Select travel dates").setSelection(new Pair<>(MaterialDatePicker.thisMonthInUtcMilliseconds(), MaterialDatePicker.todayInUtcMilliseconds())).build();
+//        dateSelector.show(getSupportFragmentManager(),"");
 
     }
 
 
     public void initializeId(){
-        datePicker = findViewById(R.id.date_picker);
+//        datePicker = findViewById(R.id.date_picker);
     }
 }

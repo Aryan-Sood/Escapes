@@ -112,6 +112,7 @@
                 android:text="Delhi"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:chipCornerRadius="20dp"
                 android:textStyle="bold"
                 app:chipBackgroundColor="#34793B"
                 app:closeIcon="@drawable/cross_icon"
@@ -124,6 +125,7 @@
                 android:layout_marginStart="10dp"
                 android:background="#34793B"
                 android:fontFamily="@font/jua"
+                app:chipCornerRadius="20dp"
                 android:text="Chandigarh"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -138,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:background="#34793B"
                 android:fontFamily="@font/jua"
+                app:chipCornerRadius="20dp"
                 android:text="Himachal"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -156,6 +159,7 @@
                 android:text="Haridwar"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                app:chipCornerRadius="20dp"
                 android:textStyle="bold"
                 app:chipBackgroundColor="#34793B"
                 app:closeIcon="@drawable/cross_icon"
@@ -184,7 +188,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:layout_marginHorizontal="30dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -195,20 +199,26 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <DatePicker
-                    android:id="@+id/date_picker"
+
+                <com.github.sundeepk.compactcalendarview.CompactCalendarView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:datePickerMode="calendar"
-                    android:headerBackground="#8EC893"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:compactCalendarBackgroundColor="#8EC893"
+                    app:compactCalendarCurrentDayBackgroundColor="#8EC893"
+                    app:compactCalendarCurrentSelectedDayBackgroundColor="#34793B"
+                    app:compactCalendarMultiEventIndicatorColor="#fff"
+                    app:compactCalendarTextColor="@color/black"
+                    app:compactCalendarTextSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
+                    app:layout_constraintVertical_bias="0.5">
+
+
+                </com.github.sundeepk.compactcalendarview.CompactCalendarView>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
