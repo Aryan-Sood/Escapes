@@ -72,6 +72,7 @@ public class NewLoginActivity extends AppCompatActivity {
 
 
     boolean flag = false; // false means login type is email
+    // reset the head
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -245,7 +246,7 @@ public class NewLoginActivity extends AppCompatActivity {
         }
     }
 
-
+    // reset
 
     public void showKeyboard(TextInputEditText editText){
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
