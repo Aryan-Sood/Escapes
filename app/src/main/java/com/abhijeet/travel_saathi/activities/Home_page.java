@@ -10,6 +10,7 @@ import androidx.transition.TransitionInflater;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.transition.Transition;
@@ -98,6 +99,15 @@ public class Home_page extends AppCompatActivity {
             }
         });
 
+
+        mapsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home_page.this, MapPage.class);
+                startActivity(intent);
+
+            }
+        });
 
         sideNavIcon.setOnClickListener(new View.OnClickListener() {
             @Override
