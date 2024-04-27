@@ -4,4 +4,12 @@
     </style>
 
     <style name="Theme.TravelSaathi" parent="Base.Theme.TravelSaathi" />
+
+
+
+    <style name="CustomMaterialCalendar" parent="@style/Widget.MaterialComponents.MaterialCalendar">
+        <item name="headerLayout">@null</item>
+    </style>
+
+
 </resources>
