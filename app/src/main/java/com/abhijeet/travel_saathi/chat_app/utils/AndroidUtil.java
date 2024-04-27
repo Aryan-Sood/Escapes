@@ -25,7 +25,7 @@ public class AndroidUtil {
        intent.putExtra("age", model.getAge());
        intent.putExtra("userId",model.getUserId());
        intent.putExtra("gender", model.getGender());
-        intent.putExtra("fcmToken",model.getFcmToken());
+       intent.putExtra("fcmToken",model.getFcmToken());
 
     }
 

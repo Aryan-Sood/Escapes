@@ -27,8 +27,10 @@ import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.abhijeet.travel_saathi.utilities.MailHelper;
 import com.abhijeet.travel_saathi.utilities.OtpFlowManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -42,6 +44,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 public class NewLoginActivity extends AppCompatActivity {
@@ -81,6 +84,7 @@ public class NewLoginActivity extends AppCompatActivity {
 
         initializeID();
         initializeViews();
+
     }
 
 
@@ -187,6 +191,29 @@ public class NewLoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        googleButton.setOnClickListener(view -> {
+            // flag = 1 means login via google
+            Intent signInIntent = googleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, 1000);
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1000) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                String email = account.getEmail();
+                String pass = account.getId();
+                Log.v("EMAIL", email);
+                loginUser(email, pass);
+
+            } catch (ApiException e) {
+                Log.v("Error", e.getMessage());
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 
@@ -245,13 +272,13 @@ public class NewLoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putBoolean("isLoggedIn", true);
                                 editor.putString("Email", email);
+                                Log.v("EMAIL", email);
                                 editor.commit();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);                            // You can navigate to another activity or perform other actions here
                             } else {
                                 signupUser(email, password);
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(NewLoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
