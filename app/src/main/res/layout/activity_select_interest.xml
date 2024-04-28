@@ -8,39 +8,29 @@
     android:layout_height="match_parent"
     tools:context=".activities.Select_Interest">
 
-    <Button
-        android:id="@+id/textButton"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/jost"
-        android:text="Skip"
-        android:layout_marginTop="10dp"
-        android:textColor="#858585"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/jua"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/black"
         android:text="Select Interest"
+        android:textColor="@color/black"
         android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/select_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:paddingHorizontal="20dp"
-        android:gravity="center_horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/jua"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="20dp"
         android:text="Select a minimum of 5 topics according to your interest in order to help personalize your feed."
         android:textColor="#858585"
         android:textSize="12sp"
@@ -63,13 +53,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/travel_preferences" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <RelativeLayout-->
+    <!--    <RelativeLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:layout_marginTop="20dp"-->
