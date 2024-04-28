@@ -7,10 +7,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/select_interest_question_back"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
         android:outlineAmbientShadowColor="@color/black">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,11 +28,11 @@
                 android:id="@+id/question_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="10sp"
                 android:fontFamily="@font/jua"
                 android:text="What type of travel experiences are you interested in?"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/options_list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
