@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/select_interest_question_back"
-            android:paddingHorizontal="15dp"
+            android:paddingHorizontal="5dp"
             android:animateLayoutChanges="true">
 
             <TextView
