@@ -64,10 +64,29 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_options"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/updatebtn"
         app:layout_constraintTop_toBottomOf="@id/travel_preferences" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updatebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#8BA8FF"
+        android:fontFamily="@font/jua"
+        android:text="Update"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_options"
+        app:strokeColor="#0040FF"
+        app:strokeWidth="1dp" />
 
 <!--    <RelativeLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -118,5 +137,6 @@
 <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 <!--    </RelativeLayout>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

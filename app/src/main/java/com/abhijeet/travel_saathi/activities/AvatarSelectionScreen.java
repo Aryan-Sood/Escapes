@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ public class AvatarSelectionScreen extends AppCompatActivity {
     private EditText username, occupation, bio;
     MotionLayout motionLayout;
     TextView age,gender;
+    private Button nextbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,20 +118,28 @@ public class AvatarSelectionScreen extends AppCompatActivity {
         });
 
         bio = findViewById(R.id.bio);
-        bio.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//        bio.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                    hideKeyboard();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+        nextbtn = findViewById(R.id.nextbtn);
+        nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    hideKeyboard();
-                    Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
-                    startActivity(intent);
-                    return true;
-                }
-                return false;
+            public void onClick(View view) {
+                Intent intent = new Intent(AvatarSelectionScreen.this, Select_Interest.class);
+                startActivity(intent);
             }
         });
 
     }
+
+
 
     public void hideKeyboard() {
         View view = this.getCurrentFocus();
