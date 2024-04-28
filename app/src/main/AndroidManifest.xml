@@ -17,13 +17,16 @@
         <activity
             android:name=".activities.MapPage"
             android:exported="true">
-
+        </activity>
+        <activity
+            android:name=".activities.Home_page"
+            android:exported="true">
         </activity>
         <activity
             android:name=".activities.Settings"
             android:exported="true"></activity>
         <activity
-            android:name=".activities.Home_page"
+            android:name=".activities.Select_Interest"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
