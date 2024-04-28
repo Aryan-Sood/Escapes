@@ -63,6 +63,40 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView11"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="50sp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#8DEC96"
+            app:layout_constraintBottom_toBottomOf="@+id/top_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/top_bar"
+            app:layout_constraintTop_toTopOf="@+id/top_bar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/selected_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="15dp"
+                    android:src="@drawable/home"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/flexboxLayout6"
