@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.abhijeet.travel_saathi.BuildConfig;
 import com.abhijeet.travel_saathi.R;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 public class PlaceAutoCompleteSearchBar extends AppCompatActivity {
 
     public RequestQueue requestQueue;
+    private String apiKey = BuildConfig.HERE_API_KEY;
+
     AutoCompleteTextView autoCompleteTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,8 @@ public class PlaceAutoCompleteSearchBar extends AppCompatActivity {
         });
     }
     private void searchPlaces(String query) {
-        String url = "https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey=OMvcCEKAM3E4lhFg_KsNHtb4yMcU-1vl2ND4UeDaMO0&at=33.738045,73.084488&limit=5&resultType=city&q=" + query + "&lang=en-US";
+
+        String url = "https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey="+apiKey+"&at=33.738045,73.084488&limit=5&resultType=city&q=" + query + "&lang=en-US";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
