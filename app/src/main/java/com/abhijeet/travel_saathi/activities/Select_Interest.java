@@ -40,17 +40,17 @@ public class Select_Interest extends AppCompatActivity {
             }
         });
 
-        updatebtn = findViewById(R.id.updatebtn);
-        updatebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //update code
-
-                Intent intent = new Intent(Select_Interest.this, Home_page.class);
-                startActivity(intent);
-            }
-        });
+//        updatebtn = findViewById(R.id.updatebtn);
+//        updatebtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                //update code
+//
+//                Intent intent = new Intent(Select_Interest.this, Home_page.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         List<QuestionsModelClass> questions = new ArrayList<>();
