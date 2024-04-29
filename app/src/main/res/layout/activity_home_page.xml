@@ -75,9 +75,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.95" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </com.google.android.material.navigation.NavigationView>
 
@@ -108,23 +106,45 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/side_nav"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/side_nav_button" />
+                    <ImageView
+                        android:id="@+id/side_nav"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/side_nav_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/messages_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/bell_icon"
-                    tools:layout_editor_absoluteX="341dp" />
+                    <ImageView
+                        android:id="@+id/messages_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/notification"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textColor="#2B59FD"
+                        app:layout_constraintBottom_toBottomOf="@+id/messages_icon"
+                        app:layout_constraintEnd_toEndOf="@+id/messages_icon"
+                        app:layout_constraintStart_toStartOf="@+id/messages_icon"
+                        app:layout_constraintTop_toTopOf="@+id/messages_icon" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.flexbox.FlexboxLayout>
-
 
             <com.abhijeet.travel_saathi.utilities.GradientTextView
                 android:id="@+id/headerone"
@@ -141,7 +161,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/flexBox"
                 app:secondColor="0xFF5754FF" />
 
-
             <com.abhijeet.travel_saathi.utilities.GradientTextView
                 android:id="@+id/headertwo"
                 android:layout_width="wrap_content"
@@ -157,7 +176,6 @@
                 app:layout_goneMarginStart="20dp"
                 app:secondColor="0xFF5754FF" />
 
-
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="220dp"
@@ -167,7 +185,6 @@
                 android:src="@drawable/homepage_hero"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
                 app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
-
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
@@ -182,7 +199,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/headertwo"
                 app:strokeColor="#93ACFF"
                 app:strokeWidth="2dp">
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -217,11 +233,9 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.55" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
 
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/flexboxLayout"
@@ -235,7 +249,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
-
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mapsCardView"
                     android:layout_width="210dp"
@@ -243,7 +256,6 @@
                     android:background="@drawable/custom_card_background"
                     app:strokeColor="#797979"
                     app:strokeWidth="2dp">
-
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
