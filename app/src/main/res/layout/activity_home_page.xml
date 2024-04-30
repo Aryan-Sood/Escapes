@@ -12,7 +12,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="200sp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
@@ -138,7 +138,7 @@
                         android:text="3"
                         android:textColor="#2B59FD"
                         app:layout_constraintBottom_toBottomOf="@+id/messages_icon"
-                        app:layout_constraintEnd_toEndOf="@+id/messages_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/messages_icon"
                         app:layout_constraintTop_toTopOf="@+id/messages_icon" />
 

@@ -68,7 +68,6 @@ public class MapPage extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
 
-
         initializeId();
         initializeCalender();
 
