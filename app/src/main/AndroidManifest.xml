@@ -17,10 +17,19 @@
         <activity
             android:name=".activities.MapPage"
             android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".splash.SplashScreenV2"
             android:exported="true">
+
+
+
+
         </activity>
         <activity
             android:name=".activities.Home_page"
@@ -30,23 +39,17 @@
         <activity
             android:name=".activities.Select_Interest"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.AvatarSelectionScreen"
             android:exported="true" />
+
         <activity
-            android:name=".activities.PlaceAutoCompleteSearchBar"
+            android:name=".splash.SecondTimeSplashScreen"
             android:exported="true">
 
         </activity>
-        <activity
-            android:name=".splash.SecondTimeSplashScreen"
-            android:exported="false" />
         <activity
             android:name=".activities.Signup_successfully"
             android:exported="false" />
