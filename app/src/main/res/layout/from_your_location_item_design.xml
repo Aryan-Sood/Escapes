@@ -7,76 +7,59 @@
     android:paddingHorizontal="5dp"
     android:paddingVertical="5dp">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/setting_back_blue"
+        android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp"
-        app:cardBackgroundColor="#8E91EF">
+        app:layout_constraintTop_toTopOf="parent">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/personImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/avatar_uncle1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/personName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp">
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="10dp"
+            android:text="Person Name"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:alignContent="space_around"
-                app:alignItems="center"
-                app:flexDirection="row"
-                app:justifyContent="space_evenly"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:cardCornerRadius="50dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/personImage"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/avatar_uncle1" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/personName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Person Name"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    tools:layout_editor_absoluteX="226dp"
-                    tools:layout_editor_absoluteY="14dp" />
-
-
-            </com.google.android.flexbox.FlexboxLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
