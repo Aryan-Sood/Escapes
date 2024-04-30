@@ -1,9 +1,7 @@
 package com.abhijeet.travel_saathi.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -31,36 +29,36 @@ public class Select_Interest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_interest);
 
-        skipbtn = findViewById(R.id.textButton);
-        skipbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Select_Interest.this, Home_page.class);
-                startActivity(intent);
-            }
-        });
+//        skipbtn = findViewById(R.id.textButton);
+//        skipbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Select_Interest.this, Home_page.class);
+//                startActivity(intent);
+//            }
+//        });
 
-        updatebtn = findViewById(R.id.updatebtn);
-        updatebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //update code
-
-                Intent intent = new Intent(Select_Interest.this, Home_page.class);
-                startActivity(intent);
-            }
-        });
+//        updatebtn = findViewById(R.id.updatebtn);
+//        updatebtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                //update code
+//
+//                Intent intent = new Intent(Select_Interest.this, Home_page.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         List<QuestionsModelClass> questions = new ArrayList<>();
         questions.add(new QuestionsModelClass("What type of travel experiences are you interested in?", new String[]{"Adventure", "Cultural", "Relaxation", "Sightseeing", "Food & Drink", "Wildlife", "Beach", "City Breaks", "Mountains"}));
         questions.add(new QuestionsModelClass("What type of food and cuisines do you enjoy?", new String[]{"Italian", "Mexican", "Indian", "Chinese", "Japanese", "Mediterranean", "American"}));
         questions.add(new QuestionsModelClass("What are your main interests or hobbies?", new String[]{"Sports", "Photography", "History", "Music", "Art", "Fashion", "Technology"}));
-        questions.add(new QuestionsModelClass("Which of the following destinations would you prefer to visit during the spring season?", new String[]{"Shimla", "Darjeeling", "Ooty", "Munnar", "Manali", "Rishikesh", "Gangtok", "Coorg"}));
-        questions.add(new QuestionsModelClass("Where would you like to travel to escape the summer heat?", new String[]{"Ladakh", "Leh", "Gulmarg", "Andaman and Nicobar Islands", "Pahalgam", "Nainital", "Mussoorie", "Mahabaleshwar"}));
-        questions.add(new QuestionsModelClass("Which monsoon destination appeals to you the most?", new String[]{"Kerala (Backwaters)", "Goa (Beaches)", "Cherrapunji (Meghalaya)", "Alleppey (Alappuzha)", "Matheran", "Lonavala", "Pondicherry", "Udaipur"}));
-        questions.add(new QuestionsModelClass("Where would you like to experience the winter chill?", new String[]{"Auli (Skiing)", "Gulmarg (Skiing)", "Manali", "Shimla", "Srinagar", "Kullu", "Rann of Kutch (Rann Utsav)", "Jaipur"}));
+//        questions.add(new QuestionsModelClass("Which of the following destinations would you prefer to visit during the spring season?", new String[]{"Shimla", "Darjeeling", "Ooty", "Munnar", "Manali", "Rishikesh", "Gangtok", "Coorg"}));
+//        questions.add(new QuestionsModelClass("Where would you like to travel to escape the summer heat?", new String[]{"Ladakh", "Leh", "Gulmarg", "Andaman and Nicobar Islands", "Pahalgam", "Nainital", "Mussoorie", "Mahabaleshwar"}));
+//        questions.add(new QuestionsModelClass("Which monsoon destination appeals to you the most?", new String[]{"Kerala (Backwaters)", "Goa (Beaches)", "Cherrapunji (Meghalaya)", "Alleppey (Alappuzha)", "Matheran", "Lonavala", "Pondicherry", "Udaipur"}));
+//        questions.add(new QuestionsModelClass("Where would you like to experience the winter chill?", new String[]{"Auli (Skiing)", "Gulmarg (Skiing)", "Manali", "Shimla", "Srinagar", "Kullu", "Rann of Kutch (Rann Utsav)", "Jaipur"}));
 
 
         RecyclerView recyclerView = findViewById(R.id.recycler_options);
