@@ -77,7 +77,6 @@ public class Home_page extends AppCompatActivity {
         suggestedPlacesRecyclerView();
 
 
-
         Dialog dialog = new Dialog(this);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.side_drawer,null);
         dialog.setContentView(dialogView);

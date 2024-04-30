@@ -281,29 +281,79 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mapsCardView"
                     android:layout_width="210dp"
-                    android:layout_height="170dp"
-                    android:background="@drawable/custom_card_background"
-                    app:strokeColor="#797979"
-                    app:strokeWidth="2dp">
+                    android:layout_height="170dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#34793B">
+                        android:background="#5DB065">
 
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="30sp"
+                            android:layout_height="30sp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/location"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/animationView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/map_animation" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Maps here"
-                            android:textSize="20sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="50dp"
+                            android:fontFamily="@font/lato"
+                            android:text="Current Location"
+                            android:textColor="#1C1C1C"
+                            app:layout_constraintBottom_toBottomOf="@+id/cardView7"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
+                            app:layout_constraintTop_toTopOf="@+id/cardView7" />
 
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView7"
+                            android:layout_width="35sp"
+                            android:layout_height="35sp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="15dp"
+                            app:cardCornerRadius="50sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#6CDD77">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:src="@drawable/next"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -312,10 +362,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/locationCardView"
                     android:layout_width="210dp"
-                    android:layout_height="170dp"
-                    app:cardCornerRadius="24dp"
-                    app:strokeColor="#797979"
-                    app:strokeWidth="2dp">
+                    android:layout_height="170dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
