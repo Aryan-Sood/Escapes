@@ -118,7 +118,7 @@ public class MapPage extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MapPage.this, "Error: " + error.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(MapPage.this, "Error: " + error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
