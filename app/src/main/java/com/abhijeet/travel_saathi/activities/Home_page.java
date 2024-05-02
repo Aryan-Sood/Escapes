@@ -2,6 +2,7 @@ package com.abhijeet.travel_saathi.activities;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,13 +69,12 @@ public class Home_page extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
 
 
-
-
         setCardsDimensions();
         fromYourLocationInitData();
         suggestedPlacesInitData();
         fromYourLocationRecyclerView();
         suggestedPlacesRecyclerView();
+        setRecyclerViewHeight();
 
 
         Dialog dialog = new Dialog(this);
@@ -139,10 +139,16 @@ public class Home_page extends AppCompatActivity {
         suggestedPlacesList = new ArrayList<>();
         suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
         suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
     }
 
     public void suggestedPlacesRecyclerView(){
-        suggestedPlacesRecyclerView.setNestedScrollingEnabled(false);
+        suggestedPlacesRecyclerView.setNestedScrollingEnabled(true);
         suggestedPlacesLayout = new LinearLayoutManager(this);
         suggestedPlacesLayout.setOrientation(RecyclerView.VERTICAL);
         suggestedPlacesRecyclerView.setLayoutManager(suggestedPlacesLayout);
@@ -156,6 +162,13 @@ public class Home_page extends AppCompatActivity {
         WindowManager windowManager = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
         windowManager.getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.widthPixels;
+    }
+
+    public int getScreenHeight(Activity activity){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.heightPixels;
     }
 
     public int getCardsSize(int screenWidth){
@@ -176,6 +189,12 @@ public class Home_page extends AppCompatActivity {
         locationLayoutParams.height = (int) (cardWidth*1.2);
         mapsCardView.setLayoutParams(mapsLayoutParams);
         locationCardView.setLayoutParams(locationLayoutParams);
+    }
+
+    public void setRecyclerViewHeight(){
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams)  suggestedPlacesRecyclerView.getLayoutParams();
+        layoutParams.height = getScreenHeight(this)-330;
+        suggestedPlacesRecyclerView.setLayoutParams(layoutParams);
     }
 
 }
