@@ -1,25 +1,20 @@
 package com.abhijeet.travel_saathi.activities;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.transition.TransitionInflater;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.transition.Transition;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
@@ -30,7 +25,6 @@ import com.abhijeet.travel_saathi.fragments.MessageFragment;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
 import com.google.android.flexbox.FlexboxLayout;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -51,6 +45,7 @@ public class Home_page extends AppCompatActivity {
     ImageView messageIcon, sideNavIcon;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    ConstraintLayout suggestedConstraint;
 
 
     @Override
@@ -64,6 +59,7 @@ public class Home_page extends AppCompatActivity {
         suggestedPlacesRecyclerView = findViewById(R.id.suggestedPlacesRecyclerView);
         messageIcon = findViewById(R.id.messages_icon);
         sideNavIcon = findViewById(R.id.side_nav);
+        suggestedConstraint = findViewById(R.id.suggestedConstraintLayout);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -74,7 +70,7 @@ public class Home_page extends AppCompatActivity {
         suggestedPlacesInitData();
         fromYourLocationRecyclerView();
         suggestedPlacesRecyclerView();
-        setRecyclerViewHeight();
+        setConstraintLayoutHeight();
 
 
         Dialog dialog = new Dialog(this);
@@ -191,10 +187,10 @@ public class Home_page extends AppCompatActivity {
         locationCardView.setLayoutParams(locationLayoutParams);
     }
 
-    public void setRecyclerViewHeight(){
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams)  suggestedPlacesRecyclerView.getLayoutParams();
-        layoutParams.height = getScreenHeight(this)-330;
-        suggestedPlacesRecyclerView.setLayoutParams(layoutParams);
+    public void setConstraintLayoutHeight(){
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) suggestedConstraint.getLayoutParams();
+        layoutParams.height = getScreenHeight(this);
+        suggestedConstraint.setLayoutParams(layoutParams);
     }
 
 }
