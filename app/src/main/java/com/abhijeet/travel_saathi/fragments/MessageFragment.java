@@ -77,7 +77,7 @@ public class MessageFragment extends BottomSheetDialogFragment {
         messageLayout = new LinearLayoutManager(getContext());
         messageLayout.setOrientation(RecyclerView.VERTICAL);
         chatsRecyclerView.setLayoutManager(messageLayout);
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(messageList,getContext());
         chatsRecyclerView.setAdapter(messageAdapter);
         messageAdapter.notifyDataSetChanged();
     }

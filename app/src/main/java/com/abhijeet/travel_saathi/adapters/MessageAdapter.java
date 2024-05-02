@@ -1,5 +1,6 @@
 package com.abhijeet.travel_saathi.adapters;
 
+import android.content.Context;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.fragments.ChatFragment;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.MessageModelClass;
 
@@ -20,9 +23,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
 
     List<MessageModelClass> userList;
+    Context context;
 
-    public MessageAdapter(List<MessageModelClass> userList) {
+    public MessageAdapter(List<MessageModelClass> userList, Context context) {
         this.userList = userList;
+        this.context = context;
     }
 
     @NonNull
@@ -38,6 +43,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         String name = userList.get(position).getName();
 
         holder.setData(image,name);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChatFragment chatFragment = new ChatFragment();
+                FragmentActivity fragmentActivity = (FragmentActivity) context;
+                chatFragment.show(fragmentActivity.getSupportFragmentManager(), "ChatFragmentTag");
+            }
+        });
     }
 
     @Override
