@@ -3,7 +3,11 @@ package com.abhijeet.travel_saathi.activities;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.applikeysolutions.cosmocalendar.view.CalendarView;
+import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import org.json.JSONArray;
@@ -30,6 +37,7 @@ public class MapPage extends AppCompatActivity {
     public RequestQueue requestQueue;
 
     CalendarView calendarView;
+    FlexboxLayout chipLayout;
 
 
 
@@ -60,11 +68,24 @@ public class MapPage extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedItem = (String) adapterView.getItemAtPosition(i);
+                Chip chip = new Chip(getApplicationContext());
+                chip.setText(selectedItem);
+                ChipGroup chipGroup = new ChipGroup(getApplicationContext());
+                chipGroup.addView(chip);
+                chipLayout.addView(chipGroup);
+            }
+        });
+
     }
 
 
     public void initializeId(){
         autoCompleteTextView = findViewById(R.id.auto_complete);
+        chipLayout = findViewById(R.id.flexboxLayout6);
     }
 
     private void searchPlaces(String query) {
@@ -81,7 +102,6 @@ public class MapPage extends AppCompatActivity {
                         JSONObject item = items.getJSONObject(i);
                         placeNames.add(item.getString("title"));
                     }
-
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(MapPage.this, android.R.layout.simple_dropdown_item_1line, placeNames);
                     autoCompleteTextView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
