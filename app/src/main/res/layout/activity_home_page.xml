@@ -281,12 +281,14 @@
                     android:id="@+id/mapsCardView"
                     android:layout_width="210dp"
                     app:strokeWidth="0dp"
+                    app:cardBackgroundColor="#A4B0D2"
+                    app:cardCornerRadius="0dp"
                     android:layout_height="170dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#5DB065">
+                        android:background="@drawable/map_background">
 
                         <ImageView
                             android:id="@+id/imageView11"
@@ -363,12 +365,14 @@
                     android:id="@+id/locationCardView"
                     android:layout_width="210dp"
                     app:strokeWidth="0dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardBackgroundColor="#A4B0D2"
                     android:layout_height="170dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#8985FD">
+                        android:background="@drawable/setting_back_blue">
 
                         <TextView
                             android:id="@+id/textView9"
