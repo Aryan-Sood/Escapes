@@ -41,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -68,6 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <CheckBox
+            android:id="@+id/terms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
@@ -103,212 +105,7 @@
         app:strokeColor="@color/black"
         app:strokeWidth="1dp" />
 
-    <FrameLayout
-        android:id="@+id/otpDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendOTP">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/flexboxLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                app:justifyContent="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginHorizontal="5dp"
-                    app:boxCornerRadiusBottomEnd="6dp"
-                    app:boxCornerRadiusBottomStart="6dp"
-                    app:boxCornerRadiusTopEnd="6dp"
-                    app:boxCornerRadiusTopStart="6dp"
-                    app:boxStrokeColor="#0038FF"
-                    app:boxStrokeWidth="2dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/digitOne"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/lato"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginHorizontal="5dp"
-                    app:boxCornerRadiusBottomEnd="6dp"
-                    app:boxCornerRadiusBottomStart="6dp"
-                    app:boxCornerRadiusTopEnd="6dp"
-                    app:boxCornerRadiusTopStart="6dp"
-                    app:boxStrokeColor="#0038FF"
-                    app:boxStrokeWidth="2dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/digitTwo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/jua"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginHorizontal="5dp"
-                    app:boxCornerRadiusBottomEnd="6dp"
-                    app:boxCornerRadiusBottomStart="6dp"
-                    app:boxCornerRadiusTopEnd="6dp"
-                    app:boxCornerRadiusTopStart="6dp"
-                    app:boxStrokeColor="#0038FF"
-                    app:boxStrokeWidth="2dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/digitThree"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/jua"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginHorizontal="5dp"
-                    app:boxCornerRadiusBottomEnd="6dp"
-                    app:boxCornerRadiusBottomStart="6dp"
-                    app:boxCornerRadiusTopEnd="6dp"
-                    app:boxCornerRadiusTopStart="6dp"
-                    app:boxStrokeColor="#0038FF"
-                    app:boxStrokeWidth="2dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/digitFour"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/jua"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="30sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-            </com.google.android.flexbox.FlexboxLayout>
-
-            <TextView
-                android:id="@+id/resendOtp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/jua"
-                android:text="Resend lato"
-                android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flexboxLayout2"
-                tools:layout_editor_absoluteY="127dp" />
-
-            <TextView
-                android:id="@+id/timeout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/lato"
-                android:text="Timeout"
-                android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/resendOtp" />
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                app:cardBackgroundColor="#A6D1E6"
-                app:cardCornerRadius="50dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.9"
-                app:layout_constraintTop_toBottomOf="@+id/timeout">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-
-                    <ImageView
-                        android:id="@+id/nextButton"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/baseline_navigate_next_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </FrameLayout>
 
 
     <com.google.android.material.card.MaterialCardView
@@ -320,7 +117,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otpDetails"
+        app:layout_constraintTop_toBottomOf="@+id/sendOTP"
         app:strokeColor="#009AFF"
         app:strokeWidth="2dp">
 
