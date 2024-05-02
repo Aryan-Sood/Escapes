@@ -156,11 +156,10 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
-            app:strokeWidth="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -172,33 +171,31 @@
                 android:layout_height="match_parent">
 
 
-                <DatePicker
-                    android:id="@+id/date_picker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:headerBackground="#60A066"
+                <com.applikeysolutions.cosmocalendar.view.CalendarView
+                    android:id="@+id/calendar_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:calendarBackgroundColor="#8EC893"
+                    app:currentDayTextColor="@color/black"
+                    app:dayTextColor="@color/black"
+                    app:disabledDayTextColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
-
-                <!--                <ru.cleverpumpkin.calendar.CalendarView-->
-                <!--                    android:id="@+id/calendar_view"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="match_parent"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintHorizontal_bias="0.5"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent"-->
-                <!--                    app:layout_constraintVertical_bias="0.5" />-->
+                    app:layout_constraintVertical_bias="0.5"
+                    app:monthTextColor="@color/black"
+                    app:otherDayTextColor="@color/black"
+                    app:selectedDayBackgroundColor="#60A066"
+                    app:selectedDayTextColor="@color/black"
+                    app:selectionBarMonthTextColor="@color/white"
+                    app:selectionType="range"
+                    app:weekDayTitleTextColor="#595959"
+                    app:weekendDayTextColor="@color/black" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </com.google.android.material.card.MaterialCardView>
 

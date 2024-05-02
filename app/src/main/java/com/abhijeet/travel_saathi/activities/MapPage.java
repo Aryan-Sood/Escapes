@@ -1,63 +1,36 @@
 package com.abhijeet.travel_saathi.activities;
 
-import static com.kizitonwose.calendar.core.ExtensionsKt.daysOfWeek;
-import static com.kizitonwose.calendar.core.ExtensionsKt.firstDayOfWeekFromLocale;
-
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.util.Pair;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.BuildConfig;
 import com.abhijeet.travel_saathi.R;
-import com.abhijeet.travel_saathi.utilities.MonthDataBinder;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.datepicker.MaterialDatePicker;
+import com.applikeysolutions.cosmocalendar.view.CalendarView;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.time.DayOfWeek;
-import java.time.YearMonth;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import ru.cleverpumpkin.calendar.CalendarDate;
-import ru.cleverpumpkin.calendar.CalendarView;
 
 
 public class MapPage extends AppCompatActivity {
 
     public RequestQueue requestQueue;
+
+    CalendarView calendarView;
+
 
 
     private final String apiKey = BuildConfig.HERE_API_KEY;
@@ -71,6 +44,7 @@ public class MapPage extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
 
         initializeId();
+
 
 
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
@@ -124,6 +98,8 @@ public class MapPage extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
     }
+
+
 
 
 }
