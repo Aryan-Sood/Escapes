@@ -280,6 +280,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mapsCardView"
                     android:layout_width="210dp"
+                    app:strokeWidth="0dp"
                     android:layout_height="170dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -361,6 +362,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/locationCardView"
                     android:layout_width="210dp"
+                    app:strokeWidth="0dp"
                     android:layout_height="170dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
