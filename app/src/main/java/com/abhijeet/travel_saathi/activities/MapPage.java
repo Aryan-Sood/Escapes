@@ -33,6 +33,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
@@ -57,7 +58,8 @@ import ru.cleverpumpkin.calendar.CalendarView;
 public class MapPage extends AppCompatActivity {
 
     public RequestQueue requestQueue;
-    CalendarView calendarView;
+
+
     private final String apiKey = BuildConfig.HERE_API_KEY;
 
     MaterialAutoCompleteTextView autoCompleteTextView;
@@ -69,7 +71,6 @@ public class MapPage extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
 
         initializeId();
-        initializeCalender();
 
 
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
@@ -90,7 +91,6 @@ public class MapPage extends AppCompatActivity {
 
     public void initializeId(){
         autoCompleteTextView = findViewById(R.id.auto_complete);
-        calendarView = findViewById(R.id.calendar_view);
     }
 
     private void searchPlaces(String query) {
@@ -126,96 +126,4 @@ public class MapPage extends AppCompatActivity {
     }
 
 
-    public void initializeCalender(){
-
-        Calendar calendar = Calendar.getInstance();
-
-        calendar.set(2024,Calendar.APRIL,29);
-        CalendarDate initialDate = new CalendarDate(calendar.getTime());
-
-        CalendarDate minDate = new CalendarDate(calendar.getTime());
-
-        calendar.set(2030, Calendar.JULY, 15);
-        CalendarDate maxDate = new CalendarDate(calendar.getTime());
-
-        List<CalendarDate> preSelectedDate = new ArrayList<>();
-        preSelectedDate.add(initialDate);
-        preSelectedDate.add(initialDate);
-
-        int firstDayOfWeek = Calendar.MONDAY;
-
-        calendarView.setupCalendar(initialDate, minDate, maxDate, CalendarView.SelectionMode.RANGE,preSelectedDate, firstDayOfWeek, false);
-//            calendarView.setupCalendar(initialDate);
-        calendarView.setOnDateClickListener(new Function1<CalendarDate, Unit>() {
-            @Override
-            public Unit invoke(CalendarDate calendarDate) {
-//                Toast.makeText(MapPage.this, String.valueOf(calendarDate.getDayOfMonth()), Toast.LENGTH_SHORT).show();
-                return null;
-            }
-        });
-
-        RecyclerView.ItemDecoration itemDecoration = new RecyclerView.ItemDecoration() {
-            @Override
-            public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-                super.onDraw(c, parent, state);
-            }
-        };
-
-        calendarView.addCustomItemDecoration(itemDecoration);
-
-//        calendarView = findViewById(R.id.calendarView);
-
-//        calendarView.setDayBinder(new MonthDataBinder());
-//        YearMonth currentMonth = YearMonth.now();
-//        Toast.makeText(this, currentMonth.getMonth().toString(), Toast.LENGTH_SHORT).show();
-//        YearMonth startMonth = currentMonth.minusMonths(100);
-//        YearMonth endMonth = currentMonth.plusMonths(100);
-//        DayOfWeek firstDayOfWeek = firstDayOfWeekFromLocale();
-//
-//        calendarView.setup(startMonth, endMonth, firstDayOfWeek);
-//        calendarView.scrollToMonth(currentMonth);
-//
-//        List<DayOfWeek> allWeekDays = daysOfWeek();
-//
-////        calendarView.setup(startMonth, endMonth, allWeekDays.first());
-//
-//        ViewGroup titlesContainer = (ViewGroup) findViewById(R.id.titlesContainer);
-//        for (int i = 0; i < titlesContainer.getChildCount(); i++) {
-//            View childView = titlesContainer.getChildAt(i);
-//
-//            if (childView instanceof TextView) {
-//                TextView textView = (TextView) childView;
-//                int index = i;
-//                DayOfWeek dayOfWeek = allWeekDays.get(index);
-//                String title = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault());
-//                textView.setText(title);
-//            }
-//        }
-
-
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(2024, Calendar.APRIL, 28);
-//        CalendarDate initialDate = new CalendarDate(calendar.getTime());
-//
-//        calendar.set(2018, Calendar.APRIL, 28);
-//        CalendarDate minDate = new CalendarDate(calendar.getTime());
-//
-//        calendar.set(2030, Calendar.APRIL, 28);
-//        CalendarDate maxDate = new CalendarDate(calendar.getTime());
-
-//        List<CalendarDate> preselectedDate = getPreselectedDates();
-//        CalendarDate firstDayOfWeek = java.util.Calendar.MONDAY;
-
-//        calendarView.setupCalendar(
-//                initialDate = initialDate,
-//                minDate = minDate,
-//                maxDate = maxDate,
-//                CalendarView.SelectionMode.RANGE,
-//                preselectedDate,
-//
-//
-//
-//        );
-
-    }
 }
