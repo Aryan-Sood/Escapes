@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.setting_page"
+    android:background="#816CFF">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#816CFF">
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:cardBackgroundColor="#816CFF"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/jua"
+                    android:text="Setting"
+                    android:textColor="#171717"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ScrollView
+                    android:id="@+id/scrollView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="#A4B0D2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#816CFF">
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/setting_back_green"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp">
+
+                                <ImageView
+                                    android:id="@+id/imageView10"
+                                    android:layout_width="25sp"
+                                    android:layout_height="25sp"
+                                    android:src="@drawable/notification"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                                    app:layout_constraintEnd_toStartOf="@+id/textView11"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+                                <TextView
+                                    android:id="@+id/textView11"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="Notification"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="18sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/textView12"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:fontFamily="@font/lato"
+                                    android:text="Custimize the notification accourdingly."
+                                    android:textColor="#505050"
+                                    android:textSize="11sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+
+                                <TextView
+                                    android:id="@+id/textView13"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="Theme"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="18sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                                <TextView
+                                    android:id="@+id/textView14"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:fontFamily="@font/lato"
+                                    android:text="Choose the theme for complete app."
+                                    android:textColor="#505050"
+                                    android:textSize="11sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                                <ImageView
+                                    android:layout_width="25sp"
+                                    android:layout_height="25sp"
+                                    android:src="@drawable/theme"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
+                                    app:layout_constraintEnd_toStartOf="@+id/textView13"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/setting_back_red"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp">
+
+                                <ImageView
+                                    android:layout_width="25sp"
+                                    android:layout_height="25sp"
+                                    android:src="@drawable/log_out"
+                                    app:layout_constraintBottom_toBottomOf="@+id/log_text"
+                                    app:layout_constraintEnd_toStartOf="@+id/log"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/log" />
+
+                                <TextView
+                                    android:id="@+id/log"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="Log Out Account"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="18sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/log_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:fontFamily="@font/lato"
+                                    android:text="Log out your current sign in Account."
+                                    android:textColor="#505050"
+                                    android:textSize="11sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/log" />
+
+
+                                <TextView
+                                    android:id="@+id/delete"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="Delete Account"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="18sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/log_text" />
+
+                                <TextView
+                                    android:id="@+id/delete_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:fontFamily="@font/lato"
+                                    android:text="Delete your Account."
+                                    android:textColor="#505050"
+                                    android:textSize="11sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/delete" />
+
+                                <ImageView
+                                    android:layout_width="25sp"
+                                    android:layout_height="25sp"
+                                    android:src="@drawable/delete"
+                                    app:layout_constraintBottom_toBottomOf="@+id/delete_text"
+                                    app:layout_constraintEnd_toStartOf="@+id/delete"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/delete" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="35dp"
+                            android:background="@drawable/setting_back_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="0dp">
+
+                                <ImageView
+                                    android:layout_width="25sp"
+                                    android:layout_height="25sp"
+                                    android:src="@drawable/support"
+                                    app:layout_constraintBottom_toBottomOf="@+id/help_text"
+                                    app:layout_constraintEnd_toStartOf="@+id/help"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/help" />
+
+                                <TextView
+                                    android:id="@+id/help"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="Help and Support"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="18sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/help_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:fontFamily="@font/lato"
+                                    android:text="Get support from our tem to solve your issue."
+                                    android:textColor="#3A3A3A"
+                                    android:textSize="11sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/help" />
+
+
+                                <TextView
+                                    android:id="@+id/about"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:text="About"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="18sp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/help_text" />
+
+                                <TextView
+                                    android:id="@+id/about_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="75dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:fontFamily="@font/lato"
+                                    android:text="Terms &amp; Condition; Privacy Policy."
+                                    android:textColor="#505050"
+                                    android:textSize="11sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/about" />
+
+                                <ImageView
+                                    android:layout_width="25sp"
+                                    android:layout_height="25sp"
+                                    android:src="@drawable/about"
+                                    app:layout_constraintBottom_toBottomOf="@+id/about_text"
+                                    app:layout_constraintEnd_toStartOf="@+id/about"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/about" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </RelativeLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </ScrollView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current Verson 1.0.0"
+                    android:textColor="#373737"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

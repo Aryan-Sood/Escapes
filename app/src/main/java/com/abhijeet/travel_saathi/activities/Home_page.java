@@ -11,7 +11,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,12 +18,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.adapters.FromYourLocationAdapter;
 import com.abhijeet.travel_saathi.adapters.SuggestedPlacesAdapter;
 import com.abhijeet.travel_saathi.fragments.MessageFragment;
-import com.abhijeet.travel_saathi.fragments.setting_page;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
 import com.google.android.flexbox.FlexboxLayout;
@@ -93,7 +92,8 @@ public class Home_page extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Home_page.this,SettingsPage.class);
+                startActivity(intent);
             }
         });
 
