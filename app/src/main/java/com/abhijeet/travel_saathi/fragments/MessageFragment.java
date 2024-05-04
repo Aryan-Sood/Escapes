@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,10 +65,16 @@ public class MessageFragment extends BottomSheetDialogFragment {
         initChatsRecyclerView();
     }
 
-
-
     public void initChatsRecyclerViewData(){
         messageList = new ArrayList<>();
+        messageList.add(new MessageModelClass(R.drawable.avatar_lady2, "Rishiraj Jain"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_uncle1, "Siddharth Kumar"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_lady2, "Abhijeet Kumar"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_uncle1, "Vibhor Mathur"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_lady2, "Rishiraj Jain"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_uncle1, "Siddharth Kumar"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_lady2, "Abhijeet Kumar"));
+        messageList.add(new MessageModelClass(R.drawable.avatar_uncle1, "Vibhor Mathur"));
         messageList.add(new MessageModelClass(R.drawable.avatar_lady2, "Rishiraj Jain"));
         messageList.add(new MessageModelClass(R.drawable.avatar_uncle1, "Siddharth Kumar"));
         messageList.add(new MessageModelClass(R.drawable.avatar_lady2, "Abhijeet Kumar"));
@@ -77,7 +84,7 @@ public class MessageFragment extends BottomSheetDialogFragment {
         messageLayout = new LinearLayoutManager(getContext());
         messageLayout.setOrientation(RecyclerView.VERTICAL);
         chatsRecyclerView.setLayoutManager(messageLayout);
-        messageAdapter = new MessageAdapter(messageList,getContext());
+        messageAdapter = new MessageAdapter(messageList,getContext(), this);
         chatsRecyclerView.setAdapter(messageAdapter);
         messageAdapter.notifyDataSetChanged();
     }

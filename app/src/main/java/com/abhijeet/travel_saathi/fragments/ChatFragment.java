@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,11 @@ public class ChatFragment extends BottomSheetDialogFragment {
     RecyclerView recyclerView;
     ChatMessageRecyclerAdapter adapter;
 
+    final String name;
+
+    public ChatFragment(String name) {
+        this.name = name;
+    }
 
     @NonNull
     @Override
@@ -67,6 +73,10 @@ public class ChatFragment extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        TextView chatName = view.findViewById(R.id.chatName);
+
+        chatName.setText(this.name);
     }
 
     void setupRecyclerView(){

@@ -16,18 +16,21 @@ import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.fragments.ChatFragment;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.MessageModelClass;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
-
+    private BottomSheetDialogFragment parentFragment;
 
     List<MessageModelClass> userList;
     Context context;
 
-    public MessageAdapter(List<MessageModelClass> userList, Context context) {
+    public MessageAdapter(List<MessageModelClass> userList, Context context, BottomSheetDialogFragment parentFragment) {
         this.userList = userList;
         this.context = context;
+        this.parentFragment = parentFragment;
     }
 
     @NonNull
@@ -47,9 +50,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChatFragment chatFragment = new ChatFragment();
+                ChatFragment chatFragment = new ChatFragment(name);
                 FragmentActivity fragmentActivity = (FragmentActivity) context;
+                parentFragment.dismiss();
                 chatFragment.show(fragmentActivity.getSupportFragmentManager(), "ChatFragmentTag");
+
             }
         });
     }
