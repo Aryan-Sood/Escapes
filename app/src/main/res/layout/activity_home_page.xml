@@ -270,7 +270,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 app:justifyContent="space_between"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -281,9 +281,9 @@
                     android:id="@+id/locationCardView"
                     android:layout_width="210dp"
                     android:layout_height="170dp"
-                    app:strokeWidth="0dp"
                     app:cardBackgroundColor="#A4B0D2"
-                    app:cardCornerRadius="0dp">
+                    app:cardCornerRadius="0dp"
+                    app:strokeWidth="0dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -325,9 +325,9 @@
                     android:id="@+id/mapsCardView"
                     android:layout_width="210dp"
                     android:layout_height="170dp"
-                    app:strokeWidth="0dp"
                     app:cardBackgroundColor="#A4B0D2"
-                    app:cardCornerRadius="0dp">
+                    app:cardCornerRadius="0dp"
+                    app:strokeWidth="0dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -407,88 +407,21 @@
 
             </com.google.android.flexbox.FlexboxLayout>
 
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/flexboxLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                app:justifyContent="space_around"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/suggestedConstraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/flexboxLayout">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    app:cardCornerRadius="50dp">
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#C8D0E7">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/jua"
-                            android:text="Explore the best places near you"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:cardCornerRadius="50dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#8C9CC8">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/search_icon"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </com.google.android.flexbox.FlexboxLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/suggestedConstraintLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flexboxLayout3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent">
-
                 <com.abhijeet.travel_saathi.utilities.GradientTextView
                     android:id="@+id/gradientTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/jua"
                     android:text="Suggested Places"
                     android:textSize="26sp"
