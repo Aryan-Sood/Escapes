@@ -51,7 +51,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-analytics:21.5.1'
     implementation 'com.google.firebase:firebase-auth:22.3.1'
-    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+
+    // Add the dependency for the Cloud Storage library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-storage")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
     implementation("com.google.firebase:firebase-auth")
     implementation 'androidx.activity:activity:1.9.0'
@@ -71,6 +75,11 @@ dependencies {
 
     //lottie Animation
     implementation "com.airbnb.android:lottie:6.1.0"
+
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
+
 
     implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
 
