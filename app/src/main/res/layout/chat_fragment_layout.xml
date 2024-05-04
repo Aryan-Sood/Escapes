@@ -44,7 +44,6 @@
                         android:layout_height="match_parent"
                         android:src="@drawable/avatar_uncle1" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -61,7 +60,6 @@
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="173dp"
                 tools:layout_editor_absoluteY="11dp" />
-
 
         </com.google.android.flexbox.FlexboxLayout>
 
