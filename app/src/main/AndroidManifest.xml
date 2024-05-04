@@ -22,7 +22,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.MapPage"
-            android:exported="true"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".splash.SplashScreenV2"
             android:exported="true"></activity>
@@ -32,11 +38,7 @@
         <activity
             android:name=".activities.Home_page"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.AvatarSelectionScreen"
