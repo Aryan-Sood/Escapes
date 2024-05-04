@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -147,7 +148,9 @@ public class AvatarSelectionScreen extends AppCompatActivity {
 
     void setUsername(){
         String user_name = username.getText().toString();
-        String email = getSharedPreferences("isLoggedIn", MODE_PRIVATE).getString("Email", null);
+        String email = getSharedPreferences("isLoggedIn", MODE_PRIVATE).getString("Email", null).toString();
+
+        Log.v("Email", email);
 
         if(user_name.isEmpty() || user_name.length()<3){
             Toast.makeText(this, "Username length should be at least 3 chars", Toast.LENGTH_SHORT).show();

@@ -207,9 +207,7 @@ public class NewLoginActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 String email = account.getEmail();
                 String pass = account.getId();
-                Log.v("EMAIL", email);
                 loginUser(email, pass);
-
             } catch (ApiException e) {
                 Log.v("Error", e.getMessage());
             }
@@ -274,16 +272,19 @@ public class NewLoginActivity extends AppCompatActivity {
                                 editor.putBoolean("isLoggedIn", true);
                                 editor.putString("Email", email);
                                 Log.v("EMAIL", email);
-                                editor.commit();
+                                editor.apply();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);                            // You can navigate to another activity or perform other actions here
                             } else {
+                                Toast.makeText(NewLoginActivity.this, "this is", Toast.LENGTH_SHORT).show();
                                 signupUser(email, password);
                                 // If sign in fails, display a message to the user.
                             }
                         }
                     });
         }catch (Exception e){
+            Toast.makeText(NewLoginActivity.this, "this is", Toast.LENGTH_SHORT).show();
+
             Log.v("Sign up error", e.getCause().getMessage());
 
         }
