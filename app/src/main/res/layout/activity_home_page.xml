@@ -65,7 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView6" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/settingsOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
