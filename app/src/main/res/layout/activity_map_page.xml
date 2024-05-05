@@ -8,26 +8,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MapPage"
-    android:background="#5DB065">
+    android:background="#A4B0D2">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5DB065">
+        android:background="#A4B0D2">
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="12dp"
+            app:strokeWidth="2dp"
+            app:cardBackgroundColor="#6EA2FB"
+            app:strokeColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/auto_complete_card"
+            app:layout_constraintEnd_toStartOf="@+id/auto_complete_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/auto_complete_card">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/back_btn"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/auto_complete_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginHorizontal="30dp"
+            app:cardElevation="12dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             app:cardBackgroundColor="#8EC893"
+            app:cardCornerRadius="200dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#0F9514"
+            app:strokeWidth="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -36,16 +75,30 @@
                 android:paddingHorizontal="5dp"
                 android:paddingVertical="2dp">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/location"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/auto_complete"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/auto_complete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="20dp"
                     android:background="#8EC893"
                     android:backgroundTint="#8EC893"
+                    android:fontFamily="@font/lato"
                     android:hint="Search here..."
                     android:padding="12dp"
                     android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -76,64 +129,20 @@
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#34793B"
+                android:background="#A4B0D2"
                 android:fontFamily="@font/jua"
                 android:text="Delhi"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:chipBackgroundColor="#34793B"
+                app:chipBackgroundColor="#8DC792"
                 app:chipCornerRadius="20dp"
+                app:chipStrokeWidth="0dp"
                 app:closeIcon="@drawable/cross_icon"
                 app:closeIconTint="@color/black"
                 app:closeIconVisible="true" />
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="#34793B"
-                android:fontFamily="@font/jua"
-                android:text="Chandigarh"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#34793B"
-                app:chipCornerRadius="20dp"
-                app:closeIcon="@drawable/cross_icon"
-                app:closeIconTint="@color/black"
-                app:closeIconVisible="true" />
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#34793B"
-                android:fontFamily="@font/jua"
-                android:text="Himachal"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#34793B"
-                app:chipCornerRadius="20dp"
-                app:closeIcon="@drawable/cross_icon"
-                app:closeIconTint="@color/black"
-                app:closeIconVisible="true" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="#34793B"
-                android:fontFamily="@font/jua"
-                android:text="Haridwar"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#34793B"
-                app:chipCornerRadius="20dp"
-                app:closeIcon="@drawable/cross_icon"
-                app:closeIconTint="@color/black"
-                app:closeIconVisible="true" />
 
 
         </com.google.android.flexbox.FlexboxLayout>
@@ -143,7 +152,7 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/jua"
             android:text="Select Travel Date"
             android:textColor="@color/black"
@@ -204,7 +213,7 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/jua"
             android:text="Your Selected Plan"
             android:textColor="@color/black"
@@ -233,13 +242,13 @@
             <com.google.android.material.chip.Chip
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#34793B"
                 android:fontFamily="@font/jua"
                 android:text="Himachal"
+                app:chipStrokeColor="#34793B"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:chipBackgroundColor="#34793B"
+                app:chipBackgroundColor="#8CC691"
                 app:chipCornerRadius="20dp"
                 app:closeIcon="@drawable/cross_icon"
                 app:closeIconTint="@color/black"
@@ -273,7 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    app:cardBackgroundColor="#5FBF68"
+                    app:cardBackgroundColor="#FF8D8D"
                     app:cardCornerRadius="50dp"
                     app:strokeWidth="0dp">
 
@@ -284,6 +293,8 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="-4dp"
                             android:src="@drawable/heart_icon"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -320,9 +331,12 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#8EC893"
-            android:layout_marginTop="20dp"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#96A6FF"
+            app:cardElevation="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -338,11 +352,11 @@
                     android:id="@+id/cardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="People with Similar Interests"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -356,11 +370,11 @@
                     android:layout_marginTop="10dp"
                     android:nestedScrollingEnabled="false"
                     android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:paddingBottom="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardTitle"/>
+                    app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
