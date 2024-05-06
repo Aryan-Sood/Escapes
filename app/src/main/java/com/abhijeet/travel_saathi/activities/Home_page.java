@@ -97,7 +97,7 @@ public class Home_page extends AppCompatActivity {
 
         SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
 
-        String user_name = sh.getString("USERNAME", null);
+        String user_name = sh.getString("USERNAME", "");
         if(user_name.isEmpty()){
             username.setText("NOne");
         }else{
@@ -301,7 +301,7 @@ public class Home_page extends AppCompatActivity {
 
 
 
-        suggestedPlacesList.add(new SuggestedPlacesModelClass("Shimla",R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass("Shimla",R.drawable.az));
         suggestedPlacesList.add(new SuggestedPlacesModelClass("Kullu",R.drawable.scene_two));
         suggestedPlacesList.add(new SuggestedPlacesModelClass("Washington",R.drawable.scene_two));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
