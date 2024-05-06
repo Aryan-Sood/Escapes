@@ -21,11 +21,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.activities.Signup_successfully;
 import com.abhijeet.travel_saathi.models.UserModel;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.abhijeet.travel_saathi.utilities.MailHelper;
 import com.abhijeet.travel_saathi.utilities.OtpFlowManager;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -57,6 +59,7 @@ public class NewLoginActivity extends AppCompatActivity {
     ImageView nextButton;
 
     String otp;
+    UserModel currentUserModel;
     String enteredOTP;
     MaterialCardView googleButton;
     TextView resendOtp;
@@ -101,17 +104,16 @@ public class NewLoginActivity extends AppCompatActivity {
         otpDialog.setContentView(R.layout.otp_bottomsheet);
 
         FrameLayout bottomsheet = loginDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
-        FrameLayout otpSheet = otpDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomsheet);
 
-        ViewGroup.MarginLayoutParams layoutParams1 = (ViewGroup.MarginLayoutParams) otpSheet.getLayoutParams();
-        layoutParams1.leftMargin = 16;
-        layoutParams1.rightMargin = 16;
-        otpSheet.setLayoutParams(layoutParams1);
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) bottomsheet.getLayoutParams();
+        layoutParams.leftMargin = 16;
+        layoutParams.rightMargin = 16;
+        bottomsheet.setLayoutParams(layoutParams);
 
         loginDialog.setCancelable(false);
         loginDialog.show();
-        otpDialog.setCancelable(true);
-        otpDetails = otpDialog.findViewById(R.id.otpDetails);
+        otpDetails = loginDialog.findViewById(R.id.otpDetails);
         assert otpDetails != null;
         otpDetails.setVisibility(View.GONE);
 
@@ -120,16 +122,16 @@ public class NewLoginActivity extends AppCompatActivity {
 
         emailField = loginDialog.findViewById(R.id.textInputEditText);
         sendOtp = loginDialog.findViewById(R.id.sendOTP);
-        nextButton = otpDialog.findViewById(R.id.nextButton);
+        nextButton = loginDialog.findViewById(R.id.nextButton);
 
-        firstDigit = otpDialog.findViewById(R.id.digitOne);
-        secondDigit = otpDialog.findViewById(R.id.digitTwo);
-        thirdDigit = otpDialog.findViewById(R.id.digitThree);
-        fourthDigit = otpDialog.findViewById(R.id.digitFour);
+        firstDigit = loginDialog.findViewById(R.id.digitOne);
+        secondDigit = loginDialog.findViewById(R.id.digitTwo);
+        thirdDigit = loginDialog.findViewById(R.id.digitThree);
+        fourthDigit = loginDialog.findViewById(R.id.digitFour);
 
         layout = loginDialog.findViewById(R.id.textInputLayout);
 
-        resendOtp = otpDialog.findViewById(R.id.resendOtp);
+        resendOtp = loginDialog.findViewById(R.id.resendOtp);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -142,42 +144,26 @@ public class NewLoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!flag) {
                     if (!emailField.getText().toString().isEmpty()) {
-                        if (terms.isChecked()){
-                            hideKeyboard(view);
-                            Random random = new Random();
-                            int number = 1000 + random.nextInt(9000);
-                            otp = String.valueOf(number);
-                            Log.d("Otp sent", "onClick: " + otp);
-                            loginDialog.hide();
-                            otpDialog.show();
-                            startTimer();
-                            MailHelper.sendEmail(emailField.getText().toString(), otp);
-                            Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-                            otpDetails.setVisibility(View.VISIBLE);
-                            showKeyboard(firstDigit);
-                            flowManager.initializeOtpBoxFlow(firstDigit,secondDigit,thirdDigit,fourthDigit);
-                        }
-                        else{
-                            Toast.makeText(NewLoginActivity.this, "Please accept the terms and conditions", Toast.LENGTH_SHORT).show();
-                        }
+                        hideKeyboard(view);
+                        Random random = new Random();
+                        int number = 1000 + random.nextInt(9000);
+                        otp = String.valueOf(number);
+                        Log.d("Otp sent", "onClick: " + otp);
+                        MailHelper.sendEmail(emailField.getText().toString(), otp);
+                        Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                        otpDetails.setVisibility(View.VISIBLE);
+                        showKeyboard(firstDigit);
+                        flowManager.initializeOtpBoxFlow(firstDigit,secondDigit,thirdDigit,fourthDigit);
 
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (!emailField.getText().toString().isEmpty()) {
-                        if (terms.isChecked()){
-                            hideKeyboard(view);
-                            Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-                            loginDialog.hide();
-                            otpDialog.show();
-                            startTimer();
-                            otpDetails.setVisibility(View.VISIBLE);
-                            sendSMS(emailField.getText().toString());
-                        }
-                        else{
-                            Toast.makeText(NewLoginActivity.this, "Please accept the terms and conditions", Toast.LENGTH_SHORT).show();
-                        }
+                        hideKeyboard(view);
+                        Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                        otpDetails.setVisibility(View.VISIBLE);
+                        sendSMS(emailField.getText().toString());
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter Phone", Toast.LENGTH_SHORT).show();
                     }
@@ -215,19 +201,17 @@ public class NewLoginActivity extends AppCompatActivity {
         resendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (resendOtp.getText().equals("Resend OTP")){
-                    if (!emailField.getText().toString().isEmpty()){
-                        hideKeyboard(view);
-                        Random random = new Random();
-                        int number = 1000 + random.nextInt(9000);
-                        otp = String.valueOf(number);
-                        Toast.makeText(NewLoginActivity.this, "Otp sent again", Toast.LENGTH_SHORT).show();
-                        otpDetails.setVisibility(View.VISIBLE);
-                        MailHelper.sendEmail(emailField.getText().toString(), otp);
-                    }
-                    else{
-                        Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
-                    }
+                if (!emailField.getText().toString().isEmpty()){
+                    hideKeyboard(view);
+                    Random random = new Random();
+                    int number = 1000 + random.nextInt(9000);
+                    otp = String.valueOf(number);
+                    Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                    otpDetails.setVisibility(View.VISIBLE);
+                    MailHelper.sendEmail(emailField.getText().toString(), otp);
+                }
+                else{
+                    Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -376,5 +360,17 @@ public class NewLoginActivity extends AppCompatActivity {
         if (otpTimer!=null){
             otpTimer.cancel();
         }
+    }
+
+    void getUserData(){
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+
+            SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
+            SharedPreferences.Editor ed = sh.edit();
+            currentUserModel = task.getResult().toObject(UserModel.class);
+
+            ed.putString("USERNAME", currentUserModel.getUsername());
+            ed.commit();
+        });
     }
 }

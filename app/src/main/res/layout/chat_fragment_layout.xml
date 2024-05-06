@@ -40,6 +40,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/profile_pic_image_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/avatar_uncle1" />
@@ -49,17 +50,15 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/chatName"
+                android:id="@+id/other_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
                 android:layout_weight="1"
                 android:text="Aryan Sood"
-                android:layout_marginStart="20dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="173dp"
-                tools:layout_editor_absoluteY="11dp" />
+                android:textStyle="bold" />
 
         </com.google.android.flexbox.FlexboxLayout>
 
@@ -81,18 +80,16 @@
             android:layout_width="0dp"
             android:layout_height="250sp"
             android:layout_marginStart="20dp"
-            android:nestedScrollingEnabled="true"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/flexboxLayout7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
 
 
         <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/flexboxLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:alignContent="space_between"
@@ -105,6 +102,7 @@
 
 
             <EditText
+                android:id="@+id/chat_message_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Message here"
@@ -112,11 +110,12 @@
                 app:layout_flexBasisPercent="70%" />
 
             <com.google.android.material.button.MaterialButton
-                style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
+                android:id="@+id/message_send_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#B3FFA0"
+                style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
                 android:textSize="15sp"
+                android:backgroundTint="#B3FFA0"
                 app:layout_flexBasisPercent="20%" />
 
         </com.google.android.flexbox.FlexboxLayout>
