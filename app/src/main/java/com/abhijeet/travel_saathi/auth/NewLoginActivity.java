@@ -103,7 +103,7 @@ public class NewLoginActivity extends AppCompatActivity {
         BottomSheetDialog otpDialog = new BottomSheetDialog(this);
         otpDialog.setContentView(R.layout.otp_bottomsheet);
 
-        FrameLayout bottomsheet = loginDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+        FrameLayout bottomsheet = otpDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
         BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomsheet);
 
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) bottomsheet.getLayoutParams();
@@ -113,7 +113,7 @@ public class NewLoginActivity extends AppCompatActivity {
 
         loginDialog.setCancelable(false);
         loginDialog.show();
-        otpDetails = loginDialog.findViewById(R.id.otpDetails);
+        otpDetails = otpDialog.findViewById(R.id.otpDetails);
         assert otpDetails != null;
         otpDetails.setVisibility(View.GONE);
 
@@ -122,16 +122,16 @@ public class NewLoginActivity extends AppCompatActivity {
 
         emailField = loginDialog.findViewById(R.id.textInputEditText);
         sendOtp = loginDialog.findViewById(R.id.sendOTP);
-        nextButton = loginDialog.findViewById(R.id.nextButton);
+        nextButton = otpDialog.findViewById(R.id.nextButton);
 
-        firstDigit = loginDialog.findViewById(R.id.digitOne);
-        secondDigit = loginDialog.findViewById(R.id.digitTwo);
-        thirdDigit = loginDialog.findViewById(R.id.digitThree);
-        fourthDigit = loginDialog.findViewById(R.id.digitFour);
+        firstDigit = otpDialog.findViewById(R.id.digitOne);
+        secondDigit = otpDialog.findViewById(R.id.digitTwo);
+        thirdDigit = otpDialog.findViewById(R.id.digitThree);
+        fourthDigit = otpDialog.findViewById(R.id.digitFour);
 
         layout = loginDialog.findViewById(R.id.textInputLayout);
 
-        resendOtp = loginDialog.findViewById(R.id.resendOtp);
+        resendOtp = otpDialog.findViewById(R.id.resendOtp);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -144,26 +144,42 @@ public class NewLoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!flag) {
                     if (!emailField.getText().toString().isEmpty()) {
-                        hideKeyboard(view);
-                        Random random = new Random();
-                        int number = 1000 + random.nextInt(9000);
-                        otp = String.valueOf(number);
-                        Log.d("Otp sent", "onClick: " + otp);
-                        MailHelper.sendEmail(emailField.getText().toString(), otp);
-                        Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-                        otpDetails.setVisibility(View.VISIBLE);
-                        showKeyboard(firstDigit);
-                        flowManager.initializeOtpBoxFlow(firstDigit,secondDigit,thirdDigit,fourthDigit);
+                        if (terms.isChecked()){
+                            hideKeyboard(view);
+                            Random random = new Random();
+                            int number = 1000 + random.nextInt(9000);
+                            otp = String.valueOf(number);
+                            Log.d("Otp sent", "onClick: " + otp);
+                            loginDialog.hide();
+                            otpDialog.show();
+                            startTimer();
+                            MailHelper.sendEmail(emailField.getText().toString(), otp);
+                            Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                            otpDetails.setVisibility(View.VISIBLE);
+                            showKeyboard(firstDigit);
+                            flowManager.initializeOtpBoxFlow(firstDigit,secondDigit,thirdDigit,fourthDigit);
+                        }
+                        else{
+                            Toast.makeText(NewLoginActivity.this, "Please accept the terms and conditions", Toast.LENGTH_SHORT).show();
+                        }
 
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (!emailField.getText().toString().isEmpty()) {
-                        hideKeyboard(view);
-                        Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-                        otpDetails.setVisibility(View.VISIBLE);
-                        sendSMS(emailField.getText().toString());
+                        if (terms.isChecked()){
+                            hideKeyboard(view);
+                            Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
+                            loginDialog.hide();
+                            otpDialog.show();
+                            startTimer();
+                            otpDetails.setVisibility(View.VISIBLE);
+                            sendSMS(emailField.getText().toString());
+                        }
+                        else{
+                            Toast.makeText(NewLoginActivity.this, "Please accept the terms and conditions", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         Toast.makeText(NewLoginActivity.this, "Enter Phone", Toast.LENGTH_SHORT).show();
                     }
@@ -201,41 +217,30 @@ public class NewLoginActivity extends AppCompatActivity {
         resendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!emailField.getText().toString().isEmpty()){
-                    hideKeyboard(view);
-                    Random random = new Random();
-                    int number = 1000 + random.nextInt(9000);
-                    otp = String.valueOf(number);
-                    Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
-                    otpDetails.setVisibility(View.VISIBLE);
-                    MailHelper.sendEmail(emailField.getText().toString(), otp);
-                }
-                else{
-                    Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                if (resendOtp.getText().equals("Resend OTP")){
+                    if (!emailField.getText().toString().isEmpty()){
+                        hideKeyboard(view);
+                        Random random = new Random();
+                        int number = 1000 + random.nextInt(9000);
+                        otp = String.valueOf(number);
+                        Toast.makeText(NewLoginActivity.this, "Otp sent again", Toast.LENGTH_SHORT).show();
+                        otpDetails.setVisibility(View.VISIBLE);
+                        MailHelper.sendEmail(emailField.getText().toString(), otp);
+                    }
+                    else{
+                        Toast.makeText(NewLoginActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
+
+
 
         googleButton.setOnClickListener(view -> {
             // flag = 1 means login via google
             Intent signInIntent = googleSignInClient.getSignInIntent();
             startActivityForResult(signInIntent, 1000);
         });
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1000) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                String email = account.getEmail();
-                String pass = account.getId();
-                loginUser(email, pass);
-            } catch (ApiException e) {
-                Log.v("Error", e.getMessage());
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void startTimer(){
@@ -260,6 +265,23 @@ public class NewLoginActivity extends AppCompatActivity {
         String timeLeftFormatted = String.format("%02d:%02d", minutes, seconds);
         resendOtp.setText("Resend in " + timeLeftFormatted);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1000) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                String email = account.getEmail();
+                String pass = account.getId();
+                loginUser(email, pass);
+            } catch (ApiException e) {
+                Log.v("Error", e.getMessage());
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
 
 
     public void initializeID() {
