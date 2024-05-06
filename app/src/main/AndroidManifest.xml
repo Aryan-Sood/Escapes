@@ -22,7 +22,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.MapPage"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".splash.SplashScreenV2"
             android:exported="true">

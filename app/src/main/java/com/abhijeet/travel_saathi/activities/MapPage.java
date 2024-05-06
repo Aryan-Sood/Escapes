@@ -3,16 +3,18 @@ package com.abhijeet.travel_saathi.activities;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.BuildConfig;
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.adapters.SimilarInterestAdapter;
+import com.abhijeet.travel_saathi.models.SimilarInterestModelClass;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MapPage extends AppCompatActivity {
@@ -38,6 +41,10 @@ public class MapPage extends AppCompatActivity {
 
     CalendarView calendarView;
     FlexboxLayout chipLayout;
+    List<SimilarInterestModelClass> similarInterestList;
+    SimilarInterestAdapter similarInterestAdapter;
+    LinearLayoutManager similarInterestLayout;
+    RecyclerView similarInterestRecyclerView;
 
 
 
@@ -53,7 +60,8 @@ public class MapPage extends AppCompatActivity {
 
         initializeId();
 
-
+        setSimilarInterestRecyclerViewData();
+        setSimilarInterestRecyclerView();
 
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -86,6 +94,7 @@ public class MapPage extends AppCompatActivity {
     public void initializeId(){
         autoCompleteTextView = findViewById(R.id.auto_complete);
         chipLayout = findViewById(R.id.flexboxLayout6);
+        similarInterestRecyclerView = findViewById(R.id.locationRecyclerView);
     }
 
     private void searchPlaces(String query) {
@@ -119,7 +128,22 @@ public class MapPage extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-
+    public void setSimilarInterestRecyclerViewData(){
+        similarInterestList = new ArrayList<>();
+        similarInterestList.add(new SimilarInterestModelClass("Aryan Sood","Chandigarh"));
+        similarInterestList.add(new SimilarInterestModelClass("Rishiraj Jain","Sagar"));
+        similarInterestList.add(new SimilarInterestModelClass("Siddharth Kumar","Delhi"));
+        similarInterestList.add(new SimilarInterestModelClass("Abhijeet Pandey","Bihar"));
+        similarInterestList.add(new SimilarInterestModelClass("Vibhor Mathur","Jabalpur"));
+    }
+    public void setSimilarInterestRecyclerView(){
+        similarInterestLayout = new LinearLayoutManager(this);
+        similarInterestLayout.setOrientation(RecyclerView.VERTICAL);
+        similarInterestRecyclerView.setLayoutManager(similarInterestLayout);
+        similarInterestAdapter = new SimilarInterestAdapter(similarInterestList);
+        similarInterestRecyclerView.setAdapter(similarInterestAdapter);
+        similarInterestAdapter.notifyDataSetChanged();
+    }
 
 
 }
