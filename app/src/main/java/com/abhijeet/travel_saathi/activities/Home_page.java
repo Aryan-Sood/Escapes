@@ -97,7 +97,7 @@ public class Home_page extends AppCompatActivity {
 
         SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
 
-        String user_name = sh.getString("USERNAME", null);
+        String user_name = sh.getString("USERNAME", "null");
         if(user_name.isEmpty()){
             username.setText("NOne");
         }else{

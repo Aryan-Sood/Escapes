@@ -233,9 +233,6 @@ public class NewLoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
         googleButton.setOnClickListener(view -> {
             // flag = 1 means login via google
             Intent signInIntent = googleSignInClient.getSignInIntent();
@@ -333,6 +330,37 @@ public class NewLoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success
+                                Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+
+                                SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.putString("Email", email);
+                                Log.v("EMAIL", email);
+                                editor.apply();
+                                getUserData();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);                            // You can navigate to another activity or perform other actions here
+                            } else {
+                                signupUser(email, password);
+                                // If sign in fails, display a message to the user.
+                            }
+                        }
+                    });
+        }catch (Exception e){
+            Log.v("Sign up error", e.getCause().getMessage());
+
+        }
+
+    }
+    private void loginUser_direct(String email, String password) {
+        try{
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success
                                 Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
 
                                 SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
@@ -341,18 +369,13 @@ public class NewLoginActivity extends AppCompatActivity {
                                 editor.putString("Email", email);
                                 Log.v("EMAIL", email);
                                 editor.apply();
+                                getUserData();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);                            // You can navigate to another activity or perform other actions here
-                            } else {
-                                Toast.makeText(NewLoginActivity.this, "this is", Toast.LENGTH_SHORT).show();
-                                signupUser(email, password);
-                                // If sign in fails, display a message to the user.
                             }
                         }
                     });
         }catch (Exception e){
-            Toast.makeText(NewLoginActivity.this, "this is", Toast.LENGTH_SHORT).show();
-
             Log.v("Sign up error", e.getCause().getMessage());
 
         }
@@ -364,7 +387,7 @@ public class NewLoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        loginUser(email, password);
+                        loginUser_direct(email, password);
                     }else{
                         Toast.makeText(NewLoginActivity.this, task.toString(), Toast.LENGTH_SHORT).show();
 
@@ -390,7 +413,7 @@ public class NewLoginActivity extends AppCompatActivity {
             SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
             SharedPreferences.Editor ed = sh.edit();
             currentUserModel = task.getResult().toObject(UserModel.class);
-
+            Log.v("USERNAME", currentUserModel.getUsername());
             ed.putString("USERNAME", currentUserModel.getUsername());
             ed.commit();
         });
