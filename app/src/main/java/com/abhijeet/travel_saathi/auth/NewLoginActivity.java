@@ -18,11 +18,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.activities.Home_page;
 import com.abhijeet.travel_saathi.activities.Signup_successfully;
 import com.abhijeet.travel_saathi.models.UserModel;
 import com.abhijeet.travel_saathi.utilities.GradientTextView;
 import com.abhijeet.travel_saathi.utilities.MailHelper;
 import com.abhijeet.travel_saathi.utilities.OtpFlowManager;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -54,6 +56,7 @@ public class NewLoginActivity extends AppCompatActivity {
     ImageView nextButton;
 
     String otp;
+    UserModel currentUserModel;
     String enteredOTP;
     MaterialCardView googleButton;
     TextView resendOtp;
@@ -259,7 +262,7 @@ public class NewLoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success
-                                Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
+                                Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
 
                                 SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -267,6 +270,7 @@ public class NewLoginActivity extends AppCompatActivity {
                                 editor.putString("Email", email);
                                 Log.v("EMAIL", email);
                                 editor.apply();
+                                getUserData();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);                            // You can navigate to another activity or perform other actions here
                             } else {
@@ -284,13 +288,45 @@ public class NewLoginActivity extends AppCompatActivity {
         }
 
     }
+    private void loginUser_direct(String email, String password) {
+        try{
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success
+                                Intent intent = new Intent(NewLoginActivity.this, Signup_successfully.class);
+
+                                SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.putString("Email", email);
+                                Log.v("EMAIL", email);
+                                editor.apply();
+                                getUserData();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);                            // You can navigate to another activity or perform other actions here
+                            } else {
+                                Toast.makeText(NewLoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }catch (Exception e){
+            Toast.makeText(NewLoginActivity.this, "this is", Toast.LENGTH_SHORT).show();
+
+            Log.v("Sign up error", e.getCause().getMessage());
+
+        }
+
+    }
     private void signupUser(String email, String password) {
         try{
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        loginUser(email, password);
+                        loginUser_direct(email, password);
                     }else{
                         Toast.makeText(NewLoginActivity.this, task.toString(), Toast.LENGTH_SHORT).show();
 
@@ -300,5 +336,17 @@ public class NewLoginActivity extends AppCompatActivity {
         }catch (Exception e){
             Log.v("Sign up error", e.getMessage().toString());
         }
+    }
+
+    void getUserData(){
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+
+            SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
+            SharedPreferences.Editor ed = sh.edit();
+            currentUserModel = task.getResult().toObject(UserModel.class);
+
+            ed.putString("USERNAME", currentUserModel.getUsername());
+            ed.commit();
+        });
     }
 }

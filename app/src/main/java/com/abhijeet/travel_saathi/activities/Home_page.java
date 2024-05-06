@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -26,6 +28,8 @@ import com.abhijeet.travel_saathi.adapters.SuggestedPlacesAdapter;
 import com.abhijeet.travel_saathi.fragments.MessageFragment;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
+import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
@@ -48,7 +52,7 @@ public class Home_page extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ConstraintLayout suggestedConstraint;
-    TextView settings;
+    TextView settings, username;
 
 
     @Override
@@ -67,6 +71,17 @@ public class Home_page extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         settings = navigationView.findViewById(R.id.settingsOption);
+        username = navigationView.findViewById(R.id.username);
+
+
+        SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
+
+        String user_name = sh.getString("USERNAME", null);
+        if(user_name.isEmpty()){
+            username.setText("NOne");
+        }else{
+            username.setText(user_name);
+        }
 
 
         setCardsDimensions();
