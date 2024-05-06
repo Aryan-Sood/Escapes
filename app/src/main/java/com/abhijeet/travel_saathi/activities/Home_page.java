@@ -12,6 +12,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -35,6 +37,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
@@ -64,7 +68,7 @@ public class Home_page extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ConstraintLayout suggestedConstraint;
-    TextView settings;
+    TextView settings, username;
 
     //Suggestion
     String url = "http://10.0.2.2:5000/predict";
@@ -88,6 +92,17 @@ public class Home_page extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         settings = navigationView.findViewById(R.id.settingsOption);
+        username = navigationView.findViewById(R.id.username);
+
+
+        SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
+
+        String user_name = sh.getString("USERNAME", null);
+        if(user_name.isEmpty()){
+            username.setText("NOne");
+        }else{
+            username.setText(user_name);
+        }
 
 
         setCardsDimensions();

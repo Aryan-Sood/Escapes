@@ -9,13 +9,14 @@
     android:background="#595DE7">
 
     <TextView
+        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/jua"
         android:text="From Your Location"
         android:textColor="#1C1C1C"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,25 +24,25 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView8"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#7A7EFD">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/locationRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
