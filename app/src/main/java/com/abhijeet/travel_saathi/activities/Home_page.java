@@ -109,7 +109,7 @@ public class Home_page extends AppCompatActivity {
         fromYourLocationInitData();
         suggestedPlacesInitData();
         fromYourLocationRecyclerView();
-
+        suggestedPlacesRecyclerView();
         setConstraintLayoutHeight();
 
 
@@ -185,54 +185,54 @@ public class Home_page extends AppCompatActivity {
             season = winter;
         }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String data = jsonObject.getString("place");
-                            CustomVariable temp = season.get(data);
-
-                            assert temp != null;
-                            String SugPlaceName = temp.Name;
-                            int SugPlaceImage = temp.image;
-
-                            suggestedPlacesList.add(new SuggestedPlacesModelClass(SugPlaceName,SugPlaceImage));
-                            for (int i=0;i< season.size();i++){
-                                if(!data.equals((i + 1) + "")){
-                                    suggestedPlacesList.add(new SuggestedPlacesModelClass(season.get((i+1)+"").Name,season.get((i+1)+"").image));
-                                }
-                            }
-                            suggestedPlacesRecyclerView();
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Home_page.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "onErrorResponse: "+error.getMessage());
-                    }
-                }){
-
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String,String>();
-                params.put("Travel_Preference","1");
-                params.put("Food_and_Cuisine_Taste","2");
-                params.put("Interests","3");
-                return params;
-            }
-
-        };
-        RequestQueue queue = Volley.newRequestQueue(Home_page.this);
-        queue.add(stringRequest);
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            String data = jsonObject.getString("place");
+//                            CustomVariable temp = season.get(data);
+//
+//                            assert temp != null;
+//                            String SugPlaceName = temp.Name;
+//                            int SugPlaceImage = temp.image;
+//
+//                            suggestedPlacesList.add(new SuggestedPlacesModelClass(SugPlaceName,SugPlaceImage));
+//                            for (int i=0;i< season.size();i++){
+//                                if(!data.equals((i + 1) + "")){
+//                                    suggestedPlacesList.add(new SuggestedPlacesModelClass(season.get((i+1)+"").Name,season.get((i+1)+"").image));
+//                                }
+//                            }
+//                            suggestedPlacesRecyclerView();
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(Home_page.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Log.d(TAG, "onErrorResponse: "+error.getMessage());
+//                    }
+//                }){
+//
+//            @Override
+//            protected Map<String,String> getParams(){
+//                Map<String,String> params = new HashMap<String,String>();
+//                params.put("Travel_Preference","1");
+//                params.put("Food_and_Cuisine_Taste","2");
+//                params.put("Interests","3");
+//                return params;
+//            }
+//
+//        };
+//        RequestQueue queue = Volley.newRequestQueue(Home_page.this);
+//        queue.add(stringRequest);
 
 
     // previous
@@ -301,7 +301,9 @@ public class Home_page extends AppCompatActivity {
 
 
 
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass("HEllO",R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass("Shimla",R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass("Kullu",R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass("Washington",R.drawable.scene_two));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
