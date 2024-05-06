@@ -31,7 +31,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         QuestionsModelClass question = questions.get(position);
         holder.questionText.setText(question.getQuestionText());
         holder.optionsList.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
-        holder.optionsList.setAdapter(new OptionAdapter(question.getOptions()));
+        holder.optionsList.setAdapter(new OptionAdapter(question));
         holder.questionText.setOnClickListener(v -> {
             if (holder.optionsList.getVisibility() == View.GONE) {
                 holder.optionsList.setVisibility(View.VISIBLE);
@@ -40,6 +40,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -57,6 +58,3 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         }
     }
 }
-
-
-
