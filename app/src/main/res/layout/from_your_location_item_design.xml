@@ -7,13 +7,18 @@
     android:paddingHorizontal="5dp"
     android:paddingVertical="5dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:paddingHorizontal="20dp"
+        app:justifyContent="space_between"
+        app:alignContent="center"
+        app:alignItems="center"
         android:layout_marginBottom="2dp"
         android:background="@drawable/setting_back_blue"
-        android:paddingVertical="10dp"
+        android:paddingVertical="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +27,9 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView6"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
             app:cardCornerRadius="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,21 +50,93 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/personName"
-            android:layout_width="match_parent"
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginEnd="10dp"
-            android:text="Person Name"
-            android:textAlignment="viewStart"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            app:justifyContent="center"
+            app:alignItems="flex_start"
+            app:alignContent="center"
+            app:flexDirection="column"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/materialCardView6"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/personName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Person Name"
+                android:textStyle="bold"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/personData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textStyle="bold"
+                android:text="Student | 19 years"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="50dp"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/pie_chart"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:justifyContent="center"
+            app:alignItems="center"
+            app:flexDirection="column"
+            app:alignContent="center">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/star_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.8"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+
+    </com.google.android.flexbox.FlexboxLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
