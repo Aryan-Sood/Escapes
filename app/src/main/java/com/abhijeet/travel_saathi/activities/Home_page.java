@@ -43,11 +43,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.time.*;
 import java.util.Map;
+import java.util.Objects;
 
 public class Home_page extends AppCompatActivity {
 
@@ -56,7 +56,7 @@ public class Home_page extends AppCompatActivity {
 
     RecyclerView fromYourLocationRecyclerView, suggestedPlacesRecyclerView;
     List<FromYourLocationModelClass> locationUsersList;
-    List<SuggestedPlacesModelClass> suggestedPlacesList;
+    List<SuggestedPlacesModelClass> suggestedPlacesList = new ArrayList<>();
     FromYourLocationAdapter locationUsersAdapter;
     SuggestedPlacesAdapter suggestedPlacesAdapter;
     LinearLayoutManager locationUsersLayout, suggestedPlacesLayout;
@@ -69,7 +69,7 @@ public class Home_page extends AppCompatActivity {
     //Suggestion
     String url = "http://10.0.2.2:5000/predict";
     int month;
-    HashMap<String,String[]> season =  new HashMap<>();
+    HashMap<String,CustomVariable> season =  new HashMap<>();
 
 
     @Override
@@ -94,7 +94,7 @@ public class Home_page extends AppCompatActivity {
         fromYourLocationInitData();
         suggestedPlacesInitData();
         fromYourLocationRecyclerView();
-        suggestedPlacesRecyclerView();
+
         setConstraintLayoutHeight();
 
 
@@ -112,45 +112,45 @@ public class Home_page extends AppCompatActivity {
 
 // Suggestion
 
-        HashMap<String,String[]> spring = new HashMap<>();
-        spring.put("1", new String[]{"Shimla", R.drawable.az+""});
-        spring.put("2", new String[]{"Darjeeling", R.drawable.az+""});
-        spring.put("3", new String[]{"Ooty", R.drawable.az+""});
-        spring.put("4", new String[]{"Munnar", R.drawable.az+""});
-        spring.put("5", new String[]{"Manali", R.drawable.az+""});
-        spring.put("6", new String[]{"Rishikesh", R.drawable.az+""});
-        spring.put("7", new String[]{"Gangtok", R.drawable.az+""});
-        spring.put("8", new String[]{"Coorg", R.drawable.az+""});
+        HashMap< String,CustomVariable> spring = new HashMap<>();
+        spring.put("1", new CustomVariable("Shimla", R.drawable.az));
+        spring.put("2", new CustomVariable("Darjeeling", R.drawable.az));
+        spring.put("3", new CustomVariable("Ooty", R.drawable.az));
+        spring.put("4", new CustomVariable("Munnar", R.drawable.az));
+        spring.put("5", new CustomVariable("Manali", R.drawable.az));
+        spring.put("6", new CustomVariable("Rishikesh", R.drawable.az));
+        spring.put("7", new CustomVariable("Gangtok", R.drawable.az));
+        spring.put("8", new CustomVariable("Coorg", R.drawable.az));
 
-        HashMap<String,String[]> summer = new HashMap<>();
-        summer.put("1", (new String[]{"Ladakh", R.drawable.az+""}));
-        summer.put("2", (new String[]{"Leh", R.drawable.az+""}));
-        summer.put("3", (new String[]{"Gulmarg", R.drawable.az+""}));
-        summer.put("4", (new String[]{"Andaman and Nicobar Island", R.drawable.az+""}));
-        summer.put("5", (new String[]{"Pahalgam", R.drawable.az+""}));
-        summer.put("6", (new String[]{"Nainital", R.drawable.az+""}));
-        summer.put("7", (new String[]{"Mussoorie", R.drawable.az+""}));
-        summer.put("8", (new String[]{"Mahabaleshwar", R.drawable.az+""}));
+        HashMap< String,CustomVariable> summer = new HashMap<>();
+        summer.put("1", new CustomVariable("Ladakh", R.drawable.az));
+        summer.put("2", new CustomVariable("Leh", R.drawable.az));
+        summer.put("3", new CustomVariable("Gulmarg", R.drawable.az));
+        summer.put("4", new CustomVariable("Andaman and Nicobar Island", R.drawable.az));
+        summer.put("5", new CustomVariable("Pahalgam", R.drawable.az));
+        summer.put("6", new CustomVariable("Nainital", R.drawable.az));
+        summer.put("7", new CustomVariable("Mussoorie", R.drawable.az));
+        summer.put("8", new CustomVariable("Mahabaleshwar", R.drawable.az));
 
-        HashMap<String,String[]> monsoon = new HashMap<>();
-        monsoon.put("1",(new String[]{"Karala", R.drawable.az+""}));
-        monsoon.put("2",(new String[]{"Goa", R.drawable.az+""}));
-        monsoon.put("3",(new String[]{"Cherrapunji", R.drawable.az+""}));
-        monsoon.put("4",(new String[]{"Alleppey", R.drawable.az+""}));
-        monsoon.put("5",(new String[]{"Matheran", R.drawable.az+""}));
-        monsoon.put("6",(new String[]{"Lonavala", R.drawable.az+""}));
-        monsoon.put("7",(new String[]{"Pondicherry", R.drawable.az+""}));
-        monsoon.put("8",(new String[]{"Udaipur", R.drawable.az+""}));
+        HashMap<String,CustomVariable> monsoon = new HashMap<>();
+        monsoon.put("1", new CustomVariable("Kerala", R.drawable.az));
+        monsoon.put("2", new CustomVariable("Goa", R.drawable.az));
+        monsoon.put("3", new CustomVariable("Cherrapunji", R.drawable.az));
+        monsoon.put("4", new CustomVariable("Alleppey", R.drawable.az));
+        monsoon.put("5", new CustomVariable("Matheran", R.drawable.az));
+        monsoon.put("6", new CustomVariable("Lonavala", R.drawable.az));
+        monsoon.put("7", new CustomVariable("Pondicherry", R.drawable.az));
+        monsoon.put("8", new CustomVariable("Udaipur", R.drawable.az));
 
-        HashMap<String,String[]> winter = new HashMap<>();
-        winter.put("1",(new String[]{"Auli", R.drawable.az+""}));
-        winter.put("2",(new String[]{"Gulmarg", R.drawable.az+""}));
-        winter.put("3",(new String[]{"Manali", R.drawable.az+""}));
-        winter.put("4",(new String[]{"Shimla", R.drawable.az+""}));
-        winter.put("5",(new String[]{"Srinagar", R.drawable.az+""}));
-        winter.put("6",(new String[]{"Kullu", R.drawable.az+""}));
-        winter.put("7",(new String[]{"Rann of Kutch", R.drawable.az+""}));
-        winter.put("8",(new String[]{"Jaipur", R.drawable.az+""}));
+        HashMap<String,CustomVariable> winter = new HashMap<>();
+        winter.put("1",new CustomVariable("Auli", R.drawable.az));
+        winter.put("2",new CustomVariable("Gulmarg", R.drawable.az));
+        winter.put("3",new CustomVariable("Manali", R.drawable.az));
+        winter.put("4",new CustomVariable("Shimla", R.drawable.az));
+        winter.put("5",new CustomVariable("Srinagar", R.drawable.az));
+        winter.put("6",new CustomVariable("Kullu", R.drawable.az));
+        winter.put("7",new CustomVariable("Rann of Kutch", R.drawable.az));
+        winter.put("8",new CustomVariable("Jaipur", R.drawable.az));
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -170,7 +170,6 @@ public class Home_page extends AppCompatActivity {
             season = winter;
         }
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -179,12 +178,19 @@ public class Home_page extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String data = jsonObject.getString("place");
-                            String [] temp = season.get(data);
+                            CustomVariable temp = season.get(data);
 
                             assert temp != null;
-                            String SugPlaceName = temp[0];
-                            int SugPlaceImage = Integer.parseInt(temp[1]);
+                            String SugPlaceName = temp.Name;
+                            int SugPlaceImage = temp.image;
 
+                            suggestedPlacesList.add(new SuggestedPlacesModelClass(SugPlaceName,SugPlaceImage));
+                            for (int i=0;i< season.size();i++){
+                                if(!data.equals((i + 1) + "")){
+                                    suggestedPlacesList.add(new SuggestedPlacesModelClass(season.get((i+1)+"").Name,season.get((i+1)+"").image));
+                                }
+                            }
+                            suggestedPlacesRecyclerView();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -271,15 +277,16 @@ public class Home_page extends AppCompatActivity {
     }
 
     public void suggestedPlacesInitData(){
-        suggestedPlacesList = new ArrayList<>();
+
+
+//        for (int i=0;i<season.size();i++){
+//            System.out.println("IN");
+//            suggestedPlacesList.add(new SuggestedPlacesModelClass("HELLO",R.drawable.scene_two));
+//        }
 
 
 
-        for (int i=1;i< season.size();i++){
-            suggestedPlacesList.add(new SuggestedPlacesModelClass(season.get(i+"")[0],Integer.parseInt(season.get(i+"")[1])));
-        }
-
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
+//        suggestedPlacesList.add(new SuggestedPlacesModelClass("HEllO",R.drawable.scene_two));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
