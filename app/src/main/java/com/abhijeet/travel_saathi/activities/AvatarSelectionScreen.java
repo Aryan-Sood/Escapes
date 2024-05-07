@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 
+
 public class AvatarSelectionScreen extends AppCompatActivity {
 //
 //
@@ -39,8 +40,6 @@ public class AvatarSelectionScreen extends AppCompatActivity {
     MotionLayout motionLayout;
     TextView age,gender;
     UserModel userModel;
-    private Button nextbtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,14 +137,6 @@ public class AvatarSelectionScreen extends AppCompatActivity {
                 return false;
             }
         });
-        nextbtn = findViewById(R.id.nextbtn);
-        nextbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AvatarSelectionScreen.this, Select_Interest.class);
-                startActivity(intent);
-            }
-        });
 
     }
 
@@ -185,8 +176,6 @@ public class AvatarSelectionScreen extends AppCompatActivity {
         });
 
     }
-
-
 
 //    public void initializeIDs(){
 //        profileGridLayout = findViewById(R.id.profileGridLayout);
