@@ -16,6 +16,7 @@ import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.fragments.ChatFragment;
 import com.abhijeet.travel_saathi.models.ChatroomModel;
 import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;

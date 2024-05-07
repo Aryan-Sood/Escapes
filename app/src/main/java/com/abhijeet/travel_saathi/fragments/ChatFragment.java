@@ -25,6 +25,7 @@ import com.abhijeet.travel_saathi.adapters.ChatroomRecyclerAdapter;
 import com.abhijeet.travel_saathi.models.ChatMessageModel;
 import com.abhijeet.travel_saathi.models.ChatroomModel;
 import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
