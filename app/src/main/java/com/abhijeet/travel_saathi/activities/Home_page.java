@@ -235,6 +235,28 @@ public class Home_page extends AppCompatActivity {
 //        queue.add(stringRequest);
 
 
+
+
+
+
+        /*
+        GENERATING PERSON SUGGESTION LIST
+        {
+            VariableType VName = current user data; (required from sid)
+            VT list = list of all users along with attributes; (required from sid)
+            VT list2 = list of all users having similar prefs as current users;
+            **list2 may be created directly by Db query OR by comparing users attribute in 'list' with VName attributes(curr user).
+        }
+         */
+
+
+
+
+
+
+
+
+
     // previous
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -292,24 +314,9 @@ public class Home_page extends AppCompatActivity {
     }
 
     public void suggestedPlacesInitData(){
-
-
-//        for (int i=0;i<season.size();i++){
-//            System.out.println("IN");
-//            suggestedPlacesList.add(new SuggestedPlacesModelClass("HELLO",R.drawable.scene_two));
-//        }
-
-
-
         suggestedPlacesList.add(new SuggestedPlacesModelClass("Shimla",R.drawable.az));
         suggestedPlacesList.add(new SuggestedPlacesModelClass("Kullu",R.drawable.scene_two));
         suggestedPlacesList.add(new SuggestedPlacesModelClass("Washington",R.drawable.scene_two));
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
-//        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
     }
 
     public void suggestedPlacesRecyclerView(){
