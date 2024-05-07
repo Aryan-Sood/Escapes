@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -13,11 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 
 public class AvatarSelectionScreen extends AppCompatActivity {
 //
@@ -30,6 +38,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
     private EditText username, occupation, bio;
     MotionLayout motionLayout;
     TextView age,gender;
+    UserModel userModel;
     private Button nextbtn;
 
     @Override
@@ -147,6 +156,35 @@ public class AvatarSelectionScreen extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    void setUsername(){
+        String user_name = username.getText().toString();
+        String email = getSharedPreferences("isLoggedIn", MODE_PRIVATE).getString("Email", null).toString();
+
+        Log.v("Email", email);
+
+        if(user_name.isEmpty() || user_name.length()<3){
+            Toast.makeText(this, "Username length should be at least 3 chars", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(userModel != null){
+            userModel.setUsername(user_name);
+        }else{
+            userModel = new UserModel(email, user_name, Timestamp.now(), FirebaseUtil.currentUserId(),age.getText().toString(), bio.getText().toString(), occupation.getText().toString() , gender.getText().toString());
+        }
+
+        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(AvatarSelectionScreen.this, "Done!!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
 
