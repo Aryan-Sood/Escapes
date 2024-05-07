@@ -21,6 +21,7 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
