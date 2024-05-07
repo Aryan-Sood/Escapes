@@ -28,9 +28,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.abhijeet.travel_saathi" />
-                  <option name="mobileSdkAppId" value="1:451842341688:android:cc6836f9068128be815fcd" />
-                  <option name="projectId" value="escapes-travel-2c443" />
-                  <option name="projectNumber" value="451842341688" />
+                  <option name="mobileSdkAppId" value="1:848160965617:android:8159d29cffdae25b8fba50" />
+                  <option name="projectId" value="escapes-project" />
+                  <option name="projectNumber" value="848160965617" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

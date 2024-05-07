@@ -205,15 +205,6 @@
                 app:layout_goneMarginStart="20dp"
                 app:secondColor="0xFF5754FF" />
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="220dp"
-                android:layout_marginTop="-35dp"
-                android:layout_marginEnd="-10dp"
-                android:elevation="50dp"
-                android:src="@drawable/homepage_hero"
-                app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
-                app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView2"
@@ -232,39 +223,20 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/homepage_hero_card">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/jua"
-                        android:text="Explore"
-                        android:textColor="#2D2C2C"
-                        android:textSize="30sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.25"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/jua"
-                        android:text="Explore places near you"
-                        android:textColor="#464646"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.25"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.55" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:background="@drawable/homepage_hero_card"/>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginBottom="70dp"
+                android:elevation="500dp"
+                android:src="@drawable/background"
+                app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView2"
+                app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
 
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/flexboxLayout"
