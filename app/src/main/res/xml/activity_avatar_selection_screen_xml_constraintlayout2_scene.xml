@@ -8,22 +8,22 @@
         motion:constraintSetStart="@id/start"
         motion:duration="1200">
        <KeyFrameSet>
-        <KeyAttribute
-            motion:framePosition="50"
-            motion:motionTarget="@id/avCard"
-            motion:transitionEasing="easeInOut">
+<!--        <KeyAttribute-->
+<!--            motion:framePosition="50"-->
+<!--            motion:motionTarget="@id/avCard"-->
+<!--            motion:transitionEasing="easeInOut">-->
 
-            <KeyPosition
-                motion:framePosition="25"
-                motion:percentX="0.25" />
-            <KeyPosition
-                motion:framePosition="50"
-                motion:percentX="0.5" />
-            <KeyPosition
-                motion:framePosition="75"
-                motion:percentX="0.75" />
+<!--            <KeyPosition-->
+<!--                motion:framePosition="25"-->
+<!--                motion:percentX="0.25" />-->
+<!--            <KeyPosition-->
+<!--                motion:framePosition="50"-->
+<!--                motion:percentX="0.5" />-->
+<!--            <KeyPosition-->
+<!--                motion:framePosition="75"-->
+<!--                motion:percentX="0.75" />-->
 
-        </KeyAttribute>
+<!--        </KeyAttribute>-->
 
         <!-- Add more keyframes for other properties if needed -->
 

@@ -235,6 +235,28 @@ public class Home_page extends AppCompatActivity {
 //        queue.add(stringRequest);
 
 
+
+
+
+
+        /*
+        GENERATING PERSON SUGGESTION LIST
+        {
+            VariableType VName = current user data; (required from sid)
+            VT list = list of all users along with attributes; (required from sid)
+            VT list2 = list of all users having similar prefs as current users;
+            **list2 may be created directly by Db query OR by comparing users attribute in 'list' with VName attributes(curr user).
+        }
+         */
+
+
+
+
+
+
+
+
+
     // previous
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,13 +8,13 @@ import android.widget.RadioButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.R;
+import com.abhijeet.travel_saathi.models.QuestionsModelClass;
 
 public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionViewHolder> {
-    private String[] options;
-    private int lastSelectedPosition = -1;
+    private QuestionsModelClass question;
 
-    public OptionAdapter(String[] options) {
-        this.options = options;
+    public OptionAdapter(QuestionsModelClass question) {
+        this.question = question;
     }
 
     @Override
@@ -25,12 +25,12 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionView
 
     @Override
     public void onBindViewHolder(OptionViewHolder holder, int position) {
-        holder.optionText.setText(options[position]);
-        holder.optionText.setChecked(lastSelectedPosition == position);
+        holder.optionText.setText(question.getOptions()[position]);
+        holder.optionText.setChecked(question.getSelectedOption() == position);
         holder.optionText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lastSelectedPosition = holder.getAdapterPosition();
+                question.setSelectedOption(holder.getAdapterPosition());
                 notifyDataSetChanged();
             }
         });
@@ -38,7 +38,7 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionView
 
     @Override
     public int getItemCount() {
-        return options.length;
+        return question.getOptions().length;
     }
 
     static class OptionViewHolder extends RecyclerView.ViewHolder {
@@ -50,4 +50,7 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionView
         }
     }
 }
+
+
+
 

@@ -1,7 +1,9 @@
 package com.abhijeet.travel_saathi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,7 @@ import java.util.List;
 
 public class Select_Interest extends AppCompatActivity {
 
-    private Button skipbtn,updatebtn;
+    private Button updatebtn;
 //    ListView q1listview;
 //    ConstraintLayout q1layout;
 //    ArrayAdapter<String> adapter1;
@@ -29,26 +31,18 @@ public class Select_Interest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_interest);
 
-//        skipbtn = findViewById(R.id.textButton);
-//        skipbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Select_Interest.this, Home_page.class);
-//                startActivity(intent);
-//            }
-//        });
+        updatebtn = findViewById(R.id.textButton);
+        updatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-//        updatebtn = findViewById(R.id.updatebtn);
-//        updatebtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                //update code
-//
-//                Intent intent = new Intent(Select_Interest.this, Home_page.class);
-//                startActivity(intent);
-//            }
-//        });
+                // update the prefernecs only if minimum 5 questions are answered
+                //i.e only if the size of marked answers array is graeter than equal to 5, allow next page intent
+
+                Intent intent = new Intent(Select_Interest.this, Home_page.class);
+                startActivity(intent);
+            }
+        });
 
         List<QuestionsModelClass> questions = new ArrayList<>();
         questions.add(new QuestionsModelClass("What type of travel experiences are you interested in?", new String[]{"Adventure", "Cultural", "Relaxation", "Sightseeing", "Food & Drink", "Wildlife", "Beach", "City Breaks", "Mountains"}));
