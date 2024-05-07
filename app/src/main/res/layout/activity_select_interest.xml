@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/jost"
-        android:text="Skip"
+        android:text="Update"
         android:layout_marginTop="10dp"
         android:textColor="#858585"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +74,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:itemCount="5"
         tools:listitem="@layout/question_item" />
+
 
     <!--    <RelativeLayout-->
 <!--        android:layout_width="match_parent"-->
