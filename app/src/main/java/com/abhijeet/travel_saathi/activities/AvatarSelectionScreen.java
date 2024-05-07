@@ -127,16 +127,17 @@ public class AvatarSelectionScreen extends AppCompatActivity {
         });
 
         bio = findViewById(R.id.bio);
-//        bio.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                    hideKeyboard();
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
+        bio.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    hideKeyboard();
+                    setUsername();
+                    return true;
+                }
+                return false;
+            }
+        });
         nextbtn = findViewById(R.id.nextbtn);
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,8 +148,6 @@ public class AvatarSelectionScreen extends AppCompatActivity {
         });
 
     }
-
-
 
     public void hideKeyboard() {
         View view = this.getCurrentFocus();
