@@ -10,7 +10,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -22,7 +21,6 @@ import androidx.constraintlayout.motion.widget.MotionLayout;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.models.UserModel;
-import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;

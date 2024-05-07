@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.models.ChatMessageModel;
-import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
