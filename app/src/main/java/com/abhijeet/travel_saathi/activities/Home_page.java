@@ -98,6 +98,7 @@ public class Home_page extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
 
         String user_name = sh.getString("USERNAME", "null");
+        Toast.makeText(this, user_name, Toast.LENGTH_SHORT).show();
         if(user_name.isEmpty()){
             username.setText("NOne");
         }else{
@@ -124,8 +125,6 @@ public class Home_page extends AppCompatActivity {
         View rootView = dialogView.findViewById(R.id.drawer_root_view);
         rootView.setTranslationX(-rootView.getWidth());
 
-
-// Suggestion
 
         HashMap< String,CustomVariable> spring = new HashMap<>();
         spring.put("1", new CustomVariable("Shimla", R.drawable.az));

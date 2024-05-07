@@ -309,8 +309,6 @@ public class NewLoginActivity extends AppCompatActivity {
         }
     }
 
-    // reset
-
     public void showKeyboard(TextInputEditText editText){
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
