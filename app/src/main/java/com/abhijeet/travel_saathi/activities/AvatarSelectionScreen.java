@@ -185,7 +185,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
             ed.putString("USERNAME", currentUserModel.getUsername());
             ed.commit();
 
-            Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
+            Intent intent = new Intent(AvatarSelectionScreen.this, Select_Interest.class);
             startActivity(intent);
         });
     }

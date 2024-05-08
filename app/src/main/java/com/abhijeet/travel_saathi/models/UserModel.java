@@ -12,6 +12,8 @@ public class UserModel {
     private String email;
     private String age, bio, occupation, gender;
 
+    private String preferences;
+
     public UserModel() {
     }
 
@@ -25,6 +27,8 @@ public class UserModel {
         this.email = email;
         this.gender = gender;
     }
+
+
 
     public String getUsername() {
         return username;
@@ -96,5 +100,13 @@ public class UserModel {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(String preferences) {
+        this.preferences = preferences;
     }
 }

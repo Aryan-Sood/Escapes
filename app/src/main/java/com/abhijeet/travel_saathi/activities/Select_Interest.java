@@ -1,10 +1,13 @@
 package com.abhijeet.travel_saathi.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.adapters.QuestionAdapter;
+import com.abhijeet.travel_saathi.auth.NewLoginActivity;
 import com.abhijeet.travel_saathi.models.QuestionsModelClass;
+import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +30,9 @@ import java.util.List;
 public class Select_Interest extends AppCompatActivity {
 
     private Button updatebtn;
+
+    UserModel currentUserModel;
+    String preferences;
 //    ListView q1listview;
 //    ConstraintLayout q1layout;
 //    ArrayAdapter<String> adapter1;
@@ -73,5 +85,31 @@ public class Select_Interest extends AppCompatActivity {
         //on selection jo karna hai
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void setPreferences(UserModel userModel){
+
+
+        FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(Select_Interest.this, "Done!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+    void getUserData(){
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                currentUserModel = task.getResult().toObject(UserModel.class);
+                currentUserModel.setPreferences(preferences);
+                setPreferences(currentUserModel);
+            }
+        });
+
+
     }
 }
