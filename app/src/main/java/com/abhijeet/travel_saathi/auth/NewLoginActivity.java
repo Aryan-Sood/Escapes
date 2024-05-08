@@ -328,7 +328,6 @@ public class NewLoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success
-                                Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
 
                                 SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -336,9 +335,7 @@ public class NewLoginActivity extends AppCompatActivity {
                                 editor.putString("Email", email);
                                 Log.v("EMAIL", email);
                                 editor.apply();
-                                getUserData();
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);                            // You can navigate to another activity or perform other actions here
+                                getUserData();// You can navigate to another activity or perform other actions here
                             } else {
                                 signupUser(email, password);
                                 // If sign in fails, display a message to the user.
@@ -364,10 +361,9 @@ public class NewLoginActivity extends AppCompatActivity {
                                 SharedPreferences sharedPreferences = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putBoolean("isLoggedIn", true);
-                                editor.putString("Email", email);
+                                editor.putString("EMAIL", email);
                                 Log.v("EMAIL", email);
-                                editor.apply();
-                                getUserData();
+                                editor.commit();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);                            // You can navigate to another activity or perform other actions here
                             }
@@ -411,9 +407,13 @@ public class NewLoginActivity extends AppCompatActivity {
             SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
             SharedPreferences.Editor ed = sh.edit();
             currentUserModel = task.getResult().toObject(UserModel.class);
-            Log.v("USERNAME", currentUserModel.getUsername());
+//            Log.v("USERNAME", currentUserModel.getUsername());
             ed.putString("USERNAME", currentUserModel.getUsername());
             ed.commit();
+
+            Intent intent = new Intent(NewLoginActivity.this, Home_page.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
     }
 }

@@ -2,6 +2,7 @@ package com.abhijeet.travel_saathi.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class AvatarSelectionScreen extends AppCompatActivity {
     private EditText username, occupation, bio;
     MotionLayout motionLayout;
     TextView age,gender;
-    UserModel userModel;
+    UserModel userModel, currentUserModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,8 +150,8 @@ public class AvatarSelectionScreen extends AppCompatActivity {
 
     void setUsername(){
         String user_name = username.getText().toString();
-        String email = getSharedPreferences("isLoggedIn", MODE_PRIVATE).getString("Email", null).toString();
-
+        SharedPreferences sh = getSharedPreferences("OnceLoggedIn", MODE_PRIVATE);
+        String email = sh.getString("EMAIL", "null");
         Log.v("Email", email);
 
         if(user_name.isEmpty() || user_name.length()<3){
@@ -168,12 +169,25 @@ public class AvatarSelectionScreen extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(AvatarSelectionScreen.this, "Done!!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
-                    startActivity(intent);
+                    getUserData();
                 }
             }
         });
 
+    }
+    void getUserData(){
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+
+            SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
+            SharedPreferences.Editor ed = sh.edit();
+            currentUserModel = task.getResult().toObject(UserModel.class);
+//            Log.v("USERNAME", currentUserModel.getUsername());
+            ed.putString("USERNAME", currentUserModel.getUsername());
+            ed.commit();
+
+            Intent intent = new Intent(AvatarSelectionScreen.this, Home_page.class);
+            startActivity(intent);
+        });
     }
 
 //    public void initializeIDs(){

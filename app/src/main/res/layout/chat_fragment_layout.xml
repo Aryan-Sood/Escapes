@@ -95,6 +95,7 @@
             app:alignContent="space_between"
             app:alignItems="center"
             app:justifyContent="space_between"
+            app:layout_constraintTop_toBottomOf="@id/chatsRecyclerView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

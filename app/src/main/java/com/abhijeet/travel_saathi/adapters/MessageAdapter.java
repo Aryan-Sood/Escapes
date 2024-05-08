@@ -23,12 +23,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class MessageAdapter extends FirestoreRecyclerAdapter<ChatroomModel, MessageAdapter.ChatroomModelViewHolder> {
 
-    private BottomSheetDialogFragment parentFragment;
+//    private BottomSheetDialogFragment parentFragment;
     Context context;
 
     public MessageAdapter(@NonNull FirestoreRecyclerOptions<ChatroomModel> options, Context context) {
         super(options);
         this.context = context;
+//        this.parentFragment = fragment;
     }
 
     @Override
@@ -59,7 +60,7 @@ public class MessageAdapter extends FirestoreRecyclerAdapter<ChatroomModel, Mess
 
                                 ChatFragment chatFragment = new ChatFragment(otherUserModel);
                                 FragmentActivity fragmentActivity = (FragmentActivity) context;
-                                parentFragment.dismiss();
+//                                parentFragment.dismiss();
                                 chatFragment.show(fragmentActivity.getSupportFragmentManager(), "ChatFragmentTag");
                                 //navigate to chat activity
 //                                Intent intent = new Intent(context, ChatActivity.class);
