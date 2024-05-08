@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".auth.NewLoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".activities.Select_Interest"
             android:exported="true">
