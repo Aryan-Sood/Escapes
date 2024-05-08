@@ -1,10 +1,7 @@
 package com.abhijeet.travel_saathi.activities;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,13 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.adapters.QuestionAdapter;
-import com.abhijeet.travel_saathi.auth.NewLoginActivity;
 import com.abhijeet.travel_saathi.models.QuestionsModelClass;
 import com.abhijeet.travel_saathi.models.UserModel;
 import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,19 +38,6 @@ public class Select_Interest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_interest);
 
-        updatebtn = findViewById(R.id.textButton);
-        updatebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // update the prefernecs only if minimum 5 questions are answered
-                //i.e only if the size of marked answers array is graeter than equal to 5, allow next page intent
-
-                Intent intent = new Intent(Select_Interest.this, Home_page.class);
-                startActivity(intent);
-            }
-        });
-
         List<QuestionsModelClass> questions = new ArrayList<>();
         questions.add(new QuestionsModelClass("What type of travel experiences are you interested in?", new String[]{"Adventure", "Cultural", "Relaxation", "Sightseeing", "Food & Drink", "Wildlife", "Beach", "City Breaks", "Mountains"}));
         questions.add(new QuestionsModelClass("What type of food and cuisines do you enjoy?", new String[]{"Italian", "Mexican", "Indian", "Chinese", "Japanese", "Mediterranean", "American"}));
@@ -71,7 +53,27 @@ public class Select_Interest extends AppCompatActivity {
         recyclerView.setAdapter(new QuestionAdapter(questions));
 //        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-        getUserData();
+
+
+//        getUserData();
+
+        updatebtn = findViewById(R.id.textButton);
+        updatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                travel = String.valueOf(questions.get(0).getSelectedOptionIndex()+1);
+                food = String.valueOf(questions.get(1).getSelectedOptionIndex()+1);
+                hobbies = String.valueOf(questions.get(2).getSelectedOptionIndex()+1);
+                spring = String.valueOf(questions.get(3).getSelectedOptionIndex()+1);
+                summer = String.valueOf(questions.get(4).getSelectedOptionIndex()+1);
+                monsoon = String.valueOf(questions.get(5).getSelectedOptionIndex()+1);
+                winter = String.valueOf(questions.get(6).getSelectedOptionIndex()+1);
+
+                Log.d("VMII", "Travel: " + travel);
+
+            }
+        });
+
 
     }
 
@@ -80,11 +82,6 @@ public class Select_Interest extends AppCompatActivity {
 //        TransitionManager.beginDelayedTransition(q1layout, new AutoTransition());
 //        q1listview.setVisibility(v);
 //    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 
     void setPreferences(UserModel userModel){
 

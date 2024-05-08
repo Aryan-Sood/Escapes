@@ -26,15 +26,16 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.OptionView
     @Override
     public void onBindViewHolder(OptionViewHolder holder, int position) {
         holder.optionText.setText(question.getOptions()[position]);
-        holder.optionText.setChecked(question.getSelectedOption() == position);
+        holder.optionText.setChecked(question.getSelectedOptionIndex() == position);
         holder.optionText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                question.setSelectedOption(holder.getAdapterPosition());
+                question.setSelectedOptionIndex(holder.getAdapterPosition());
                 notifyDataSetChanged();
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
