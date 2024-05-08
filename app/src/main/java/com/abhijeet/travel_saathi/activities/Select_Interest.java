@@ -32,7 +32,7 @@ public class Select_Interest extends AppCompatActivity {
     private Button updatebtn;
 
     UserModel currentUserModel;
-    String preferences;
+    String travel, food, hobbies, spring, summer, monsoon, winter;
 //    ListView q1listview;
 //    ConstraintLayout q1layout;
 //    ArrayAdapter<String> adapter1;
@@ -71,6 +71,8 @@ public class Select_Interest extends AppCompatActivity {
         recyclerView.setAdapter(new QuestionAdapter(questions));
 //        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
+        getUserData();
+
     }
 
 //    public void expand (View view){
@@ -81,9 +83,6 @@ public class Select_Interest extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        //on selection jo karna hai
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -105,7 +104,14 @@ public class Select_Interest extends AppCompatActivity {
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 currentUserModel = task.getResult().toObject(UserModel.class);
-                currentUserModel.setPreferences(preferences);
+                assert currentUserModel != null;
+                currentUserModel.setFood(food);
+                currentUserModel.setTravel(travel);
+                currentUserModel.setHobbies(hobbies);
+                currentUserModel.setSpring(spring);
+                currentUserModel.setSummer(summer);
+                currentUserModel.setMonsoon(monsoon);
+                currentUserModel.setWinter(winter);
                 setPreferences(currentUserModel);
             }
         });

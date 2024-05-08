@@ -12,7 +12,63 @@ public class UserModel {
     private String email;
     private String age, bio, occupation, gender;
 
-    private String preferences;
+    private String travel, food, hobbies, spring, summer, monsoon, winter;
+
+    public String getTravel() {
+        return travel;
+    }
+
+    public void setTravel(String travel) {
+        this.travel = travel;
+    }
+
+    public String getFood() {
+        return food;
+    }
+
+    public void setFood(String food) {
+        this.food = food;
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public String getSpring() {
+        return spring;
+    }
+
+    public void setSpring(String spring) {
+        this.spring = spring;
+    }
+
+    public String getSummer() {
+        return summer;
+    }
+
+    public void setSummer(String summer) {
+        this.summer = summer;
+    }
+
+    public String getMonsoon() {
+        return monsoon;
+    }
+
+    public void setMonsoon(String monsoon) {
+        this.monsoon = monsoon;
+    }
+
+    public String getWinter() {
+        return winter;
+    }
+
+    public void setWinter(String winter) {
+        this.winter = winter;
+    }
 
     public UserModel() {
     }
@@ -102,11 +158,4 @@ public class UserModel {
         this.gender = gender;
     }
 
-    public String getPreferences() {
-        return preferences;
-    }
-
-    public void setPreferences(String preferences) {
-        this.preferences = preferences;
-    }
 }
