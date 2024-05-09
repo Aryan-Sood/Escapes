@@ -6,8 +6,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,13 +28,23 @@ import com.applikeysolutions.cosmocalendar.view.CalendarView;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -39,12 +52,18 @@ public class MapPage extends AppCompatActivity {
 
     public RequestQueue requestQueue;
 
-    CalendarView calendarView;
-    FlexboxLayout chipLayout;
+//    CalendarView calendarView;
+    FlexboxLayout chipLayout, flexBoxComb;
     List<SimilarInterestModelClass> similarInterestList;
     SimilarInterestAdapter similarInterestAdapter;
     LinearLayoutManager similarInterestLayout;
     RecyclerView similarInterestRecyclerView;
+    TextView startSelector, endSelector;
+
+    MaterialDatePicker<Long> startDatePicker, endDatePicker;
+
+    Chip dateChip;
+    String selectedDates = "00-00";
 
 
 
@@ -62,6 +81,34 @@ public class MapPage extends AppCompatActivity {
 
         setSimilarInterestRecyclerViewData();
         setSimilarInterestRecyclerView();
+
+        startDatePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select Start Date")
+                .build();
+
+        // Initialize MaterialDatePicker.Builder for the end date
+        endDatePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select End Date")
+                .build();
+
+
+        findViewById(R.id.flexBoxComb).setOnClickListener(view -> {
+            startDatePicker.show(getSupportFragmentManager(), "");
+        });
+
+        startDatePicker.addOnPositiveButtonClickListener(selection -> {
+            startSelector.setText("Selected starting date: " + formatDate(selection));
+            selectedDates = String.valueOf(formatDate(selection).charAt(0)) + formatDate(selection).charAt(1);
+            selectedDates += "-00";
+            endDatePicker.show(getSupportFragmentManager(),"");
+        });
+
+        endDatePicker.addOnPositiveButtonClickListener(selection -> {
+            endSelector.setText("Selected end date: " + formatDate(selection));
+            selectedDates = String.valueOf(selectedDates.charAt(0)) + selectedDates.charAt(1) + "-" + formatDate(selection).charAt(0) + formatDate(selection).charAt(1);
+            dateChip.setText(selectedDates);
+        });
+
 
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -90,11 +137,14 @@ public class MapPage extends AppCompatActivity {
 
     }
 
-
     public void initializeId(){
         autoCompleteTextView = findViewById(R.id.auto_complete);
         chipLayout = findViewById(R.id.flexboxLayout6);
         similarInterestRecyclerView = findViewById(R.id.locationRecyclerView);
+        startSelector = findViewById(R.id.startSelector);
+        endSelector = findViewById(R.id.endSelector);
+        flexBoxComb = findViewById(R.id.flexBoxComb);
+        dateChip = findViewById(R.id.datesChip);
     }
 
     private void searchPlaces(String query) {
@@ -146,4 +196,15 @@ public class MapPage extends AppCompatActivity {
     }
 
 
+    public static String formatDate(long milliseconds) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            Instant instant = Instant.ofEpochMilli(milliseconds);
+            LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+            return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")); // Customize format as needed
+        } else {
+            // Use legacy java.util.Date for older versions
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); // Customize format as needed
+            return dateFormat.format(new Date(milliseconds));
+        }
+    }
 }
