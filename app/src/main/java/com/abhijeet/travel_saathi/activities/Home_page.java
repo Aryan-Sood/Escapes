@@ -1,5 +1,6 @@
 package com.abhijeet.travel_saathi.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +29,16 @@ import com.abhijeet.travel_saathi.adapters.SuggestedPlacesAdapter;
 import com.abhijeet.travel_saathi.fragments.MessageFragment;
 import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
+import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.FirebaseUtil;
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.Filter;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,17 +51,18 @@ public class Home_page extends AppCompatActivity {
     MaterialCardView mapsCardView, locationCardView;
 
     RecyclerView fromYourLocationRecyclerView, suggestedPlacesRecyclerView;
-    List<FromYourLocationModelClass> locationUsersList;
+    List<FromYourLocationModelClass> locationUsersList = new ArrayList<>();;
     List<SuggestedPlacesModelClass> suggestedPlacesList = new ArrayList<>();
     FromYourLocationAdapter locationUsersAdapter;
     SuggestedPlacesAdapter suggestedPlacesAdapter;
     LinearLayoutManager locationUsersLayout, suggestedPlacesLayout;
     ImageView messageIcon, sideNavIcon;
     DrawerLayout drawerLayout;
+    List<UserModel> users;
     NavigationView navigationView;
     ConstraintLayout suggestedConstraint;
     TextView settings, username;
-
+    UserModel currentUserModel;
     //Suggestion
     String url = "http://10.0.2.2:5000/predict";
     int month;
@@ -81,20 +91,18 @@ public class Home_page extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences("user_data", MODE_PRIVATE);
 
         String user_name = sh.getString("USERNAME", "null");
-        Toast.makeText(this, user_name, Toast.LENGTH_SHORT).show();
         if(user_name.isEmpty()){
-            username.setText("NOne");
+            username.setText("None");
         }else{
             username.setText(user_name);
         }
 
 
         setCardsDimensions();
-        fromYourLocationInitData();
         suggestedPlacesInitData();
-        fromYourLocationRecyclerView();
         suggestedPlacesRecyclerView();
         setConstraintLayoutHeight();
+        getUserData();
 
 
         Dialog dialog = new Dialog(this);
@@ -243,7 +251,7 @@ public class Home_page extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home_page.this,SettingsPage.class);
+                Intent intent = new Intent(Home_page.this, SettingsPage.class);
                 startActivity(intent);
             }
         });
@@ -279,7 +287,6 @@ public class Home_page extends AppCompatActivity {
     }
 
     public void fromYourLocationInitData(){
-        locationUsersList = new ArrayList<>();
         locationUsersList.add(new FromYourLocationModelClass(R.drawable.avatar_uncle1,"Uncle 1"));
         locationUsersList.add(new FromYourLocationModelClass(R.drawable.avatar_lady1,"Lady 1"));
         locationUsersList.add(new FromYourLocationModelClass(R.drawable.scooter_uncle,"Uncle 2"));
@@ -366,4 +373,49 @@ public class Home_page extends AppCompatActivity {
         suggestedConstraint.setLayoutParams(layoutParams);
     }
 
+    public void getData(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users").where(Filter.or(
+                Filter.equalTo("travel", currentUserModel.getTravel()),
+                Filter.equalTo("food", currentUserModel.getFood()),
+                Filter.equalTo("hobbies", currentUserModel.getHobbies()),
+                Filter.equalTo("spring", currentUserModel.getSpring()),
+                Filter.equalTo("summer", currentUserModel.getSummer()),
+                Filter.equalTo("monsoon", currentUserModel.getMonsoon()),
+                Filter.equalTo("winter", currentUserModel.getWinter())
+            )).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    users = task.getResult().toObjects(UserModel.class);
+                    if (!users.isEmpty() || users != null) {
+                        for (UserModel i : users) {
+                            if(!i.getUserId().equals( currentUserModel.getUserId())){
+                                FromYourLocationModelClass x = new FromYourLocationModelClass();
+                                x.setImage(R.drawable.avatar_lady2);
+                                x.setName(i.getUsername());
+                                Log.v("Name", x.getName());
+                                locationUsersList.add(x);
+                            }
+                        }
+                    } else {
+                        fromYourLocationInitData();
+                    }
+                    fromYourLocationRecyclerView();
+                }else{
+                    Log.v("GET", "Unsuccessful");
+                }
+            }
+        });
+
+    }
+
+    void getUserData(){
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                currentUserModel = task.getResult().toObject(UserModel.class);
+                getData();
+            }
+        });
+    }
 }

@@ -170,7 +170,6 @@ public class NewLoginActivity extends AppCompatActivity {
                     if (!emailField.getText().toString().isEmpty()) {
                         if (terms.isChecked()){
                             hideKeyboard(view);
-                            Toast.makeText(NewLoginActivity.this, "Otp Sent", Toast.LENGTH_SHORT).show();
                             loginDialog.hide();
                             otpDialog.show();
                             startTimer();

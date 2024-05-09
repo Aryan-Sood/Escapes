@@ -1,5 +1,6 @@
 package com.abhijeet.travel_saathi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,7 +56,6 @@ public class Select_Interest extends AppCompatActivity {
 
 
 
-//        getUserData();
 
         updatebtn = findViewById(R.id.textButton);
         updatebtn.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +70,10 @@ public class Select_Interest extends AppCompatActivity {
                 winter = String.valueOf(questions.get(6).getSelectedOptionIndex()+1);
 
                 Log.d("VMII", "Travel: " + travel);
+
+                getUserData();
+
+                startActivity(new Intent(Select_Interest.this, Home_page.class));
 
             }
         });
