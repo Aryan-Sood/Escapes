@@ -26,6 +26,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.applikeysolutions.cosmocalendar.view.CalendarView;
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.datepicker.CalendarConstraints;
@@ -59,6 +60,7 @@ public class MapPage extends AppCompatActivity {
     LinearLayoutManager similarInterestLayout;
     RecyclerView similarInterestRecyclerView;
     TextView startSelector, endSelector;
+    MaterialCardView backButton;
 
     MaterialDatePicker<Long> startDatePicker, endDatePicker;
 
@@ -109,6 +111,13 @@ public class MapPage extends AppCompatActivity {
             dateChip.setText(selectedDates);
         });
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -145,6 +154,7 @@ public class MapPage extends AppCompatActivity {
         endSelector = findViewById(R.id.endSelector);
         flexBoxComb = findViewById(R.id.flexBoxComb);
         dateChip = findViewById(R.id.datesChip);
+        backButton = findViewById(R.id.backButton);
     }
 
     private void searchPlaces(String query) {
