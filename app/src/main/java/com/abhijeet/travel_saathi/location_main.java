@@ -2,23 +2,19 @@ package com.abhijeet.travel_saathi;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.adapters.FromYourLocationAdapter;
-import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
+import com.abhijeet.travel_saathi.models.UserModel;
 
 import java.util.List;
 
 public class location_main extends AppCompatActivity {
 
     RecyclerView locationRecyclerView;
-    List<FromYourLocationModelClass> locationList;
+    List<UserModel> locationList;
     FromYourLocationAdapter locationAdapter;
     LinearLayoutManager locationLayout;
 

@@ -21,13 +21,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.abhijeet.travel_saathi.R;
 import com.abhijeet.travel_saathi.adapters.FromYourLocationAdapter;
 import com.abhijeet.travel_saathi.adapters.SuggestedPlacesAdapter;
 import com.abhijeet.travel_saathi.fragments.MessageFragment;
-import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
 import com.abhijeet.travel_saathi.models.SuggestedPlacesModelClass;
 import com.abhijeet.travel_saathi.models.UserModel;
 import com.abhijeet.travel_saathi.utils.FirebaseUtil;
@@ -51,7 +49,7 @@ public class Home_page extends AppCompatActivity {
     MaterialCardView mapsCardView, locationCardView;
 
     RecyclerView fromYourLocationRecyclerView, suggestedPlacesRecyclerView;
-    List<FromYourLocationModelClass> locationUsersList = new ArrayList<>();;
+    List<UserModel> locationUsersList = new ArrayList<>();;
     List<SuggestedPlacesModelClass> suggestedPlacesList = new ArrayList<>();
     FromYourLocationAdapter locationUsersAdapter;
     SuggestedPlacesAdapter suggestedPlacesAdapter;
@@ -287,17 +285,17 @@ public class Home_page extends AppCompatActivity {
     }
 
     public void fromYourLocationInitData(){
-        locationUsersList.add(new FromYourLocationModelClass(R.drawable.avatar_uncle1,"Uncle 1"));
-        locationUsersList.add(new FromYourLocationModelClass(R.drawable.avatar_lady1,"Lady 1"));
-        locationUsersList.add(new FromYourLocationModelClass(R.drawable.scooter_uncle,"Uncle 2"));
-        locationUsersList.add(new FromYourLocationModelClass(R.drawable.avatar_lady2,"Lady 2"));
+        locationUsersList.add(new UserModel(R.drawable.avatar_uncle1,"Uncle 1"));
+        locationUsersList.add(new UserModel(R.drawable.avatar_lady1,"Lady 1"));
+        locationUsersList.add(new UserModel(R.drawable.scooter_uncle,"Uncle 2"));
+        locationUsersList.add(new UserModel(R.drawable.avatar_lady2,"Lady 2"));
     }
 
     public void fromYourLocationRecyclerView(){
         locationUsersLayout = new LinearLayoutManager(this);
         locationUsersLayout.setOrientation(RecyclerView.VERTICAL);
         fromYourLocationRecyclerView.setLayoutManager(locationUsersLayout);
-        locationUsersAdapter = new FromYourLocationAdapter(locationUsersList);
+        locationUsersAdapter = new FromYourLocationAdapter(locationUsersList, Home_page.this);
         fromYourLocationRecyclerView.setAdapter(locationUsersAdapter);
         locationUsersAdapter.notifyDataSetChanged();
     }
@@ -391,11 +389,7 @@ public class Home_page extends AppCompatActivity {
                     if (!users.isEmpty() || users != null) {
                         for (UserModel i : users) {
                             if(!i.getUserId().equals( currentUserModel.getUserId())){
-                                FromYourLocationModelClass x = new FromYourLocationModelClass();
-                                x.setImage(R.drawable.avatar_lady2);
-                                x.setName(i.getUsername());
-                                Log.v("Name", x.getName());
-                                locationUsersList.add(x);
+                                locationUsersList.add(i);
                             }
                         }
                     } else {

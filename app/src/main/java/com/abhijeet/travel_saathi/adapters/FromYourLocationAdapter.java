@@ -1,6 +1,7 @@
 package com.abhijeet.travel_saathi.adapters;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,21 +9,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhijeet.travel_saathi.R;
-import com.abhijeet.travel_saathi.models.FromYourLocationModelClass;
-
-import org.w3c.dom.Text;
+import com.abhijeet.travel_saathi.activities.Home_page;
+import com.abhijeet.travel_saathi.activities.Select_Interest;
+import com.abhijeet.travel_saathi.activities.SomeoneProfile;
+import com.abhijeet.travel_saathi.fragments.ChatFragment;
+import com.abhijeet.travel_saathi.models.UserModel;
+import com.abhijeet.travel_saathi.utils.AndroidUtil;
 
 import java.util.List;
 
 public class FromYourLocationAdapter extends RecyclerView.Adapter<FromYourLocationAdapter.ViewHolder> {
 
-    List<FromYourLocationModelClass> userList;
+    List<UserModel> userList;
 
-    public FromYourLocationAdapter(List<FromYourLocationModelClass> userList) {
+    UserModel otherUserModel;
+    Context context;
+
+    public FromYourLocationAdapter(List<UserModel> userList, Context context) {
         this.userList = userList;
+        this.context = context;
     }
 
 
@@ -33,14 +42,27 @@ public class FromYourLocationAdapter extends RecyclerView.Adapter<FromYourLocati
         return new ViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull FromYourLocationAdapter.ViewHolder holder, int position) {
-        int image = userList.get(position).getImage();
-        String name = userList.get(position).getName();
+//        int image = userList.get(position).get();
+        String name = userList.get(position).getUsername();
 
-        holder.setData(image,name);
+        holder.setData(R.drawable.avatar_uncle1,name);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SomeoneProfile.class);
+                UserModel a = userList.get(position);
+                AndroidUtil.passUserModelAsIntent(intent, a);
+
+                context.startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
