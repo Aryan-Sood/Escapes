@@ -4,7 +4,21 @@ package com.abhijeet.travel_saathi.models;
 import com.google.firebase.Timestamp;
 
 public class UserModel {
-    private String username;
+    private String username;private int image;
+
+    public UserModel(int image, String username) {
+        this.username = username;
+        this.image = image;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
     private Timestamp createdTimestamp;
     private String userId;
     private String fcmToken;
