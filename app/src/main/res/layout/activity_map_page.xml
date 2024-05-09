@@ -127,21 +127,21 @@
             app:layout_constraintTop_toBottomOf="@+id/auto_complete_card">
 
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#A4B0D2"
-                android:fontFamily="@font/jua"
-                android:text="Delhi"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:chipBackgroundColor="#8DC792"
-                app:chipCornerRadius="20dp"
-                app:chipStrokeWidth="0dp"
-                app:closeIcon="@drawable/cross_icon"
-                app:closeIconTint="@color/black"
-                app:closeIconVisible="true" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="#A4B0D2"-->
+<!--                android:fontFamily="@font/jua"-->
+<!--                android:text="Delhi"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:chipBackgroundColor="#8DC792"-->
+<!--                app:chipCornerRadius="20dp"-->
+<!--                app:chipStrokeWidth="0dp"-->
+<!--                app:closeIcon="@drawable/cross_icon"-->
+<!--                app:closeIconTint="@color/black"-->
+<!--                app:closeIconVisible="false" />-->
 
 
         </com.google.android.flexbox.FlexboxLayout>
@@ -284,6 +284,7 @@
             android:id="@+id/dataFlexBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:flexWrap="wrap"
             android:layout_marginTop="20dp"
             android:paddingHorizontal="20dp"
             app:alignContent="space_between"
@@ -295,10 +296,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/placeChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jua"
-                android:text="Himachal"
+                android:text="Select Place"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -307,7 +309,8 @@
                 app:chipStrokeColor="#34793B"
                 app:closeIcon="@drawable/cross_icon"
                 app:closeIconTint="@color/black"
-                app:closeIconVisible="true" />
+                app:closeIconVisible="true"
+                tools:layout_editor_absoluteX="20dp" />
 
 
             <com.google.android.flexbox.FlexboxLayout

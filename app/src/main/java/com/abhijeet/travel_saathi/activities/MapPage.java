@@ -1,5 +1,9 @@
 package com.abhijeet.travel_saathi.activities;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +69,7 @@ public class MapPage extends AppCompatActivity {
 
     MaterialDatePicker<Long> startDatePicker, endDatePicker;
 
-    Chip dateChip;
+    Chip dateChip, placeChip;
     String selectedDates = "00-00";
 
 
@@ -136,11 +141,25 @@ public class MapPage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedItem = (String) adapterView.getItemAtPosition(i);
-                Chip chip = new Chip(getApplicationContext());
+                Chip chip = new Chip(MapPage.this);
                 chip.setText(selectedItem);
-                ChipGroup chipGroup = new ChipGroup(getApplicationContext());
-                chipGroup.addView(chip);
-                chipLayout.addView(chipGroup);
+                ColorStateList colorStateList = ColorStateList.valueOf(Color.parseColor("#8EC893"));
+                chip.setChipBackgroundColor(colorStateList);
+                chip.setTextColor(Color.parseColor("#000000"));
+                chip.setChipCornerRadius(100);
+                chip.setTextSize(18);
+                chip.setChipStrokeWidth(0);
+                chip.setBackgroundColor(Color.parseColor("#8EC893"));
+                chip.setCloseIconVisible(true);
+                chip.setCloseIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.cross_icon, null));
+                chip.setCloseIconTint(colorStateList);
+
+                Typeface typeface = ResourcesCompat.getFont(MapPage.this, R.font.jua);
+                chip.setTypeface(typeface);
+                chip.setPaintFlags(chip.getPaintFlags() | Typeface.BOLD);
+
+                chipLayout.addView(chip);
+                placeChip.setText(selectedItem);
             }
         });
 
@@ -155,6 +174,7 @@ public class MapPage extends AppCompatActivity {
         flexBoxComb = findViewById(R.id.flexBoxComb);
         dateChip = findViewById(R.id.datesChip);
         backButton = findViewById(R.id.backButton);
+        placeChip = findViewById(R.id.placeChip);
     }
 
     private void searchPlaces(String query) {
