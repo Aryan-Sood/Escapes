@@ -1,5 +1,6 @@
 package com.abhijeet.travel_saathi.utils;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -67,6 +68,11 @@ public class FirebaseUtil {
     public static void logout(){
         FirebaseAuth.getInstance().signOut();
     }
+
+    public static Task<Void> delete(){
+        return FirebaseAuth.getInstance().getCurrentUser().delete();
+    }
+
 
     public static StorageReference  getCurrentProfilePicStorageRef(){
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
