@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,8 @@ public class SuggestedPlacesAdapter extends RecyclerView.Adapter<SuggestedPlaces
     @Override
     public void onBindViewHolder(@NonNull SuggestedPlacesAdapter.ViewHolder holder, int position) {
         int image = userList.get(position).getSceneImage();
-        holder.setData(image);
+        String nam = userList.get(position).getSceneName();
+        holder.setData(image, nam);
     }
 
     @Override
@@ -42,13 +44,16 @@ public class SuggestedPlacesAdapter extends RecyclerView.Adapter<SuggestedPlaces
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView image;
+        private TextView nameView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.sceneImage);
+            nameView = itemView.findViewById(R.id.loction_name);
         }
 
-        public void setData(int d){
+        public void setData(int d, String name){
             image.setImageResource(d);
+            nameView.setText(name);
         }
     }
 }
