@@ -311,8 +311,8 @@ public class Home_page extends AppCompatActivity {
 
 
         suggestedPlacesList.add(new SuggestedPlacesModelClass("Shimla",R.drawable.scene_two));
-        suggestedPlacesList.add(new SuggestedPlacesModelClass("Kullu",R.drawable.scene_two));
-        suggestedPlacesList.add(new SuggestedPlacesModelClass("Washington",R.drawable.scene_two));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass("Kullu",R.drawable.az));
+        suggestedPlacesList.add(new SuggestedPlacesModelClass("Washington",R.drawable.scene_one));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_two));
 //        suggestedPlacesList.add(new SuggestedPlacesModelClass(R.drawable.scene_one));
